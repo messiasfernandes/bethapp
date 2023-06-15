@@ -1,0 +1,32 @@
+
+<div class="grid">
+  <div class="col-12">
+<p-toolbar >
+
+  <div class="p-toolbar-group-left">
+
+    <a href="javascript:;"   (click)="exibindoMenu=!exibindoMenu"> <i class="pi pi-bars" style="font-size: 2rem ;  color: white;"></i></a>
+
+
+  </div>
+
+  <div class="p-toolbar-group-right">
+
+  </div>
+
+</p-toolbar>
+</div>
+</div>
+<p></p>
+
+
+
+<div class="grid">
+  <div class="col-3">
+   <p-sidebar [(visible)]="exibindoMenu" [showCloseIcon]="true" [baseZIndex]="10000"  dismissable="false" [blockScroll]="true" >
+      <h2 style="font-weight:normal">Sistema de  Gestão </h2>
+    <p-panelMenu    *ngIf="exibindoMenu"  autoDisplay="true"   [model]="menu" [style]="{'width':'290px'}"></p-panelMenu>
+
+    </p-sidebar>
+  </div>
+  </div>

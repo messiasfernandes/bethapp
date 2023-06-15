@@ -1,0 +1,44 @@
+
+:host ::ng-deep .p-toolbar {
+
+  background: #3F51B5;
+  /* background: var(--blue-700);*/
+   border: 1px solid #e0e0e0;
+   padding: 0.65rem;
+   border-radius: 3px;
+
+}
+:host::ng-deep .p-panelmenu .p-panelmenu-header.p-highlight:not(.p-disabled) > a:hover {
+  border-color: transparent;
+  background: var(--indigo-500);
+  color: var(--indigo-50);
+  font-weight: bold;
+
+}
+:host::ng-deep .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-icon {
+  border-color: transparent;
+   color:#3F51B5;
+   margin-right: 0.3rem;
+  font-weight: bold;
+   padding: auto;
+
+
+ }
+:host::ng-deep .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-text {
+  color:   #3F51B5;
+  font: bold;
+}
+:host::ng-deep .p-sidebar {
+padding: 0%;
+  border: 0 none;
+
+
+
+
+}
+:host::ng-deep .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link:not(.p-disabled):hover {
+  border-color: transparent;
+  background: var(--indigo-500);
+  color: var(--indigo-50);
+  font-weight: bold;
+}
