@@ -1,10 +1,39 @@
-
 <div class="tabela">
   <div class="container">
-    <p>consulta-produto works!</p>
+<p-card>
 
+  <div class="grid">
+    <div class="col-12 md:col-6 lg:col-3">
+      <h2> Consulta Produto</h2>
+    </div>
   </div>
 
 
+<div class="p-fluid  grid">
+  <div class="col-12 md:col-6 lg:col-7 p-fluid" >
+    <form autocomplete="off" (ngSubmit)="buscar()">
+
+      <span class="p-float-label ">
+        <span class="p-float-label p-input-icon-right  ">
+          <i class="pi pi-search"></i>
+          <input type="text" id="inputgroup" name="paramentro" pInputText
+            class="p-inputtext">
+          <label for="inputgroup">Pesquisar</label>
+
+        </span>
+      </span>
+
+    </form>
+
+</div>
+<div class="col-12 md:col-6 lg:col-2 p-fluid">
+  <button pButton icon="pi pi-plus" label="Novo" routerLink="/produtos/novo" routerLinkActive="active-link"
+  class="p-button-success p-button-lg"></button>
+</div>
 </div>
 
+</p-card>
+
+
+</div>
+</div>

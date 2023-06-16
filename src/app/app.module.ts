@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MenuLateralComponent } from './shared/menu-lateral/menu-lateral.component';
 import { ConsultaProdutoComponent } from './produto/consulta-produto/consulta-produto.component';
 import { ImportarnotafiscalComponent } from './notafiscal/importarnotafiscal/importarnotafiscal.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ImportarnotafiscalComponent } from './notafiscal/importarnotafiscal/imp
     BrowserModule,
     BrowserAnimationsModule,
     PrimengModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -50,7 +50,9 @@ import {CalendarModule} from 'primeng/calendar';
     InputTextModule,
     DividerModule,
     SidebarModule,
-    ButtonModule
+    ButtonModule,
+    CardModule,
+    TableModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
