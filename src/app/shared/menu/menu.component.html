@@ -23,8 +23,9 @@
 
 <div class="grid">
   <div class="col-3">
-   <p-sidebar [(visible)]="exibindoMenu" [showCloseIcon]="true" [baseZIndex]="10000"  dismissable="false" [blockScroll]="true" >
-      <h2 style="font-weight:normal">Sistema de  Gestão </h2>
+
+   <p-sidebar [(visible)]="exibindoMenu" [showCloseIcon]="true" [baseZIndex]="10000"     >
+   <h2 style="font-weight:normal ; color: black; align-content: center; font: bold;">Sistema de  Gestão </h2>
     <p-panelMenu    *ngIf="exibindoMenu"  autoDisplay="true"   [model]="menu" [style]="{'width':'290px'}"></p-panelMenu>
 
     </p-sidebar>

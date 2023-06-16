@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem, PrimeIcons } from 'primeng/api';
 
 @Component({
@@ -9,7 +10,7 @@ import { MenuItem, PrimeIcons } from 'primeng/api';
 export class MenuComponent implements OnInit {
 
   exibindoMenu=false;
-  constructor( ) { }
+  constructor( private router: Router) { }
   menu :MenuItem[]=[]
   mostrarMenu(){
     this.exibindoMenu = !this.exibindoMenu;
@@ -18,6 +19,14 @@ export class MenuComponent implements OnInit {
 
     this.exibindoMenu = !this.exibindoMenu;
     console.log(this.exibindoMenu)
+  }
+  checkActiveState(givenLink:any) {
+    console.log(this.router.url);
+    if (this.router.url.indexOf(givenLink) === -1) {
+      return false;
+    } else {
+      return true;
+    }
   }
   ngOnInit(): void {
     this.menu = [
@@ -35,20 +44,22 @@ export class MenuComponent implements OnInit {
                 label: 'Fornecedores',
                 icon: PrimeIcons.USER_MINUS,
 
-              //  routerLink: ['/fornecedores'],
+               routerLink: ['/produtos'],
                 routerLinkActiveOptions: { exact: true },
               },
 
               {
                 label: 'Funicionários',
-                 icon :PrimeIcons.USER
+                 icon :PrimeIcons.USER,
+                 routerLinkActiveOptions: { exact: true }
               },
               {
                 label: 'Produtos',
                 icon: PrimeIcons.BRIEFCASE,
-             //  routerLink: ['/produtos'],
-               routerLinkActiveOptions: { exact: true },
-                command: () => this.closeSidebar(),
+                routerLink: ['/produtos'],
+
+
+              command: () => this.closeSidebar(),
               }
 
             ],
@@ -68,7 +79,8 @@ export class MenuComponent implements OnInit {
           {
             label: 'Importar Nota fiscal',
             icon: 'pi pi-file-import',
-          //  routerLink:['/importarnotalfiscal'],
+            expanded: true,
+           routerLink:['/importarnotalfiscal'],
             command: () => this.closeSidebar(),
           }
 
