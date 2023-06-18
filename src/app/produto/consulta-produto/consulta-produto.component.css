@@ -1,8 +1,12 @@
 .container{
-  width: 90%;
+  width: 100%;
   margin: auto;
 
 }
 .tabela {
   width: 100%;
+}
+.subcotanainer{
+  width: 95%;
+  margin: auto;
 }

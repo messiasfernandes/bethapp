@@ -1,33 +1,35 @@
 
-<div class="grid">
-  <div class="col-12">
-<p-toolbar >
 
-  <div class="p-toolbar-group-left">
+  <div class="grid">
+    <div class="col-12">
+  <p-toolbar >
 
-    <a href="javascript:;"   (click)="exibindoMenu=!exibindoMenu"> <i class="pi pi-bars" style="font-size: 2rem ;  color: white;"></i></a>
+    <div class="p-toolbar-group-left">
 
-
-  </div>
-
-  <div class="p-toolbar-group-right">
-
-  </div>
-
-</p-toolbar>
-</div>
-</div>
-<p></p>
+      <a href="javascript:;"   (click)="exibindoMenu=!exibindoMenu"> <i class="pi pi-bars" style="font-size: 2rem ;  color: white;"></i></a>
 
 
+    </div>
 
-<div class="grid">
-  <div class="col-3">
+    <div class="p-toolbar-group-right">
 
-   <p-sidebar [(visible)]="exibindoMenu" [showCloseIcon]="true" [baseZIndex]="10000"     >
-   <h2 style="font-weight:normal ; color: black; align-content: center; font: bold;">Sistema de  Gestão </h2>
-    <p-panelMenu    *ngIf="exibindoMenu"  autoDisplay="true"   [model]="menu" [style]="{'width':'290px'}"></p-panelMenu>
+    </div>
 
-    </p-sidebar>
+  </p-toolbar>
   </div>
   </div>
+  <p></p>
+
+
+
+  <div class="grid">
+    <div class="col-3">
+
+     <p-sidebar [(visible)]="exibindoMenu" [showCloseIcon]="true" [baseZIndex]="10000"     >
+     <h2 style="font-weight:normal ; color: black; align-content: center; font: bold;">Sistema de  Gestão </h2>
+      <p-panelMenu    *ngIf="exibindoMenu"  autoDisplay="true"   [model]="menu" [style]="{'width':'290px'}"></p-panelMenu>
+
+      </p-sidebar>
+    </div>
+    </div>
+

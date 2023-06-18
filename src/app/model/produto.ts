@@ -21,5 +21,5 @@ export class Produto {
   estoqueminimo: number;
   estoque = new Estoque();
   subcategoria = new Subcategoria();
-  atributos = Atributo [] = [];
+  atributos : Atributo [] = [];
 }

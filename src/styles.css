@@ -6,3 +6,11 @@ body{
   font-family: Arial, Helvetica, sans-serif;
   color:#404C51 ;
 }
+.col-acoes > a {
+  margin-right: 5px;
+}
+@media screen and (max-width: 810px) {
+  .ui-tabs.ui-tabs-top > .ui-tabs-nav li{
+      width: 100% !important;
+  }
+}

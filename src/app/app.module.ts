@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { PrimengModule } from './shared/primeng/primeng.module';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     PrimengModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
