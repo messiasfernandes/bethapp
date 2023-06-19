@@ -34,7 +34,7 @@
       </div>
       <div class="grid">
         <div class="col-12 tabela ">
-          <p-table [value]="produtos" responsiveLayout="stack" [breakpoint]="'760px'" selectionMode="single"
+          <p-table [value]="produtos" responsiveLayout="stack"  selectionMode="single"
             [rowHover]="true" [rows]="produtofiltro.itensPorPagina" #tabela dataKey="id"
             styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer" [lazy]="true"
             (onLazyLoad)="aoMudarPagina($event)" [paginator]="true" [totalRecords]="totalRegistros">
@@ -67,7 +67,7 @@
 
                 <td>
                   <div
-                    class="demo-container flex flex-wrap align-items-center justify-content-center  p-0  m-1 mr-2 pt-3">
+                    class="demo-container flex flex-wrap align-items-center justify-content-center  p-0 m-1 mr-2 pt-3 my-auto">
                     <a>
 
                       <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"

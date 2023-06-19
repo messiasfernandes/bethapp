@@ -1,2 +1,3 @@
-export class Config {
+export const config= {
+  baseurl:'http://localhost:8080/'
 }

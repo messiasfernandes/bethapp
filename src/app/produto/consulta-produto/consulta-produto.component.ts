@@ -25,9 +25,9 @@ export class ConsultaProdutoComponent implements OnInit {
     .subscribe((dados: any) => {
       console.log(dados.content)
       this.produtos = dados.content;
-      console.log(this.produtos)
+
       this.totalRegistros = dados.totalElements;
-      console.log(this.totalRegistros)
+
     });
 
 
