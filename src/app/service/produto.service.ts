@@ -28,7 +28,7 @@ export class ProdutoService {
       headers,
       params,
     });
-    console.log(response)
+
     return response;
   }
 }

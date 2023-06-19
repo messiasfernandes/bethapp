@@ -2,11 +2,13 @@ import { ConsultaProdutoComponent } from './produto/consulta-produto/consulta-pr
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ImportarnotafiscalComponent } from './notafiscal/importarnotafiscal/importarnotafiscal.component';
+import { CadastroprodutoComponent } from './produto/cadastroproduto/cadastroproduto.component';
+
 
 const routes: Routes = [
   {
     path: 'produtos',data: { breadcrumb: 'Produtos', }, component: ConsultaProdutoComponent },
-  //  { path: 'produtos',component: ConsultaProdutoComponent},
+  { path: 'produtos/novo',component: CadastroprodutoComponent},
   { path: 'importarnotalfiscal', component: ImportarnotafiscalComponent },
 ];
 

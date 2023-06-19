@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card subcotanainer">
+  <div class="card">
 
       <div class="grid">
         <div class="col-12 md:col-6 lg:col-3">
@@ -9,13 +9,15 @@
 
 
       <div class="p-fluid grid">
-        <div class="col-7 md:col-6 lg:col-4 p-fluid">
+
+
+        <div class="col-7 md:col-6 lg:col-5 p-fluid">
           <form autocomplete="off" (ngSubmit)="buscar()">
 
             <span class="p-float-label ">
               <span class="p-float-label p-input-icon-right  ">
                 <i class="pi pi-search"></i>
-                <input type="text" id="inputgroup" name="paramentro" pInputText [(ngModel)]="produtofiltro.parametro"
+                <input type="text" id="inputgroup"  name="paramentro" pInputText [(ngModel)]="produtofiltro.parametro"
                   class="p-inputtext" placeholder="id, nome do produto, código ean 13">
                 <label for="inputgroup">Pesquisar</label>
 
@@ -26,7 +28,7 @@
 
         </div>
         <div class="col-5 md:col-6 lg:col-1 p-fluid">
-          <button pButton icon="pi pi-plus" label="Novo" routerLink="/produtos/novo" routerLinkActive="active-link"
+          <button pButton icon="pi pi-plus" pTooltip="Adicoinar Produto" label="novo" routerLink="/produtos/novo" routerLinkActive="active-link"
             class="p-button-success p-button-lg"></button>
         </div>
       </div>
@@ -46,10 +48,10 @@
                 <th>Nome Produto
                 </th>
                 <th>Código Ean 13</th>
-                <th> Preço Custo</th>
-                <th> Preço Venda</th>
+                <th style="text-align: center;"> Preço Custo</th>
+                <th style="text-align: center;"> Preço Venda</th>
 
-                <th>Quantidade </th>
+                <th style="text-align: center;">Quantidade </th>
                 <th style="text-align: center;">Opções</th>
               </tr>
             </ng-template>
@@ -58,9 +60,9 @@
                 <td>{{produto.id}}</td>
                 <td>{{produto.nomeproduto}}</td>
                 <td> {{produto.codigoEan13}}</td>
-                <td>{{produto.precocusto| currency }}</td>
-                <td>{{produto.precovenda| currency }}</td>
-                <td> {{produto.estoque.quantidade}}</td>
+                <td style="text-align: right;">{{produto.precocusto| currency }}</td>
+                <td style="text-align: right;">{{produto.precovenda| currency }}</td>
+                <td style="text-align: center;"> {{produto.estoque.quantidade}}</td>
 
 
                 <td>

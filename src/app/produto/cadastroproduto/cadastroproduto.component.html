@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card">
+
+    <div class="grid">
+      <div class="col-12 md:col-6 lg:col-3">
+        <h2> Cadastro Produto</h2>
+      </div>
+    </div>
+
+
+    <div class="p-fluid grid">
+      <div class="col-12 md:col-6 lg:col-7 fluid">
+
+        <span class="p-float-label">
+          <input type="text" id="produtonome" required="true" pInputText name="nomeproduto" />
+
+          <label for="produtonome">Nome Produto</label>
+        </span>
+      </div>
+      <div class="col-12 md:col-6 lg:col-2 fluid">
+        <span class="p-float-label">
+          <p-inputNumber inputId="custo"   currency="BRL" mode="currency" locale="pt-Br" [minFractionDigits]="2" ></p-inputNumber>
+          <label for="custo"> Preço Cursto</label>
+      </span>
+
+      </div>
+    </div>
+  </div>
+
