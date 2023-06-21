@@ -26,9 +26,25 @@
     <div class="col-3">
 
      <p-sidebar [(visible)]="exibindoMenu" [showCloseIcon]="true" [baseZIndex]="10000"     >
-     <h2 style="font-weight:normal ; color: black; align-content: center; font: bold;">Sistema de  Gestão </h2>
-      <p-panelMenu    *ngIf="exibindoMenu"  autoDisplay="true"   [model]="menu" [style]="{'width':'290px'}"></p-panelMenu>
 
+
+      <ng-template pTemplate="header">
+        <div>
+          <h2 style="font-weight:bold ; color: black; align-content: center; font: bold;">Sistema de  Gestão </h2>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div>
+
+          <p-panelMenu    *ngIf="exibindoMenu"  autoDisplay="true"   [model]="menu" [style]="{'width':'290px'}"></p-panelMenu>
+
+        </div>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <div>
+          <h2>Footer Content</h2>
+        </div>
+      </ng-template>
       </p-sidebar>
     </div>
     </div>

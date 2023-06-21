@@ -21,12 +21,14 @@
    margin-right: 0.3rem;
    font-weight: bold;
    padding: auto;
-
+   font-size: 1.5rem ;
 
  }
 :host::ng-deep .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-text {
   color:   #3F51B5;
   font: bold;
+  padding: auto;
+  margin-left: 10px;
 }
 :host::ng-deep .p-sidebar {
 padding: 0%;
