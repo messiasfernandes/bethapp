@@ -19,7 +19,6 @@ export class Produto {
   precocusto: number;
   customedio: number;
   estoqueminimo: number;
-  estoque = new Estoque();
   subcategoria = new Subcategoria();
   atributos : Atributo [] = [];
 }
