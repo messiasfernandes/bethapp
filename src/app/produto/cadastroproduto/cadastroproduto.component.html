@@ -12,7 +12,7 @@
       <div class="col-12 md:col-6 lg:col-6 fluid">
 
         <span class="p-float-label">
-          <input type="text" id="produtonome" required="true" pInputText name="nomeproduto" />
+          <input type="text" id="produtonome" required="true" pInputText  />
 
           <label for="produtonome">Nome Produto</label>
         </span>
@@ -40,6 +40,22 @@
             [minFractionDigits]="2"></p-inputNumber>
           <label for="preco_venda"> Custo Médio</label>
         </span>
+          <p-inputNumber inputId="preco_venda"   currency="BRL" mode="currency" locale="pt-Br" [minFractionDigits]="2" ></p-inputNumber>
+          <label for="preco_venda"> Preço de Venda </label>
+      </span>
+
+      </div>
+      <div class="col-12 md:col-6 lg:col-12 fluid">
+
+
+            <span class="p-float-label">
+              <p-autoComplete [(ngModel)]="produto.subcategoria" appendTo="body" [showEmptyMessage]="true" field="nomeSubCategoria"
+                [suggestions]="subcategorias" (completeMethod)="carregarSubcategorias($event)" name="nomeSubCategoria" id="campo"
+                [required]="true" inputId="autocomplete" [minLength]="1"
+                emptyMessage="Registro não ncontrato"></p-autoComplete>
+              <label for="subcategorias ">SubCategorias</label>
+            </span>
+
 
       </div>
       <div class="col-6 md:col-6 lg:col-2 fluid">
