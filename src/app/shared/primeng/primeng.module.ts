@@ -37,6 +37,7 @@ import {CalendarModule} from 'primeng/calendar';
 
 
 
+
 @NgModule({
   declarations: [],
   imports: [
@@ -53,7 +54,10 @@ import {CalendarModule} from 'primeng/calendar';
     ButtonModule,
     CardModule,
     TableModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    AutoCompleteModule,
+    DropdownModule,
+    AutoCompleteModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
