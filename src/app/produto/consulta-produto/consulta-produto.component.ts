@@ -32,7 +32,9 @@ export class ConsultaProdutoComponent implements OnInit {
 
 
   }
-
+  transform(value: string): string {
+    return value.replace(',', '.');
+  }
 
 
   aoMudarPagina(event: LazyLoadEvent) {

@@ -39,8 +39,9 @@ registerLocaleData(localePt, 'pt-BR');
   providers: [
     {
       provide: DEFAULT_CURRENCY_CODE,
-      useValue: "BRL"
+      useValue: "pt"
     },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
 
   ],
   bootstrap: [AppComponent],
