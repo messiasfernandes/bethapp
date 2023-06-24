@@ -49,9 +49,9 @@
                 </th>
                 <th>Código Ean 13</th>
                 <th style="text-align: center;"> Preço Custo</th>
-                <th style="text-align: center;"> Preço Venda</th>
+                <th style="text-align: right;"> Preço Venda</th>
 
-                <th style="text-align: center;">Quantidade </th>
+                <th style="text-align: right;">Quantidade </th>
                 <th style="text-align: center;">Opções</th>
               </tr>
             </ng-template>
@@ -60,8 +60,8 @@
                 <td>{{produto.id}}</td>
                 <td>{{produto.nomeproduto}}</td>
                 <td> {{produto.codigoEan13}}</td>
-                <td  style="text-align: right;">{{produto.precocusto | number:'1.2-2':'pt-BR'}}</td>
-                <td style="text-align: right;">{{produto.precovenda | currency : 'BRL' }}</td>
+                <td  style="text-align: right;">{{produto.precocusto | currency}}</td>
+                <td style="text-align: right;">{{produto.precovenda | currency  }}</td>
                 <td style="text-align: center;"> {{produto.estoque.quantidade}}</td>
 
 

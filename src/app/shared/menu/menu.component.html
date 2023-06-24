@@ -1,51 +1,38 @@
+<div class="grid">
+  <div class="col-12">
+    <p-toolbar>
+
+      <div class="p-toolbar-group-left">
+
+        <a href="javascript:;" (click)="exibindoMenu=!exibindoMenu"> <i class="pi pi-bars"
+            style="font-size: 2rem ;  color: white;"></i></a>
 
 
-  <div class="grid">
-    <div class="col-12">
-  <p-toolbar >
+      </div>
 
-    <div class="p-toolbar-group-left">
+      <div class="p-toolbar-group-right">
 
-      <a href="javascript:;"   (click)="exibindoMenu=!exibindoMenu"> <i class="pi pi-bars" style="font-size: 2rem ;  color: white;"></i></a>
+      </div>
 
-
-    </div>
-
-    <div class="p-toolbar-group-right">
-
-    </div>
-
-  </p-toolbar>
+    </p-toolbar>
   </div>
+</div>
+<p></p>
+
+
+
+<div class="grid">
+  <div class="col-3">
+
+    <p-sidebar [(visible)]="exibindoMenu" [showCloseIcon]="true" [baseZIndex]="10000">
+
+
+      <h2 style="font-weight:bold ; color: black; align-content: center; font: bold;">Sistema de Gestão </h2>
+
+
+
+      <p-panelMenu *ngIf="exibindoMenu" autoDisplay="true" [model]="menu" [style]="{'width':'290px'}"></p-panelMenu>
+
+    </p-sidebar>
   </div>
-  <p></p>
-
-
-
-  <div class="grid">
-    <div class="col-3">
-
-     <p-sidebar [(visible)]="exibindoMenu" [showCloseIcon]="true" [baseZIndex]="10000"     >
-
-
-      <ng-template pTemplate="header">
-        <div>
-          <h2 style="font-weight:bold ; color: black; align-content: center; font: bold;">Sistema de  Gestão </h2>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="content">
-        <div>
-
-          <p-panelMenu    *ngIf="exibindoMenu"  autoDisplay="true"   [model]="menu" [style]="{'width':'290px'}"></p-panelMenu>
-
-        </div>
-      </ng-template>
-      <ng-template pTemplate="footer">
-        <div>
-          <h2>Footer Content</h2>
-        </div>
-      </ng-template>
-      </p-sidebar>
-    </div>
-    </div>
-
+</div>

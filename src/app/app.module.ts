@@ -1,6 +1,6 @@
 import { FormsModule } from '@angular/forms';
 import { PrimengModule } from './shared/primeng/primeng.module';
-import { CUSTOM_ELEMENTS_SCHEMA, DEFAULT_CURRENCY_CODE, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DEFAULT_CURRENCY_CODE, LOCALE_ID, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,11 +12,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { ConsultaProdutoComponent } from './produto/consulta-produto/consulta-produto.component';
 import { ImportarnotafiscalComponent } from './notafiscal/importarnotafiscal/importarnotafiscal.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { CadastroprodutoComponent } from './produto/cadastroproduto/cadastroproduto.component';
 
-registerLocaleData(localePt, 'pt-BR');
+registerLocaleData(ptBr, localePt);
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,10 +37,7 @@ registerLocaleData(localePt, 'pt-BR');
 
   ],
   providers: [
-    {
-      provide: DEFAULT_CURRENCY_CODE,
-      useValue: "pt"
-    },
+    { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
 
   ],
