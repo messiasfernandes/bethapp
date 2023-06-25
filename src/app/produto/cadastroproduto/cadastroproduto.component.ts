@@ -14,6 +14,7 @@ export class CadastroprodutoComponent implements OnInit {
   produto = new Produto();
   subcategoriaFiltro =new Filtro();
   totalRegistros=0;
+  url: string;
   constructor(private subcategoriaService: SubcategoriaService){
 
   }
@@ -35,15 +36,8 @@ export class CadastroprodutoComponent implements OnInit {
 
 
   }
-
-  formatarDadosDropdown(dados: any[]): any[] {
-
-    return dados.map(item => ({
-      label: item.noneSubcateoria, // Substitua 'nome' pela propriedade que contém o valor a ser exibido como label
-      value: item.id // Substitua 'id' pela propriedade que contém o valor a ser usado como value
-
-    }));
-
+  upLoad(){
 
   }
+
 }

@@ -1,0 +1,51 @@
+.card{
+  display: inline;
+
+
+}
+.minha-div {
+
+  height: 300px;
+  overflow: hidden;
+}
+.picture {
+
+  width: 100%;
+  aspect-ratio: 16/9;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px dashed currentcolor;
+  cursor: pointer;
+  font-family: sans-serif;
+  transition: color 300ms ease-in-out, background 300ms ease-in-out;
+  outline: none;
+  overflow: hidden;
+
+
+}
+.picture__img {
+  max-width: 100%;
+}
+.picture2 {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+
+  height: 330px;
+  aspect-ratio: 16/9;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  border: 2px dashed currentcolor;
+  cursor: pointer;
+  font-family: sans-serif;
+  transition: color 300ms ease-in-out, background 300ms ease-in-out;
+  outline: none;
+  overflow: hidden;
+}
