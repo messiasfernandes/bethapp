@@ -5,17 +5,17 @@
 
 <div class="container">
   <div class="card">
-<div class="grid nested-grid">
-  <div class="col-8">
-      <div class="grid">
-        <div class="col-12 md:col-6 lg:col-6 p-fluid">
+    <div class="grid nested-grid">
+      <div class="col-8 md:col-6 lg:col-8 p-fluid">
+        <div class="grid">
+          <div class="col-12 md:col-6 lg:col-6 p-fluid">
 
 
-              <span class="p-float-label">
-                <input type="text" id="produtonome" required="true" pInputText  />
+            <span class="p-float-label">
+              <input type="text" id="produtonome" required="true" pInputText />
 
-                <label for="produtonome">Nome Produto</label>
-              </span>
+              <label for="produtonome">Nome Produto</label>
+            </span>
 
           </div>
           <div class="col-12 md:col-6 lg:col-4 p-fluid">
@@ -27,12 +27,11 @@
 
           </div>
           <div class="col-12 md:col-6 lg:col-2 p-fluid">
-            <button pButton type="button" icon=" pi pi-images" class=" p-button-lg p-button-info" label="Imagem" pTooltip="Adicionar Imagem"
-            (click)="upLoad()"
-            ></button>
-        </div>
+            <button pButton type="button" icon=" pi pi-images" class=" p-button-lg p-button-info" label="Imagem"
+              pTooltip="Adicionar Imagem" (click)="upLoad()"></button>
+          </div>
           <div class="col-12">
-              <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
+            <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
           </div>
           <div class="col-12 md:col-6 lg:col-4">
             <div class="text-center p-3 border-round-sm bg-primary font-bold">4</div>
@@ -45,55 +44,53 @@
           </div>
           <div class="col-12 md:col-6 lg:col-12">
             <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
+          </div>
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
+          </div>
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
+          </div>
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
+          </div>
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
+          </div>
         </div>
-        <div class="col-12 md:col-6 lg:col-3">
-          <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
       </div>
-      <div class="col-12 md:col-6 lg:col-3">
+      <div class="col-4 md:col-6 lg:col-4 p-fluid">
+        <div class="h-full  picture">
+          <span class="picture__image"> <img [src]="url"></span>
+
+        </div>
+      </div>
+      <div class="col-12 md:col-6 lg:col-12">
         <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
+      </div>
+      <div class="col-12 md:col-6 lg:col-4">
+        <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
+      </div>
+      <div class="col-12 md:col-6 lg:col-4">
+        <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
+      </div>
+      <div class="col-12 md:col-6 lg:col-4">
+        <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
+      </div>
+
+
+      <div class="col-6 md:col-6 lg:col-2 p-fluid">
+
+        <button pButton pRipple type="button" icon="pi pi-sign-in" label="Voltar" routerLink="/produtos"
+          class="p-button-outlined p-button-lg p-button-danger"></button>
+      </div>
+      <div class="col-6 md:col-6 lg:col-2 p-fluid">
+        <button pButton pRipple type="submit" class="p-button-lg" icon="pi pi-save" label="Salvar"></button>
+
+
+      </div>
+
     </div>
-    <div class="col-12 md:col-6 lg:col-3">
-      <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
-  </div>
-  <div class="col-12 md:col-6 lg:col-3">
-    <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
-</div>
-      </div>
-  </div>
-  <div class="col-4 md:col-6 lg:col-4">
-      <div class="h-full  picture">
-        <span class="picture__image">  <img [src]="url"></span>
-
-      </div>
-  </div>
-  <div class="col-12">
-    <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
-</div>
-<div class="col-12 md:col-6 lg:col-4">
-  <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
-</div>
-<div class="col-12 md:col-6 lg:col-4">
-  <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
-</div>
-<div class="col-12 md:col-6 lg:col-4">
-  <div class="text-center p-3 border-round-sm bg-primary font-bold">12</div>
-</div>
-
-
-<div class="col-6 md:col-6 lg:col-2 p-fluid">
-
-  <button pButton pRipple type="button" icon="pi pi-sign-in" label="Voltar" routerLink="/produtos"
-    class="p-button-outlined p-button-lg p-button-danger"></button>
-</div>
-<div class="col-6 md:col-6 lg:col-2 p-fluid">
-  <button pButton pRipple type="submit" class="p-button-lg" icon="pi pi-save" label="Salvar"></button>
-
-
-</div>
-
-</div>
-</div>
-
   </div>
 
-
+</div>

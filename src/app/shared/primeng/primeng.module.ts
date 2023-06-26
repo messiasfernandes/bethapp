@@ -57,7 +57,8 @@ import {CalendarModule} from 'primeng/calendar';
     BreadcrumbModule,
     AutoCompleteModule,
     DropdownModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    CheckboxModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

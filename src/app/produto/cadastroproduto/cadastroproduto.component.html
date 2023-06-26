@@ -1,81 +1,177 @@
 <div class="container">
-  <div class="card">
 
-    <div class="grid">
-      <div class="col-12 md:col-6 lg:col-3">
-        <h2> Cadastro Produto</h2>
-      </div>
+
+  <div class="grid">
+    <div class="col-12 md:col-6 lg:col-3">
+      <h2> Cadastro Produto</h2>
     </div>
-
-
-    <div class="p-fluid grid">
-      <div class="col-12 md:col-6 lg:col-6 p-fluid">
-
-        <span class="p-float-label">
-          <input type="text" id="produtonome" required="true" pInputText  />
-
-          <label for="produtonome">Nome Produto</label>
-        </span>
-      </div>
-      <div class="col-12 md:col-6 lg:col-2 p-fluid">
-        <span class="p-float-label">
-          <p-inputNumber inputId="custo" currency="BRL" mode="currency" locale="pt-Br"
-            [minFractionDigits]="2"></p-inputNumber>
-          <label for="custo"> Preço Custo</label>
-        </span>
-
-      </div>
-
-      <div class="col-12 md:col-6 lg:col-2 p-fluid">
-        <span class="p-float-label">
-          <p-inputNumber inputId="custo_nedio" currency="BRL" mode="currency" locale="pt-Br"
-            [minFractionDigits]="2"></p-inputNumber>
-          <label for="custo_medio"> Custo Médio</label>
-        </span>
-
-      </div>
-      <div class="col-12 md:col-6 lg:col-2 p-fluid">
-        <span class="p-float-label">
-          <p-inputNumber inputId="preco_venda" currency="BRL" mode="currency" locale="pt-Br"
-            [minFractionDigits]="2"></p-inputNumber>
-          <label for="preco_venda"> Custo Médio</label>
-        </span>
-
-      </div>
-      <div class="col-12 md:col-6 lg:col-6 p-fluid">
-
-
-            <span class="p-float-label">
-              <p-autoComplete [(ngModel)]="produto.subcategoria" appendTo="body" [showEmptyMessage]="true" field="nomeSubCategoria"
-                [suggestions]="subcategorias" (completeMethod)="carregarSubcategorias($event)" name="nomeSubCategoria" id="campo"
-                [required]="true" inputId="autocomplete" [minLength]="1"
-                emptyMessage="Registro não ncontrato"></p-autoComplete>
-              <label for="subcategorias ">SubCategorias</label>
-            </span>
-
-
-      </div>
-      <div class="col-12 md:col-6 lg:col-2 p-fluid">
-        <button pButton type="button" icon=" pi pi-images" class=" p-button-lg p-button-info" label="Importa Foto"
-        (click)="upLoad()"></button>
-    </div>
-    <div class="col-12 md:col-6 lg:col-4 p-fluid">
-      <input type="file" name="picture__input" id="picture__input">
-    </div>
-
-      <div class="col-6 md:col-6 lg:col-2 p-fluid">
-
-        <button pButton pRipple type="button" icon="pi pi-sign-in" label="Voltar" routerLink="/produtos"
-          class="p-button-outlined p-button-lg p-button-danger"></button>
-      </div>
-      <div class="col-6 md:col-6 lg:col-2 fluid">
-        <button pButton pRipple type="submit" class="p-button-lg" icon="pi pi-save" label="Salvar"></button>
-
-
-      </div>
-
-    </div>
-
-
-
   </div>
+
+  <div class="card">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+      <div class="grid nested-grid">
+        <div class="col-8 md:col-6 lg:col-8 p-fluid">
+          <div class="grid">
+            <div class="col-12 md:col-6 lg:col-10 p-fluid">
+
+
+              <span class="p-float-label">
+                <input type="text" id="produtonome" required="true" pInputText />
+
+                <label for="produtonome">Nome Produto</label>
+              </span>
+
+            </div>
+
+            <div class="col-12 md:col-6 lg:col-2 p-fluid">
+              <button pButton type="button" icon=" pi pi-images" class=" p-button-lg p-button-info" label="Imagem"
+                pTooltip="Adicionar Imagem" (click)="upLoad()"></button>
+            </div>
+            <div class="col-12 md:col-6 lg:col-4 p-fluid">
+              <span class="p-float-label">
+                <p-inputNumber inputId="custo" currency="BRL" mode="currency" locale="pt-Br"
+                  [minFractionDigits]="2"></p-inputNumber>
+                <label for="custo"> Preço Custo</label>
+              </span>
+
+            </div>
+            <div class="col-12 md:col-6 lg:col-4 p-fluid">
+              <span class="p-float-label">
+                <p-inputNumber inputId="custo_nedio" currency="BRL" mode="currency" locale="pt-Br"
+                  [minFractionDigits]="2"></p-inputNumber>
+                <label for="custo_medio"> Custo Médio</label>
+              </span>
+
+            </div>
+            <div class="col-12 md:col-6 lg:col-4 p-fluid">
+              <span class="p-float-label">
+                <p-inputNumber inputId="preco_venda" currency="BRL" mode="currency" locale="pt-Br"
+                  [minFractionDigits]="2"></p-inputNumber>
+                <label for="preco_venda"> Preço de Venda</label>
+              </span>
+
+            </div>
+            <div class="col-12 md:col-6 lg:col-6 p-fluid">
+
+
+              <span class="p-float-label">
+                <p-autoComplete [(ngModel)]="produto.subcategoria" appendTo="body" [showEmptyMessage]="true"
+                  field="nomeSubCategoria" [suggestions]="subcategorias"
+                  (completeMethod)="carregarSubcategorias($event)" name="nomeSubCategoria" id="campo" [required]="true"
+                  inputId="autocomplete" [minLength]="1" emptyMessage="Registro não ncontrato"></p-autoComplete>
+                <label for="subcategorias ">SubCategorias</label>
+              </span>
+
+
+            </div>
+            <div class="col-12 md:col-6 lg:col-6 p-fluid">
+
+              <span class="p-float-label">
+                <input type="text" id="marcaproduto" required="true" pInputText />
+
+                <label for="marcaproduto">Marca</label>
+              </span>
+            </div>
+
+            <div class="col-12 md:col-6 lg:col-6 p-fluid">
+              <span class="p-float-label">
+                <input type="text" id="marca" pInputText name="codigoEan13" [(ngModel)]="produto.codigoEan13" />
+
+                <label for="marca">Codigo Ean 13</label>
+              </span>
+            </div>
+            <div class="col-12 md:col-6 lg:col-6 p-fluid">
+              <span class="p-float-label">
+                <input type="text" id="fabricante" pInputText name="codigofabricante"
+                  [(ngModel)]="produto.codigofabricante" />
+
+                <label for="fabricante">Código Fabricante</label>
+              </span>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3 p-fluid">
+              <span class="p-float-label">
+                <p-inputNumber inputId="estoqueminimo" name="estoqueminimo"
+                  [(ngModel)]="produto.estoqueminimo"></p-inputNumber>
+                <label for="estoqueminimo">Estoque Minimo</label>
+              </span>
+            </div>
+
+            <div class="col-12 md:col-6 lg:col-4">
+              <span class="p-float-label">
+                <input type="text" id="sku" pInputText name="sku" [(ngModel)]="produto.sku" />
+
+                <label for="sku">Sku</label>
+              </span>
+            </div>
+            <div class="col-12 md:col-6 lg:col-5 p-fluid">
+              <span class="p-float-label">
+                <input type="text" id="caracteristica" pInputText name="caracteristica"
+                  [(ngModel)]="produto.caracteristica" />
+
+                <label for="caracteristica">Caracteristicas</label>
+              </span>
+            </div>
+
+
+          </div>
+
+        </div>
+        <div class="col-4 md:col-6 lg:col-4 p-fluid">
+          <div class="h-full  picture">
+            <span class="picture__image"> <img [src]="url"></span>
+
+          </div>
+
+
+        </div>
+        <div class="col-12 md:col-6 lg:col-6 p-fluid">
+          <span class="p-float-label">
+            <input type="text" id="descricao" pInputText name="descricao"
+              [(ngModel)]="produto.descricao" />
+
+            <label for="descricao">Descrição</label>
+          </span>
+      </div>
+      <div class="col-12 md:col-6 lg:col-2 p-fluid">
+        <span class="p-float-label">
+          <input type="text" id="unidade" pInputText name="unidade"
+            [(ngModel)]="produto.unidade" />
+
+          <label for="unidade">Unidade</label>
+        </span>
+      </div>
+
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <div class="field-checkbox">
+            <p-checkbox inputId="binary" name="ativo" [(ngModel)]="produto.ativo" [binary]="true">
+            </p-checkbox>
+            <label for="marca">Ativo</label>
+          </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <div class="field-checkbox">
+            <p-checkbox inputId="binary" name="controlarestoque" [(ngModel)]="produto.controlarestoque"
+              [binary]="true">
+            </p-checkbox>
+            <label for="marca">Controlar Estoque</label>
+          </div>
+        </div>
+
+
+
+        <div class="col-6 md:col-6 lg:col-2 p-fluid">
+
+          <button pButton pRipple type="button" icon="pi pi-sign-in" label="Voltar" routerLink="/produtos"
+            class="p-button-outlined p-button-lg p-button-danger"></button>
+        </div>
+        <div class="col-6 md:col-6 lg:col-2 p-fluid">
+          <button pButton pRipple type="submit" class="p-button-lg" icon="pi pi-save" label="Salvar"></button>
+
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>

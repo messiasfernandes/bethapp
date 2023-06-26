@@ -15,6 +15,7 @@ export class Produto {
   codigoEan13: string;
   caracteristica: string;
   codigofabricante: string;
+   controlarestoque: boolean;
   precovenda: number;
   precocusto: number;
   customedio: number;
