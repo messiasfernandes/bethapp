@@ -58,8 +58,12 @@ import {CalendarModule} from 'primeng/calendar';
     AutoCompleteModule,
     DropdownModule,
     AutoCompleteModule,
-    CheckboxModule
+    CheckboxModule,
+    MessageModule,
+    ToastModule
+
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  providers:[MessageService]
 })
 export class PrimengModule { }

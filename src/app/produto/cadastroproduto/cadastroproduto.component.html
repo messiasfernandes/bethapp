@@ -73,14 +73,14 @@
               </span>
             </div>
 
-            <div class="col-12 md:col-6 lg:col-6 p-fluid">
+            <div class="col-12 md:col-6 lg:col-5 p-fluid">
               <span class="p-float-label">
                 <input type="text" id="marca" pInputText name="codigoEan13" [(ngModel)]="produto.codigoEan13" />
 
                 <label for="marca">Codigo Ean 13</label>
               </span>
             </div>
-            <div class="col-12 md:col-6 lg:col-6 p-fluid">
+            <div class="col-12 md:col-6 lg:col-5 p-fluid">
               <span class="p-float-label">
                 <input type="text" id="fabricante" pInputText name="codigofabricante"
                   [(ngModel)]="produto.codigofabricante" />
@@ -88,12 +88,15 @@
                 <label for="fabricante">Código Fabricante</label>
               </span>
             </div>
-            <div class="col-12 md:col-6 lg:col-3 p-fluid">
+            <div class="col-12 md:col-6 lg:col-2 p-fluid">
+
+
               <span class="p-float-label">
-                <p-inputNumber inputId="estoqueminimo" name="estoqueminimo"
-                  [(ngModel)]="produto.estoqueminimo"></p-inputNumber>
-                <label for="estoqueminimo">Estoque Minimo</label>
+                  <p-inputNumber [(ngModel)]="produto.estoqueminimo" mode="decimal" dec [showButtons]="true" precision="0"     inputId="minmax-buttons" [min]="0" [max]="100">
+                  </p-inputNumber>
+                  <label for="estoqueminimo">Estoque Minimo</label>
               </span>
+
             </div>
 
             <div class="col-12 md:col-6 lg:col-4">
@@ -103,7 +106,7 @@
                 <label for="sku">Sku</label>
               </span>
             </div>
-            <div class="col-12 md:col-6 lg:col-5 p-fluid">
+            <div class="col-12 md:col-6 lg:col-6 p-fluid">
               <span class="p-float-label">
                 <input type="text" id="caracteristica" pInputText name="caracteristica"
                   [(ngModel)]="produto.caracteristica" />
@@ -112,6 +115,11 @@
               </span>
             </div>
 
+            <div class="col-12 md:col-6 lg:col-2 p-fluid">
+
+              <button pButton pRipple type="button" icon="pi pi-check" label="Variações" pTooltip="Adicionar VAriações"
+                class=" p-button-lg p-button-secondary"></button>
+            </div>
 
           </div>
 

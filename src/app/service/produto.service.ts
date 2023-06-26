@@ -31,4 +31,24 @@ export class ProdutoService {
 
     return response;
   }
+  salvar(objeto: Produto): Observable<Produto> {
+    const headers = new HttpHeaders().append(
+      'Content-Type',
+      'application/json'
+    );
+    const resposta= this.http
+    .post<Produto>(`${config.baseurl}produtos/`, objeto, { headers });
+    return resposta;
+
+  }
+  editar(objeto: Produto): Observable<any> {
+    const headers = new HttpHeaders().append(
+      'Content-Type',
+      'application/json'
+    );
+
+    return this.http.put<Produto>(`${config.baseurl}produtos/${objeto.id}`, objeto, { headers });
+
+  }
+
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Filtro } from 'src/app/model/filtro';
 import { Produto } from 'src/app/model/produto';
-import { Subcategoria } from 'src/app/model/subcategoria';
+
 import { ArquivoService } from 'src/app/service/arquivo.service';
 import { ProdutoService } from 'src/app/service/produto.service';
 import { SubcategoriaService } from 'src/app/service/subcategoria.service';
@@ -21,7 +23,9 @@ export class CadastroprodutoComponent implements OnInit {
   constructor(
     private subcategoriaService: SubcategoriaService,
     private arquivoService: ArquivoService,
-    private produtoSerice: ProdutoService
+    private produtoService: ProdutoService,
+    private messageService: MessageService,
+    private router: Router,
   ) {}
   ngOnInit(): void {}
   carregarSubcategorias(evento: any) {
@@ -45,18 +49,53 @@ export class CadastroprodutoComponent implements OnInit {
       let arquivo: any = Array.from(input.files as any);
       const formadata = new FormData();
       formadata.append('arquivo', arquivo[0]);
-
+      if (this.produto.imagemPrincipal) {
+        this.arquivoService.removerArquivo(
+          this.produto.imagemPrincipal
+        );
+      }
+      this.produto.imagemPrincipal = arquivo[0].name;
       var reader = new FileReader();
       reader.readAsDataURL(arquivo[0]);
       reader.onload = (event: any) => {
         console.log(event);
         this.url = event.target.result;
       };
+      this.arquivoService.upload(formadata).subscribe((resposta) => {
+        console.log(resposta);
+
+        /// this.produto.imagemproduto = resposta.nomeArquivo;
+      });
 
       ///  this.getbuscarfoto(this.produtoVariacao.imagemPrncipal);
     };
     input.click();
   }
+  getbuscarfoto(image: string) {
+    if (image){
+      this.url = this.arquivoService.buscarfoto(image);
+  }else{
+    this.url ='/assets/no-image-icon.jpg'
+  }
+  return this.url
+  }
+  salvar(form: NgForm) {
+    if (this.produto.id === null) {
+      this.produtoService.salvar(this.produto).subscribe();
+      this.messageService.add({
+        severity: 'success',
+        detail: 'Produto salvo com sucesso!',
+      });
+    } else {
+      console.log(this.produto);
+      this.produtoService.editar(this.produto).subscribe();
+      this.messageService.add({
+        severity: 'info',
+        detail: 'Produto editado com sucesso!',
+      });
+    }
+    form.reset();
+    this.router.navigate(['/produtos'])
 
-  salvar(form: NgForm) {}
+  }
 }
