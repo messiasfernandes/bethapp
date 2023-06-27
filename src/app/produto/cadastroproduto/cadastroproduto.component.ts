@@ -97,18 +97,18 @@ export class CadastroprodutoComponent implements OnInit {
   return this.url
   }
   salvar(form: NgForm) {
-    if (this.produto.id === null) {
-      this.produtoService.salvar(this.produto).subscribe();
-      this.messageService.add({
-        severity: 'success',
-        detail: 'Produto salvo com sucesso!',
-      });
-    } else {
-      console.log(this.produto);
+    if (this.produto.id != null) {
       this.produtoService.editar(this.produto).subscribe();
       this.messageService.add({
         severity: 'info',
         detail: 'Produto editado com sucesso!',
+      });
+    } else {
+      console.log(this.produto);
+      this.produtoService.salvar(this.produto).subscribe();
+      this.messageService.add({
+        severity: 'success',
+        detail: 'Produto salvo  com sucesso!',
       });
     }
     form.reset();

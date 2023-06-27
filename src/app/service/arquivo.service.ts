@@ -13,13 +13,13 @@ export class ArquivoService {
   upload(arquivo: FormData): Observable<any> {
 
     return this.http
-      .post(`${config.baseurl}arquivos/fotos/`, arquivo);
+      .post(`${config.baseurl}arquivos/fotos`, arquivo);
 
   }
   buscarfoto(parametro: string){
     var arquivo :string;
 
-     arquivo= `${config.baseurl}arquivos/fotos/`+ parametro;
+     arquivo= `${config.baseurl}arquivos/fotos`+ parametro;
 
    return arquivo;
   }
@@ -27,7 +27,7 @@ export class ArquivoService {
   removerArquivo(nomeArquivo: string){
     window.alert("pasou")
     return this.http
-    .delete(`${config.baseurl}arquivos/fotos/${nomeArquivo}`,)
+    .delete(`${config.baseurl}arquivos/fotos${nomeArquivo}`,)
     .subscribe(
     () => null);
   }

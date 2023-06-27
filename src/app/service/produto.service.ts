@@ -37,7 +37,7 @@ export class ProdutoService {
       'application/json'
     );
     const resposta= this.http
-    .post<Produto>(`${config.baseurl}produtos/`, objeto, { headers });
+    .post<Produto>(`${config.baseurl}produtos`, objeto, { headers });
     return resposta;
 
   }
@@ -47,11 +47,11 @@ export class ProdutoService {
       'application/json'
     );
 
-    return this.http.put<Produto>(`${config.baseurl}produtos/${objeto.id}`, objeto, { headers });
+    return this.http.put<Produto>(`${config.baseurl}produtos${objeto.id}`, objeto, { headers });
 
   }
   detalhar(id: number): Observable<Produto> {
-    return this.http.get<Produto>(`${config.baseurl}produtos/${id}`);
+    return this.http.get<Produto>(`${config.baseurl}produtos${id}`);
   }
 
 }
