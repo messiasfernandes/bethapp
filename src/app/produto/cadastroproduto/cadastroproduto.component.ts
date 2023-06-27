@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Filtro } from 'src/app/model/filtro';
 import { Produto } from 'src/app/model/produto';
@@ -26,8 +26,25 @@ export class CadastroprodutoComponent implements OnInit {
     private produtoService: ProdutoService,
     private messageService: MessageService,
     private router: Router,
+    private idParametro: ActivatedRoute
   ) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let codigoproduto = this.idParametro.snapshot.params['codigo'];
+
+    if (codigoproduto) {
+      console.log(codigoproduto);
+
+      this.carregarProduto(codigoproduto);
+    }
+  }
+  carregarProduto(codigoproduto: number) {
+    console.log('inicou');
+    this.produtoService.detalhar(codigoproduto).subscribe((data) => {
+      this.produto = data;
+      console.log(this.produto);
+
+    });
+  }
   carregarSubcategorias(evento: any) {
     this.subcategoriaFiltro.pagina = 0;
     this.subcategoriaFiltro.parametro = evento.query;

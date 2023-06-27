@@ -50,5 +50,8 @@ export class ProdutoService {
     return this.http.put<Produto>(`${config.baseurl}produtos/${objeto.id}`, objeto, { headers });
 
   }
+  detalhar(id: number): Observable<Produto> {
+    return this.http.get<Produto>(`${config.baseurl}produtos/${id}`);
+  }
 
 }
