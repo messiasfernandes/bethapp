@@ -59,9 +59,9 @@
               <span class="p-float-label">
 <<<<<<< HEAD
                 <p-inputNumber inputId="preco_venda" currency="BRL" mode="currency" [(ngModel)]="produto.precovenda" locale="pt-Br"
-=======
+
                 <p-inputNumber inputId="preco_venda" currency="BRL" mode="currency" name="precovenda" locale="pt-Br" [(ngModel)]="produto.precovenda"
->>>>>>> 970261f3f6a1648809c263ac07178853a7720ceb
+
                   [minFractionDigits]="2"></p-inputNumber>
                 <label for="preco_venda"> Preço de Venda</label>
               </span>
@@ -72,13 +72,12 @@
 
               <span class="p-float-label">
                 <p-autoComplete [(ngModel)]="produto.subcategoria" appendTo="body" [showEmptyMessage]="true"
-<<<<<<< HEAD
                   field="nomeSubCategoria" [suggestions]="subcategorias" [(ngModel)]="produto.subcategoria.id"
                   (completeMethod)="carregarSubcategorias($event)" name="id" id="campo" [required]="true"
-=======
+
                   field="nomeSubCategoria" [suggestions]="subcategorias" [(ngModel)]="produto.subcategoria"
                   (completeMethod)="carregarSubcategorias($event)" name="nomeSubCategoria" id="campo" [required]="true"
->>>>>>> 970261f3f6a1648809c263ac07178853a7720ceb
+
                   inputId="autocomplete" [minLength]="1" emptyMessage="Registro não ncontrato"></p-autoComplete>
                 <label for="subcategorias ">SubCategorias</label>
               </span>
