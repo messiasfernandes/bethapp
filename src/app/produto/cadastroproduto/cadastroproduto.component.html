@@ -56,7 +56,7 @@
 
               <span class="p-float-label">
                 <p-autoComplete [(ngModel)]="produto.subcategoria" appendTo="body" [showEmptyMessage]="true"
-                  field="nomeSubCategoria" [suggestions]="subcategorias" [(ngModel)]="produto.subcategoria"
+                  field="nomeSubCategoria" [suggestions]="subcategorias" [(ngModel)]="produto.subcategoria.id"
                   (completeMethod)="carregarSubcategorias($event)" name="id" id="campo" [required]="true"
                   inputId="autocomplete" [minLength]="1" emptyMessage="Registro não ncontrato"></p-autoComplete>
                 <label for="subcategorias ">SubCategorias</label>
