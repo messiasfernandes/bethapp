@@ -1,5 +1,5 @@
 import { Atributo } from "./atributo";
-import { Estoque } from "./estoque";
+
 import { Subcategoria } from "./subcategoria";
 
 export class Produto {
