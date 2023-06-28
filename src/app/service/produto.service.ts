@@ -37,7 +37,7 @@ export class ProdutoService {
       'application/json'
     );
     const resposta= this.http
-    .post<Produto>(`${config.baseurl}produtos/`, objeto, { headers });
+    .post<Produto>(`${config.baseurl}produtos`, objeto, { headers });
     return resposta;
 
   }

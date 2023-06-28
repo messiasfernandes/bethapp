@@ -16,7 +16,7 @@
 
 
               <span class="p-float-label">
-                <input type="text" id="produtonome" required="true" pInputText />
+                <input type="text" id="produtonome" required="true" name="nomeproduto" pInputText [(ngModel)]="produto.nomeproduto" />
 
                 <label for="produtonome">Nome Produto</label>
               </span>
@@ -48,7 +48,7 @@
             </div>
             <div class="col-12 md:col-6 lg:col-4 p-fluid">
               <span class="p-float-label">
-                <p-inputNumber inputId="custo" currency="BRL" mode="currency" locale="pt-Br"
+                <p-inputNumber inputId="custo" currency="BRL" mode="currency" name="precocusto" locale="pt-Br" [(ngModel)]="produto.precocusto"
                   [minFractionDigits]="2"></p-inputNumber>
                 <label for="custo"> Preço Custo</label>
               </span>
@@ -56,7 +56,7 @@
             </div>
             <div class="col-12 md:col-6 lg:col-4 p-fluid">
               <span class="p-float-label">
-                <p-inputNumber inputId="custo_nedio" currency="BRL" mode="currency" locale="pt-Br"
+                <p-inputNumber inputId="custo_nedio" currency="BRL" name="customedio" mode="currency" locale="pt-Br" [(ngModel)]="produto.customedio"
                   [minFractionDigits]="2"></p-inputNumber>
                 <label for="custo_medio"> Custo Médio</label>
               </span>
@@ -64,7 +64,7 @@
             </div>
             <div class="col-12 md:col-6 lg:col-4 p-fluid">
               <span class="p-float-label">
-                <p-inputNumber inputId="preco_venda" currency="BRL" mode="currency" locale="pt-Br"
+                <p-inputNumber inputId="preco_venda" currency="BRL" mode="currency" name="precovenda" locale="pt-Br" [(ngModel)]="produto.precovenda"
                   [minFractionDigits]="2"></p-inputNumber>
                 <label for="preco_venda"> Preço de Venda</label>
               </span>
@@ -75,7 +75,7 @@
 
               <span class="p-float-label">
                 <p-autoComplete [(ngModel)]="produto.subcategoria" appendTo="body" [showEmptyMessage]="true"
-                  field="nomeSubCategoria" [suggestions]="subcategorias"
+                  field="nomeSubCategoria" [suggestions]="subcategorias" [(ngModel)]="produto.subcategoria"
                   (completeMethod)="carregarSubcategorias($event)" name="nomeSubCategoria" id="campo" [required]="true"
                   inputId="autocomplete" [minLength]="1" emptyMessage="Registro não ncontrato"></p-autoComplete>
                 <label for="subcategorias ">SubCategorias</label>
@@ -86,7 +86,7 @@
             <div class="col-12 md:col-6 lg:col-6 p-fluid">
 
               <span class="p-float-label">
-                <input type="text" id="marcaproduto" required="true" pInputText />
+                <input type="text" id="marcaproduto" required="true" pInputText name="marca" [(ngModel)]="produto.marca" />
 
                 <label for="marcaproduto">Marca</label>
               </span>
@@ -111,8 +111,8 @@
 
 
               <span class="p-float-label">
-                <p-inputNumber [(ngModel)]="produto.estoqueminimo" mode="decimal" dec [showButtons]="true" precision="0"
-                  inputId="minmax-buttons" [min]="0" [max]="100">
+                <p-inputNumber [(ngModel)]="produto.estoqueminimo" name="estoqueminimo" mode="decimal" dec [showButtons]="true" precision="0"
+                  inputId="minmax-buttons" [min]="0" [max]="100" [(ngModel)]="produto.estoqueminimo" >
                 </p-inputNumber>
                 <label for="estoqueminimo">Estoque Minimo</label>
               </span>

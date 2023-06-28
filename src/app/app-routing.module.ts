@@ -9,6 +9,7 @@ const routes: Routes = [
   {
     path: 'produtos',data: { breadcrumb: 'Produtos', }, component: ConsultaProdutoComponent },
   { path: 'produtos/novo',component: CadastroprodutoComponent},
+  { path: 'produtos/:id', component: CadastroprodutoComponent },
   { path: 'importarnotalfiscal', component: ImportarnotafiscalComponent },
 ];
 

@@ -29,7 +29,7 @@ export class CadastroprodutoComponent implements OnInit {
     private idParametro: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    let codigoproduto = this.idParametro.snapshot.params['codigo'];
+    let codigoproduto = this.idParametro.snapshot.params['id'];
 
     if (codigoproduto) {
       console.log(codigoproduto);
@@ -42,8 +42,11 @@ export class CadastroprodutoComponent implements OnInit {
     this.produtoService.detalhar(codigoproduto).subscribe((data) => {
       this.produto = data;
       console.log(this.produto);
-
+      this.getbuscarfoto(this.produto.imagemPrincipal);
+      console.log(this.produto.imagemPrincipal);
     });
+
+
   }
   carregarSubcategorias(evento: any) {
     this.subcategoriaFiltro.pagina = 0;
@@ -89,6 +92,7 @@ export class CadastroprodutoComponent implements OnInit {
     input.click();
   }
   getbuscarfoto(image: string) {
+    console.log(image)
     if (image){
       this.url = this.arquivoService.buscarfoto(image);
   }else{
@@ -97,18 +101,19 @@ export class CadastroprodutoComponent implements OnInit {
   return this.url
   }
   salvar(form: NgForm) {
-    if (this.produto.id === null) {
+    if (this.produto.id != null) {
+      this.produtoService.editar(this.produto).subscribe();
+      this.messageService.add({
+      severity: 'info',
+      detail: 'Produto editado com sucesso!',
+    })
+    } else {
+      console.log(this.produto);
       this.produtoService.salvar(this.produto).subscribe();
+     ;
       this.messageService.add({
         severity: 'success',
         detail: 'Produto salvo com sucesso!',
-      });
-    } else {
-      console.log(this.produto);
-      this.produtoService.editar(this.produto).subscribe();
-      this.messageService.add({
-        severity: 'info',
-        detail: 'Produto editado com sucesso!',
       });
     }
     form.reset();
