@@ -51,7 +51,7 @@ export class ProdutoService {
 
   }
   detalhar(id: number): Observable<Produto> {
-    return this.http.get<Produto>(`${config.baseurl}produtos${id}`);
+    return this.http.get<Produto>(`${config.baseurl}produtos/${id}`);
   }
 
 }

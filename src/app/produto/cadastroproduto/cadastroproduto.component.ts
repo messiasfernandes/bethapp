@@ -104,17 +104,6 @@ export class CadastroprodutoComponent implements OnInit {
     if (this.produto.id != null) {
       this.produtoService.editar(this.produto).subscribe();
       this.messageService.add({
-<<<<<<< HEAD
-        severity: 'info',
-        detail: 'Produto editado com sucesso!',
-      });
-    } else {
-      console.log(this.produto);
-      this.produtoService.salvar(this.produto).subscribe();
-      this.messageService.add({
-        severity: 'success',
-        detail: 'Produto salvo  com sucesso!',
-=======
       severity: 'info',
       detail: 'Produto editado com sucesso!',
     })
@@ -125,7 +114,6 @@ export class CadastroprodutoComponent implements OnInit {
       this.messageService.add({
         severity: 'success',
         detail: 'Produto salvo com sucesso!',
->>>>>>> 970261f3f6a1648809c263ac07178853a7720ceb
       });
     }
     form.reset();
