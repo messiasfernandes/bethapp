@@ -60,7 +60,8 @@ import {CalendarModule} from 'primeng/calendar';
     AutoCompleteModule,
     CheckboxModule,
     MessageModule,
-    ToastModule
+    ToastModule,
+    DialogModule
 
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

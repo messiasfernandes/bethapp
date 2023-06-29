@@ -1,3 +1,4 @@
+import { Atributo } from './../../model/atributo';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,6 +20,8 @@ export class CadastroprodutoComponent implements OnInit {
   produto = new Produto();
   subcategoriaFiltro = new Filtro();
   totalRegistros = 0;
+  exibirFormAtributos= false;
+   atributo= new Atributo();
   url: string;
   constructor(
     private subcategoriaService: SubcategoriaService,
@@ -47,6 +50,10 @@ export class CadastroprodutoComponent implements OnInit {
     });
 
 
+  }
+  addAtributo(){
+    this.produto.atributos.push(this.atributo);
+   this.atributo= new Atributo();
   }
   carregarSubcategorias(evento: any) {
     this.subcategoriaFiltro.pagina = 0;
@@ -120,4 +127,11 @@ export class CadastroprodutoComponent implements OnInit {
     this.router.navigate(['/produtos'])
 
   }
+  abrirdialog(){
+    this.exibirFormAtributos= true
+  }
+  remover(index: number) {
+    this.produto.atributos.splice(index, 1);
+  }
 }
+

@@ -137,7 +137,7 @@
 
             <div class="col-12 md:col-6 lg:col-2 p-fluid">
 
-              <button pButton pRipple type="button" icon="pi pi-check" label="Variações" pTooltip="Adicionar VAriações"
+              <button pButton pRipple type="button" icon="pi pi-check" (click)="abrirdialog()" label="Variações" pTooltip="Adicionar Variacões"
                 class=" p-button-lg p-button-secondary"></button>
             </div>
 
@@ -193,5 +193,77 @@
 
     </form>
   </div>
+  <p-dialog header="Atributos" [(visible)]="exibirFormAtributos" [breakpoints]="{'960px': '75vw'}"
+  [style]="{width: '55vw'}" [draggable]="false" [resizable]="false" styleClass="p-fluid">
 
+
+
+  <ng-template pTemplate="content">
+
+    <p></p>
+    <div class="grid p-fluid p-formgroup-inline">
+
+      <div class=" col-12 md:col-6  lg:col-6 p-fluid ">
+        <span class="p-float-label">
+          <input type="text" id="inptproduto" pInputText required="true" pInputText name="tipo"
+            [(ngModel)]="atributo.tipo" />
+
+          <label for="inptproduto">Tipo</label>
+
+
+        </span>
+      </div>
+
+
+      <div class="col-12 md:col-6 lg:col-5 p-fluid">
+        <span class="p-float-label">
+          <input type="text" id="marca" pInputText name="valor" [(ngModel)]="atributo.valor" />
+
+          <label for="marca">Valor</label>
+        </span>
+      </div>
+      <div class="col-12 md:col-6 lg:col-1">
+
+        <button pButton pRipple icon="pi pi-plus" type="button" (click)="addAtributo()" pTooltip="Adicionar atributos"
+          class="p-button-success p-button-lg"></button>
+
+      </div>
+
+      <div class=" grid">
+        <div class="col-12">
+          <p-table [value]="produto.atributos" [responsive]="true" selectionMode="single">
+            <ng-template pTemplate="header">
+              <tr>
+                <th style="width: 500px">Tipo</th>
+                <th style="width: 500px">Valor</th>
+
+                <th> Opção</th>
+
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-atributo let-rowIndex="rowIndex">
+              <tr [pSelectableRow]="atributo">
+                <td>{{atributo.tipo}}</td>
+                <td>{{atributo.valor}}</td>
+                <td>
+                  <button pButton (click)="remover(rowIndex)" icon="pi pi-minus" pTooltip="Excluir"
+                    class=" p-button-danger -button-sm -button-sm"></button>
+
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+
+    </div>
+
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-button (click)="exibirFormAtributos=false" label="sair" styleClass="p-button-text"></p-button>
+
+  </ng-template>
+
+</p-dialog>
 </div>
