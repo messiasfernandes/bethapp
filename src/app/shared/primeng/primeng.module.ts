@@ -61,7 +61,8 @@ import {CalendarModule} from 'primeng/calendar';
     CheckboxModule,
     MessageModule,
     ToastModule,
-    DialogModule
+    DialogModule,
+    MessageModule
 
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

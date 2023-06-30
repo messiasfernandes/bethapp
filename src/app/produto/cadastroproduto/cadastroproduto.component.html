@@ -16,11 +16,15 @@
 
 
               <span class="p-float-label">
-                <input type="text" id="produtonome" required="true" name="nomeproduto" pInputText [(ngModel)]="produto.nomeproduto" />
+                <input type="text" id="produtonome" required="true"  name="nomeproduto" pInputText [(ngModel)]="produto.nomeproduto"
+                ngModel #nomeproduto="ngModel" />
 
                 <label for="produtonome">Nome Produto</label>
-              </span>
 
+
+              </span>
+              <app-message [control]="nomeproduto" error="required"
+                text="Informe  Nome do produto"></app-message>
             </div>
             <div class="col-12 md:col-6 lg:col-1 p-fluid">
               <div class="field-checkbox">
@@ -41,9 +45,11 @@
 
             <div class="col-12 md:col-6 lg:col-2 p-fluid">
               <span class="p-float-label">
-                <input type="text" id="unidade" pInputText name="unidade" [(ngModel)]="produto.unidade" />
+                <input type="text" id="unidade" pInputText name="unidade" required="true" [(ngModel)]="produto.unidade" />
 
                 <label for="unidade">Unidade</label>
+
+
               </span>
             </div>
             <div class="col-12 md:col-6 lg:col-4 p-fluid">
@@ -56,9 +62,12 @@
             </div>
             <div class="col-12 md:col-6 lg:col-4 p-fluid">
               <span class="p-float-label">
-                <p-inputNumber inputId="custo_nedio" currency="BRL" name="customedio" mode="currency" locale="pt-Br" [(ngModel)]="produto.customedio"
+                <p-inputNumber inputId="custo_nedio" currency="BRL" [required]="true" #customedio="ngModel" name="customedio" mode="currency" locale="pt-Br" [(ngModel)]="produto.customedio"
                   [minFractionDigits]="2"></p-inputNumber>
                 <label for="custo_medio"> Custo Médio</label>
+                <div *ngIf="customedio.hasError('required') && customedio.dirty">
+                  <small id="inputnumber"   class="p-message p-message-error">Campo requirdo.</small>
+                </div>
               </span>
 
             </div>
@@ -184,7 +193,7 @@
             class="p-button-outlined p-button-lg p-button-danger"></button>
         </div>
         <div class="col-6 md:col-6 lg:col-2 p-fluid">
-          <button pButton pRipple type="submit" class="p-button-lg p-button-success" icon="pi pi-save"
+          <button pButton pRipple type="submit" [disabled]="!f.valid" class="p-button-lg p-button-success" icon="pi pi-save"
             label="Salvar"></button>
 
 

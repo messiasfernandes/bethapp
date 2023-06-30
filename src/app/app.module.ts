@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { CadastroprodutoComponent } from './produto/cadastroproduto/cadastroproduto.component';
+import { MessageComponent } from './shared/message/message.component';
 
 registerLocaleData(ptBr, localePt);
 @NgModule({
@@ -25,6 +26,7 @@ registerLocaleData(ptBr, localePt);
     ConsultaProdutoComponent,
     ImportarnotafiscalComponent,
     CadastroprodutoComponent,
+    MessageComponent,
 
   ],
   imports: [
