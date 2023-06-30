@@ -180,11 +180,11 @@
 
         <div class="col-6 md:col-6 lg:col-2 p-fluid">
 
-          <button pButton pRipple type="button" icon="pi pi-sign-in" label="Voltar" routerLink="/produtos"
+          <button pButton pRipple type="button"  icon="pi pi-sign-in" label="Voltar" routerLink="/produtos"
             class="p-button-outlined p-button-lg p-button-danger"></button>
         </div>
         <div class="col-6 md:col-6 lg:col-2 p-fluid">
-          <button pButton pRipple type="submit" class="p-button-lg p-button-success" icon="pi pi-save"
+          <button pButton pRipple type="submit"  disabled="!validaForm" class="p-button-lg p-button-success" icon="pi pi-save"
             label="Salvar"></button>
 
 
@@ -193,8 +193,8 @@
 
     </form>
   </div>
-  <p-dialog header="Atributos" [(visible)]="exibirFormAtributos" [breakpoints]="{'960px': '70vw'}"
-  [style]="{width: '55vw'}" [responsive]="true" [modal]="true" [draggable]="false" [resizable]="false" styleClass="p-fluid">
+  <p-dialog header="Atributos" [(visible)]="exibirFormAtributos" [breakpoints]="{'960px': '75vw'}"
+  [style]="{width: '55vw'}"  [modal]="true" [draggable]="false" [resizable]="false" styleClass="p-fluid">
 
 
 
@@ -222,7 +222,7 @@
           <label for="marca">Valor</label>
         </span>
       </div>
-      <div class="col-12 md:col-6 lg:col-1">
+      <div class="col-12 md:col-6 lg:col-1 p-fluid">
 
         <button pButton pRipple icon="pi pi-plus" type="button" (click)="addAtributo()" pTooltip="Adicionar atributos"
           class="p-button-success p-button-lg"></button>
@@ -231,7 +231,7 @@
 
       <div class=" grid">
         <div class="col-12">
-          <p-table [value]="produto.atributos" [responsive]="true" selectionMode="single">
+          <p-table [value]="produto.atributos" responsiveLayout="stack"  selectionMode="single">
             <ng-template pTemplate="header">
               <tr>
                 <th style="width: 500px">Tipo</th>

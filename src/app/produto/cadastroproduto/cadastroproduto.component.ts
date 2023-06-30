@@ -20,8 +20,9 @@ export class CadastroprodutoComponent implements OnInit {
   produto = new Produto();
   subcategoriaFiltro = new Filtro();
   totalRegistros = 0;
-  exibirFormAtributos= false;
-   atributo= new Atributo();
+  exibirFormAtributos = false;
+  atributo = new Atributo();
+  validaForm: boolean;
   url: string;
   constructor(
     private subcategoriaService: SubcategoriaService,
@@ -30,13 +31,11 @@ export class CadastroprodutoComponent implements OnInit {
     private messageService: MessageService,
     private router: Router,
     private idParametro: ActivatedRoute
-  ) {}
+  ) { }
   ngOnInit(): void {
     let codigoproduto = this.idParametro.snapshot.params['id'];
 
     if (codigoproduto) {
-      console.log(codigoproduto);
-
       this.carregarProduto(codigoproduto);
     }
   }
@@ -44,16 +43,15 @@ export class CadastroprodutoComponent implements OnInit {
     console.log('inicou');
     this.produtoService.detalhar(codigoproduto).subscribe((data) => {
       this.produto = data;
-      console.log(this.produto);
       this.getbuscarfoto(this.produto.imagemPrincipal);
-      console.log(this.produto.imagemPrincipal);
+
     });
 
 
   }
-  addAtributo(){
+  addAtributo() {
     this.produto.atributos.push(this.atributo);
-   this.atributo= new Atributo();
+    this.atributo = new Atributo();
   }
   carregarSubcategorias(evento: any) {
     this.subcategoriaFiltro.pagina = 0;
@@ -62,11 +60,10 @@ export class CadastroprodutoComponent implements OnInit {
     this.subcategoriaService
       .pesquisar(this.subcategoriaFiltro)
       .subscribe((dados: any) => {
-        console.log(dados.content);
         this.subcategorias = dados.content;
         this.totalRegistros = dados.total;
       });
-      this.produto.subcategoria=this.subcategorias[0]
+    this.produto.subcategoria = this.subcategorias[0]
   }
   upLoad() {
     let input = document.createElement('input');
@@ -86,7 +83,7 @@ export class CadastroprodutoComponent implements OnInit {
       var reader = new FileReader();
       reader.readAsDataURL(arquivo[0]);
       reader.onload = (event: any) => {
-        console.log(event);
+
         this.url = event.target.result;
       };
       this.arquivoService.upload(formadata).subscribe((resposta) => {
@@ -101,24 +98,24 @@ export class CadastroprodutoComponent implements OnInit {
   }
   getbuscarfoto(image: string) {
     console.log(image)
-    if (image){
+    if (image) {
       this.url = this.arquivoService.buscarfoto(image);
-  }else{
-    this.url ='/assets/no-image-icon.jpg'
-  }
-  return this.url
+    } else {
+      this.url = '/assets/no-image-icon.jpg'
+    }
+    return this.url
   }
   salvar(form: NgForm) {
     if (this.produto.id != null) {
       this.produtoService.editar(this.produto).subscribe();
       this.messageService.add({
-      severity: 'info',
-      detail: 'Produto editado com sucesso!',
-    })
+        severity: 'info',
+        detail: 'Produto editado com sucesso!',
+      })
     } else {
       console.log(this.produto);
       this.produtoService.salvar(this.produto).subscribe();
-     ;
+      ;
       this.messageService.add({
         severity: 'success',
         detail: 'Produto salvo com sucesso!',
@@ -128,11 +125,15 @@ export class CadastroprodutoComponent implements OnInit {
     this.router.navigate(['/produtos'])
 
   }
-  abrirdialog(){
-    this.exibirFormAtributos= true
+  abrirdialog() {
+    this.exibirFormAtributos = true
   }
   remover(index: number) {
     this.produto.atributos.splice(index, 1);
+  }
+  removerImagem() {
+    this.arquivoService.removerArquivo( this.produto.imagemPrincipal);
+    this.url='';
   }
 }
 
