@@ -66,6 +66,7 @@ export class CadastroprodutoComponent implements OnInit {
         this.subcategorias = dados.content;
         this.totalRegistros = dados.total;
       });
+      this.produto.subcategoria=this.subcategorias[0]
   }
   upLoad() {
     let input = document.createElement('input');
