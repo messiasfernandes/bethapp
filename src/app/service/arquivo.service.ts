@@ -19,7 +19,7 @@ export class ArquivoService {
   buscarfoto(parametro: string){
     var arquivo :string;
 
-     arquivo= `${config.baseurl}arquivos/fotos/`+ parametro;
+     arquivo= `${config.baseurl}arquivos/fotos`+ parametro;
 
    return arquivo;
   }
