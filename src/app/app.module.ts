@@ -16,6 +16,11 @@ import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { CadastroprodutoComponent } from './produto/cadastroproduto/cadastroproduto.component';
 import { MessageComponent } from './shared/message/message.component';
+import { ProdutoService } from './service/produto.service';
+import { ArquivoService } from './service/arquivo.service';
+import { ErrohandlerService } from './service/errohandler.service';
+import { SubcategoriaService } from './service/subcategoria.service';
+import { HomeComponent } from './shared/home/home.component';
 
 registerLocaleData(ptBr, localePt);
 @NgModule({
@@ -27,6 +32,7 @@ registerLocaleData(ptBr, localePt);
     ImportarnotafiscalComponent,
     CadastroprodutoComponent,
     MessageComponent,
+    HomeComponent,
 
   ],
   imports: [
@@ -41,7 +47,7 @@ registerLocaleData(ptBr, localePt);
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
-
+    ProdutoService, ArquivoService, ErrohandlerService, SubcategoriaService
   ],
   bootstrap: [AppComponent],
 

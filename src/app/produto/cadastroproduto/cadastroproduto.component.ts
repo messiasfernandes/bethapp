@@ -3,10 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { throwError } from 'rxjs/internal/observable/throwError';
+import { catchError } from 'rxjs/operators';
 import { Filtro } from 'src/app/model/filtro';
 import { Produto } from 'src/app/model/produto';
 
 import { ArquivoService } from 'src/app/service/arquivo.service';
+import { ErrohandlerService } from 'src/app/service/errohandler.service';
 import { ProdutoService } from 'src/app/service/produto.service';
 import { SubcategoriaService } from 'src/app/service/subcategoria.service';
 
@@ -29,7 +32,8 @@ export class CadastroprodutoComponent implements OnInit {
     private produtoService: ProdutoService,
     private messageService: MessageService,
     private router: Router,
-    private idParametro: ActivatedRoute
+    private idParametro: ActivatedRoute,
+    private errorHandler: ErrohandlerService,
   ) {}
   ngOnInit(): void {
     let codigoproduto = this.idParametro.snapshot.params['id'];
@@ -109,7 +113,13 @@ export class CadastroprodutoComponent implements OnInit {
   }
   salvar(form: NgForm) {
     if (this.produto.id != null) {
-      this.produtoService.editar(this.produto).subscribe();
+      this.produtoService.editar(this.produto)
+      .pipe(
+        catchError((erro: any) => {
+          return throwError(() => this.errorHandler.erroHandler(erro));
+        })
+      )
+      .subscribe();
       this.messageService.add({
       severity: 'info',
       detail: 'Produto editado com sucesso!',

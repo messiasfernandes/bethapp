@@ -53,5 +53,8 @@ export class ProdutoService {
   detalhar(id: number): Observable<Produto> {
     return this.http.get<Produto>(`${config.baseurl}produtos/${id}`);
   }
+  excluir(id: number): Observable<any> {
+    return this.http.delete(`${config.baseurl}produtos/${id}`);
+   }
 
 }

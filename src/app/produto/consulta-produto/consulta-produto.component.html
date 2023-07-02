@@ -49,7 +49,7 @@
               <th>Nome Produto
               </th>
               <th>Código Ean 13</th>
-              <th style="text-align: center;"> Preço Custo</th>
+              <th style="text-align: right;"> Preço Custo</th>
               <th style="text-align: right;"> Preço Venda</th>
               <th style="text-align: center;">Quantidade </th>
               <th style="text-align: center;">Estoque Mínimo </th>
@@ -63,7 +63,8 @@
               <td> {{produto.codigoEan13}}</td>
               <td style="text-align: right;">{{produto.precocusto | currency}}</td>
               <td style="text-align: right;">{{produto.precovenda | currency }}</td>
-              <td style="text-align: center;"> {{produto.estoque.quantidade}}</td>
+              <td style="text-align: center;">{{ produto.estoque?.quantidade !== null ? produto.estoque.quantidade : 0 }}</td>
+
 
               <td style="text-align: center;"> {{produto.estoqueminimo}}</td>
               <td>
@@ -71,10 +72,10 @@
                   <a>
 
                     <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                      class="p-button-primary mr-2"  [routerLink]="['/produtos', produto.id]" type="button"></button>
+                      class="p-button-primary mr-2" [routerLink]="['/produtos', produto.id]" type="button"></button>
                   </a>
                   <button pButton pRipple icon="pi pi-trash" type="button" pTooltip="Excluir" tooltipPosition="top"
-                    class=" p-button-danger mr2 "></button>
+                  (click)="confirmarExclusao(produto)"      class=" p-button-danger mr2 "></button>
                 </div>
 
               </td>

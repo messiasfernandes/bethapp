@@ -1,3 +1,4 @@
+import { EntradaNotaFiscalCabecario } from './../../model/entrada-nota-fiscal-cabecario';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./importarnotafiscal.component.css']
 })
 export class ImportarnotafiscalComponent  implements OnInit{
+
+  notaFiscal= new  EntradaNotaFiscalCabecario();
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }

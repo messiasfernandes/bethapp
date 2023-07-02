@@ -12,7 +12,7 @@
 
 
             <span class="p-float-label">
-              <input type="text" id="produtonome" required="true" pInputText />
+              <input type="text" id="produtonome" [(ngModel)]="notaFiscal.numerodanota" required="true" pInputText />
 
               <label for="produtonome">Nome Produto</label>
             </span>
@@ -20,7 +20,7 @@
           </div>
           <div class="col-12 md:col-6 lg:col-4 p-fluid">
             <span class="p-float-label">
-              <p-inputNumber inputId="custo" currency="BRL" mode="currency" locale="pt-Br"
+              <p-inputNumber inputId="custo"  currency="BRL" mode="currency" locale="pt-Br"
                 [minFractionDigits]="2"></p-inputNumber>
               <label for="custo"> Preço Custo</label>
             </span>

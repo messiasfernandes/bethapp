@@ -1,9 +1,7 @@
 import { Atributo } from "./atributo";
-
 import { Subcategoria } from "./subcategoria";
 
 export class Produto {
-
   id: number;
   nomeproduto: string;
   marca: string;

@@ -1,8 +1,7 @@
-import { Categoaria } from "./categoaria";
+import { Categoria } from "./categoria";
 
 export class Subcategoria {
-
   id: number;
   nomeSubCategoria: string;
-  categoria = new Categoaria();
+  categoria = new Categoria();
 }
