@@ -11,17 +11,12 @@ import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 export class ImportarnotafiscalComponent  implements OnInit{
 
   notaFiscal= new  EntradaNotaFiscalCabecario();
-  notafiscalfiltro = new Filtro()
-  notasfiscais: any[] = [];
-  totalRegistros = 0;
-  url:string;
+
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
 
-  buscar(pagina: number = 0): void {
 
-  }
   upLoad(){
     let input = document.createElement('input');
     input.type = 'file';
@@ -37,7 +32,7 @@ export class ImportarnotafiscalComponent  implements OnInit{
       reader.readAsDataURL(arquivo[0]);
       reader.onload = (event: any) => {
         console.log(event);
-        this.url = event.target.result;
+      //  this.url = event.target.result;
       };
 
 
@@ -46,8 +41,5 @@ export class ImportarnotafiscalComponent  implements OnInit{
     input.click();
 
   }
-  aoMudarPagina(event: LazyLoadEvent) {
-    const pagina = event!.first! / event!.rows!;
-    this.buscar(pagina);
-  }
+
 }

@@ -21,6 +21,7 @@ import { ArquivoService } from './service/arquivo.service';
 import { ErrohandlerService } from './service/errohandler.service';
 import { SubcategoriaService } from './service/subcategoria.service';
 import { HomeComponent } from './shared/home/home.component';
+import { ConsultarnotafiscalComponent } from './notafiscal/consultarnotafiscal/consultarnotafiscal.component';
 
 registerLocaleData(ptBr, localePt);
 @NgModule({
@@ -33,6 +34,7 @@ registerLocaleData(ptBr, localePt);
     CadastroprodutoComponent,
     MessageComponent,
     HomeComponent,
+    ConsultarnotafiscalComponent,
 
   ],
   imports: [

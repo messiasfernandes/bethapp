@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ImportarnotafiscalComponent } from './notafiscal/importarnotafiscal/importarnotafiscal.component';
 import { CadastroprodutoComponent } from './produto/cadastroproduto/cadastroproduto.component';
 import { Breadcrumb } from 'primeng/breadcrumb';
+import { ConsultarnotafiscalComponent } from './notafiscal/consultarnotafiscal/consultarnotafiscal.component';
 
 
 const routes: Routes = [
@@ -12,8 +13,8 @@ const routes: Routes = [
  },
   { path: 'produtos/novo',component: CadastroprodutoComponent},
   { path: 'produtos/:id', component: CadastroprodutoComponent },
-  { path: 'importarnotalfiscal', component: ImportarnotafiscalComponent },
-
+  { path: 'importarnotalfiscal', component: ConsultarnotafiscalComponent },
+  { path: 'importarnotalfiscal/novo', component: ImportarnotafiscalComponent },
 ];
 
 @NgModule({
