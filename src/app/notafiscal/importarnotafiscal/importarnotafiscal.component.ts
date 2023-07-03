@@ -1,5 +1,7 @@
+import { Filtro } from 'src/app/model/filtro';
 import { EntradaNotaFiscalCabecario } from './../../model/entrada-nota-fiscal-cabecario';
 import { Component, OnInit } from '@angular/core';
+import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 
 @Component({
   selector: 'app-importarnotafiscal',
@@ -9,10 +11,17 @@ import { Component, OnInit } from '@angular/core';
 export class ImportarnotafiscalComponent  implements OnInit{
 
   notaFiscal= new  EntradaNotaFiscalCabecario();
+  notafiscalfiltro = new Filtro()
+  notasfiscais: any[] = [];
+  totalRegistros = 0;
+  url:string;
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
-  url:string;
+
+  buscar(pagina: number = 0): void {
+
+  }
   upLoad(){
     let input = document.createElement('input');
     input.type = 'file';
@@ -36,5 +45,9 @@ export class ImportarnotafiscalComponent  implements OnInit{
     };
     input.click();
 
+  }
+  aoMudarPagina(event: LazyLoadEvent) {
+    const pagina = event!.first! / event!.rows!;
+    this.buscar(pagina);
   }
 }
