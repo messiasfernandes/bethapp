@@ -1,8 +1,10 @@
+import { Subcategoria } from './../../model/subcategoria';
 import { Atributo } from './../../model/atributo';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { catchError } from 'rxjs/operators';
 import { Filtro } from 'src/app/model/filtro';
@@ -12,6 +14,7 @@ import { ArquivoService } from 'src/app/service/arquivo.service';
 import { ErrohandlerService } from 'src/app/service/errohandler.service';
 import { ProdutoService } from 'src/app/service/produto.service';
 import { SubcategoriaService } from 'src/app/service/subcategoria.service';
+import { SubcategoriadialogComponent } from 'src/app/subcategoria/subcategoriadialog/subcategoriadialog.component';
 
 @Component({
   selector: 'app-cadastroproduto',
@@ -22,6 +25,7 @@ export class CadastroprodutoComponent implements OnInit {
   subcategorias: any = ([] = []);
   produto = new Produto();
   subcategoriaFiltro = new Filtro();
+  ref : DynamicDialogRef;
   totalRegistros = 0;
   exibirFormAtributos= false;
    atributo= new Atributo();
@@ -32,8 +36,10 @@ export class CadastroprodutoComponent implements OnInit {
     private produtoService: ProdutoService,
     private messageService: MessageService,
     private router: Router,
+    public dialogService: DialogService,
     private idParametro: ActivatedRoute,
     private errorHandler: ErrohandlerService,
+    public config: DynamicDialogConfig,
   ) {}
   ngOnInit(): void {
     let codigoproduto = this.idParametro.snapshot.params['id'];
@@ -143,6 +149,21 @@ export class CadastroprodutoComponent implements OnInit {
   }
   remover(index: number) {
     this.produto.atributos.splice(index, 1);
+  }
+  showSubcategoria() {
+    this.ref = this.dialogService.open(SubcategoriadialogComponent, {
+      header: 'SubCategorias',
+      width: '70%',
+      contentStyle: { 'max-height': '500px', overflow: 'auto' },
+     modal: true
+      // baseZIndex: 10000,
+      // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
+    });
+    this.ref.onClose.subscribe((subcategoria: Subcategoria) => {
+      if (subcategoria) {
+       // this.produtov.produto = produto;
+      }
+    });
   }
 }
 

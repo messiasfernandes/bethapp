@@ -5,14 +5,16 @@ import { Filtro } from '../model/filtro';
 
 import { Produto } from '../model/produto';
 import { Observable } from 'rxjs';
+import { Servicemodel } from './servicemodel';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProdutoService {
+export class ProdutoService implements Servicemodel {
   constructor(private http: HttpClient) {}
 
   pesquisar(filtro: Filtro): Observable<Produto> {
+
     const headers = new HttpHeaders().append(
       'Content-Type',
       'application/json'

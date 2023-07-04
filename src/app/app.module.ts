@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
 import { PrimengModule } from './shared/primeng/primeng.module';
 import { CUSTOM_ELEMENTS_SCHEMA, DEFAULT_CURRENCY_CODE, LOCALE_ID, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
@@ -22,6 +23,7 @@ import { ErrohandlerService } from './service/errohandler.service';
 import { SubcategoriaService } from './service/subcategoria.service';
 import { HomeComponent } from './shared/home/home.component';
 import { ConsultarnotafiscalComponent } from './notafiscal/consultarnotafiscal/consultarnotafiscal.component';
+import { SubcategoriadialogComponent } from './subcategoria/subcategoriadialog/subcategoriadialog.component';
 
 registerLocaleData(ptBr, localePt);
 @NgModule({
@@ -35,6 +37,7 @@ registerLocaleData(ptBr, localePt);
     MessageComponent,
     HomeComponent,
     ConsultarnotafiscalComponent,
+    SubcategoriadialogComponent,
 
   ],
   imports: [
@@ -49,7 +52,7 @@ registerLocaleData(ptBr, localePt);
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
-    ProdutoService, ArquivoService, ErrohandlerService, SubcategoriaService
+    ProdutoService, ArquivoService, ErrohandlerService, SubcategoriaService , MessageService
   ],
   bootstrap: [AppComponent],
 

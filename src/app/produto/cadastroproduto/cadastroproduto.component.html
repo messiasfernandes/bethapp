@@ -16,15 +16,14 @@
 
 
               <span class="p-float-label">
-                <input type="text" id="produtonome" required="true"  name="nomeproduto" pInputText [(ngModel)]="produto.nomeproduto"
-                ngModel #nomeproduto="ngModel" />
+                <input type="text" id="produtonome" required="true" name="nomeproduto" pInputText
+                  [(ngModel)]="produto.nomeproduto" ngModel #nomeproduto="ngModel" />
 
                 <label for="produtonome">Nome Produto</label>
 
 
               </span>
-              <app-message [control]="nomeproduto" error="required"
-                text="Informe  Nome do produto"></app-message>
+              <app-message [control]="nomeproduto" error="required" text="Informe  Nome do produto"></app-message>
             </div>
             <div class="col-12 md:col-6 lg:col-1 p-fluid">
               <div class="field-checkbox">
@@ -45,7 +44,8 @@
 
             <div class="col-12 md:col-6 lg:col-2 p-fluid">
               <span class="p-float-label">
-                <input type="text" id="unidade" pInputText name="unidade" required="true" [(ngModel)]="produto.unidade" />
+                <input type="text" id="unidade" pInputText name="unidade" required="true"
+                  [(ngModel)]="produto.unidade" />
 
                 <label for="unidade">Unidade</label>
 
@@ -54,27 +54,28 @@
             </div>
             <div class="col-12 md:col-6 lg:col-4 p-fluid">
               <span class="p-float-label">
-                <p-inputNumber inputId="custo" currency="BRL" mode="currency" name="precocusto" locale="pt-Br" [(ngModel)]="produto.precocusto"
-                  [minFractionDigits]="2"></p-inputNumber>
+                <p-inputNumber inputId="custo" currency="BRL" mode="currency" name="precocusto" locale="pt-Br"
+                  [(ngModel)]="produto.precocusto" [minFractionDigits]="2"></p-inputNumber>
                 <label for="custo"> Preço Custo</label>
               </span>
 
             </div>
             <div class="col-12 md:col-6 lg:col-4 p-fluid">
               <span class="p-float-label">
-                <p-inputNumber inputId="custo_nedio" currency="BRL" [required]="true" #customedio="ngModel" name="customedio" mode="currency" locale="pt-Br" [(ngModel)]="produto.customedio"
+                <p-inputNumber inputId="custo_nedio" currency="BRL" [required]="true" #customedio="ngModel"
+                  name="customedio" mode="currency" locale="pt-Br" [(ngModel)]="produto.customedio"
                   [minFractionDigits]="2"></p-inputNumber>
                 <label for="custo_medio"> Custo Médio</label>
                 <div *ngIf="customedio.hasError('required') && customedio.dirty">
-                  <small id="inputnumber"   class="p-message p-message-error">Campo requirdo.</small>
+                  <small id="inputnumber" class="p-message p-message-error">Campo requirdo.</small>
                 </div>
               </span>
 
             </div>
             <div class="col-12 md:col-6 lg:col-4 p-fluid">
               <span class="p-float-label">
-                <p-inputNumber inputId="preco_venda" currency="BRL" mode="currency" name="precovenda" locale="pt-Br" [(ngModel)]="produto.precovenda"
-                  [minFractionDigits]="2"></p-inputNumber>
+                <p-inputNumber inputId="preco_venda" currency="BRL" mode="currency" name="precovenda" locale="pt-Br"
+                  [(ngModel)]="produto.precovenda" [minFractionDigits]="2"></p-inputNumber>
                 <label for="preco_venda"> Preço de Venda</label>
               </span>
 
@@ -92,10 +93,18 @@
 
 
             </div>
+            <div class="col-12 md:col-6 lg:col-2 p-fluid">
+
+              <button pButton pRipple type="button" icon="pi pi-check" (click)="showSubcategoria()"  pTooltip="Adicionar subcategoria"
+                class=" p-button-lg p-button-primary"></button>
+            </div>
+
+
             <div class="col-12 md:col-6 lg:col-6 p-fluid">
 
               <span class="p-float-label">
-                <input type="text" id="marcaproduto" required="true" pInputText name="marca" [(ngModel)]="produto.marca" />
+                <input type="text" id="marcaproduto" required="true" pInputText name="marca"
+                  [(ngModel)]="produto.marca" />
 
                 <label for="marcaproduto">Marca</label>
               </span>
@@ -120,8 +129,9 @@
 
 
               <span class="p-float-label">
-                <p-inputNumber [(ngModel)]="produto.estoqueminimo" name="estoqueminimo" mode="decimal" dec [showButtons]="true" precision="0"
-                  inputId="minmax-buttons" [min]="0" [max]="100" [(ngModel)]="produto.estoqueminimo" >
+                <p-inputNumber [(ngModel)]="produto.estoqueminimo" name="estoqueminimo" mode="decimal" dec
+                  [showButtons]="true" precision="0" inputId="minmax-buttons" [min]="0" [max]="100"
+                  [(ngModel)]="produto.estoqueminimo">
                 </p-inputNumber>
                 <label for="estoqueminimo">Estoque Minimo</label>
               </span>
@@ -146,8 +156,8 @@
 
             <div class="col-12 md:col-6 lg:col-2 p-fluid">
 
-              <button pButton pRipple type="button" icon="pi pi-check" (click)="abrirdialog()" label="Variações" pTooltip="Adicionar Variacões"
-                class=" p-button-lg p-button-secondary"></button>
+              <button pButton pRipple type="button" icon="pi pi-check" (click)="abrirdialog()" label="Variações"
+                pTooltip="Adicionar Variacões" class=" p-button-lg p-button-secondary"></button>
             </div>
 
           </div>
@@ -193,8 +203,8 @@
             class="p-button-outlined p-button-lg p-button-danger"></button>
         </div>
         <div class="col-6 md:col-6 lg:col-2 p-fluid">
-          <button pButton pRipple type="submit" [disabled]="!f.valid" class="p-button-lg p-button-success" icon="pi pi-save"
-            label="Salvar"></button>
+          <button pButton pRipple type="submit" [disabled]="!f.valid" class="p-button-lg p-button-success"
+            icon="pi pi-save" label="Salvar"></button>
 
 
         </div>
@@ -203,76 +213,77 @@
     </form>
   </div>
   <p-dialog header="Atributos" [(visible)]="exibirFormAtributos" [breakpoints]="{'960px': '70vw'}"
-  [style]="{width: '55vw'}" [responsive]="true" [modal]="true" [draggable]="false" [resizable]="false" styleClass="p-fluid">
+    [style]="{width: '55vw'}" [responsive]="true" [modal]="true" [draggable]="false" [resizable]="false"
+    styleClass="p-fluid">
 
 
 
-  <ng-template pTemplate="content">
+    <ng-template pTemplate="content">
 
-    <p></p>
-    <div class="grid p-fluid p-formgroup-inline">
+      <p></p>
+      <div class="grid p-fluid p-formgroup-inline">
 
-      <div class=" col-12 md:col-6  lg:col-6 p-fluid ">
-        <span class="p-float-label">
-          <input type="text" id="inptproduto" pInputText required="true" pInputText name="tipo"
-            [(ngModel)]="atributo.tipo" />
+        <div class=" col-12 md:col-6  lg:col-6 p-fluid ">
+          <span class="p-float-label">
+            <input type="text" id="inptproduto" pInputText required="true" pInputText name="tipo"
+              [(ngModel)]="atributo.tipo" />
 
-          <label for="inptproduto">Tipo</label>
-
-
-        </span>
-      </div>
+            <label for="inptproduto">Tipo</label>
 
 
-      <div class="col-12 md:col-6 lg:col-5 p-fluid">
-        <span class="p-float-label">
-          <input type="text" id="marca" pInputText name="valor" [(ngModel)]="atributo.valor" />
-
-          <label for="marca">Valor</label>
-        </span>
-      </div>
-      <div class="col-12 md:col-6 lg:col-1">
-
-        <button pButton pRipple icon="pi pi-plus" type="button" (click)="addAtributo()" pTooltip="Adicionar atributos"
-          class="p-button-success p-button-lg"></button>
-
-      </div>
-
-      <div class=" grid">
-        <div class="col-12">
-          <p-table [value]="produto.atributos" [responsive]="true" selectionMode="single">
-            <ng-template pTemplate="header">
-              <tr>
-                <th style="width: 500px">Tipo</th>
-                <th style="width: 500px">Valor</th>
-
-                <th> Opção</th>
-
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-atributo let-rowIndex="rowIndex">
-              <tr [pSelectableRow]="atributo">
-                <td>{{atributo.tipo}}</td>
-                <td>{{atributo.valor}}</td>
-                <td>
-                  <button pButton (click)="remover(rowIndex)" icon="pi pi-minus" pTooltip="Excluir"
-                    class=" p-button-danger -button-sm -button-sm"></button>
-
-                </td>
-              </tr>
-            </ng-template>
-          </p-table>
+          </span>
         </div>
+
+
+        <div class="col-12 md:col-6 lg:col-5 p-fluid">
+          <span class="p-float-label">
+            <input type="text" id="marca" pInputText name="valor" [(ngModel)]="atributo.valor" />
+
+            <label for="marca">Valor</label>
+          </span>
+        </div>
+        <div class="col-12 md:col-6 lg:col-1">
+
+          <button pButton pRipple icon="pi pi-plus" type="button" (click)="addAtributo()" pTooltip="Adicionar atributos"
+            class="p-button-success p-button-lg"></button>
+
+        </div>
+
+        <div class=" grid">
+          <div class="col-12">
+            <p-table [value]="produto.atributos" [responsive]="true" selectionMode="single">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width: 500px">Tipo</th>
+                  <th style="width: 500px">Valor</th>
+
+                  <th> Opção</th>
+
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-atributo let-rowIndex="rowIndex">
+                <tr [pSelectableRow]="atributo">
+                  <td>{{atributo.tipo}}</td>
+                  <td>{{atributo.valor}}</td>
+                  <td>
+                    <button pButton (click)="remover(rowIndex)" icon="pi pi-minus" pTooltip="Excluir"
+                      class=" p-button-danger -button-sm -button-sm"></button>
+
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+
       </div>
 
-    </div>
+    </ng-template>
 
-  </ng-template>
+    <ng-template pTemplate="footer">
+      <p-button (click)="exibirFormAtributos=false" label="sair" styleClass="p-button-text"></p-button>
 
-  <ng-template pTemplate="footer">
-    <p-button (click)="exibirFormAtributos=false" label="sair" styleClass="p-button-text"></p-button>
+    </ng-template>
 
-  </ng-template>
-
-</p-dialog>
+  </p-dialog>
 </div>

@@ -1,3 +1,3 @@
 export const config={
-  baseurl:"http://localhost.8:8080/"
+  baseurl:"http://localhost:8080/"
 }

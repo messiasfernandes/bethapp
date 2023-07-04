@@ -4,13 +4,15 @@ import { Observable } from 'rxjs';
 import { Subcategoria } from '../model/subcategoria';
 import { config } from 'src/config/config';
 import { Filtro } from '../model/filtro';
+import { Servicemodel } from './servicemodel';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SubcategoriaService {
+export class SubcategoriaService  implements Servicemodel{
 
   constructor( private http :HttpClient) { }
+
 
   pesquisar(filtro: Filtro):Observable<Subcategoria>{
 
@@ -32,5 +34,30 @@ export class SubcategoriaService {
       });
      console.log(response)
       return response;
+    }
+    detalhar(id: number): Observable<Subcategoria> {
+      return this.http.get<Subcategoria>(`${config.baseurl}subcategorias/${id}`);
+    }
+    salvar(objeto: Subcategoria): Observable<Subcategoria> {
+      const headers = new HttpHeaders().append(
+        'Content-Type',
+        'application/json'
+      );
+      const resposta= this.http
+      .post<Subcategoria>(`${config.baseurl}subcategorias`, objeto, { headers });
+      return resposta;
+
+    }
+    editar(objeto: Subcategoria): Observable<Subcategoria> {
+      const headers = new HttpHeaders().append(
+        'Content-Type',
+        'application/json'
+      );
+
+      return this.http.put<Subcategoria>(`${config.baseurl}subcategorias/${objeto.id}`, objeto);
+
+    }
+    excluir(id: number): Observable<Subcategoria> {
+      throw new Error('Method not implemented.');
     }
 }
