@@ -8,6 +8,8 @@
   </div>
 
   <div class="card">
+    <p-tabView>
+      <p-tabPanel header="Produto">
     <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
       <div class="grid nested-grid p-fluid">
         <div class="col-8 md:col-6 lg:col-8 p-fluid">
@@ -206,13 +208,18 @@
         </div>
         <div class="col-6 md:col-6 lg:col-2 p-fluid">
           <button pButton pRipple type="submit" [disabled]="!f.valid" class="p-button-lg p-button-success"
-            icon="pi pi-save" label="Salvar"></button>
+            icon="pi pi-save" label="Cadastrar"></button>
 
 
         </div>
       </div>
 
     </form>
+      </p-tabPanel>
+      <p-tabPanel header="Produto Composto" >
+
+      </p-tabPanel>
+    </p-tabView>
   </div>
   <p-dialog header="Atributos" [(visible)]="exibirFormAtributos" [breakpoints]="{'960px': '70vw'}"
     [style]="{width: '55vw'}" [responsive]="true" [modal]="true" [draggable]="false" [resizable]="false"

@@ -66,7 +66,8 @@ import {CalendarModule} from 'primeng/calendar';
     DialogModule,
     ConfirmDialogModule,
     ImageModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    TabViewModule
 
 
 
