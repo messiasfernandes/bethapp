@@ -39,6 +39,7 @@ export class SubcategoriaService  implements Servicemodel{
       return this.http.get<Subcategoria>(`${config.baseurl}subcategorias/${id}`);
     }
     salvar(objeto: Subcategoria): Observable<Subcategoria> {
+      console.log(objeto)
       const headers = new HttpHeaders().append(
         'Content-Type',
         'application/json'

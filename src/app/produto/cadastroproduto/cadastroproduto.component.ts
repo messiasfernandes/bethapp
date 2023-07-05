@@ -153,10 +153,14 @@ export class CadastroprodutoComponent implements OnInit {
   showSubcategoria() {
     this.ref = this.dialogService.open(SubcategoriadialogComponent, {
       header: 'SubCategorias',
-      width: '70%',
-      contentStyle: { 'max-height': '500px', overflow: 'auto' },
-     modal: true
-      // baseZIndex: 10000,
+      width: '50%',
+
+      styleClass:"{'960px': '70vw'}",
+     contentStyle: { 'max-height': '800px', overflow: 'auto' },
+
+     resizable: false,
+
+    baseZIndex: 10000,
       // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
     });
     this.ref.onClose.subscribe((subcategoria: Subcategoria) => {

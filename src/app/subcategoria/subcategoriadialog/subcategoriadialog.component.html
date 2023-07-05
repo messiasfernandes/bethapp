@@ -1,11 +1,52 @@
 <div class="container">
-  <div class="grid">
-    <br>
-    <div class="col-12 md:col-6 lg:col-3 p-fluid">
-      <span class="p-float-label">
-        <p-dropdown [options]="categorias"  placeholder="Select a City" optionLabel="nomecategoria" [showClear]="true"></p-dropdown>
-        <label for="categoria">Categoria</label>
-      </span>
-    </div>
+  <br>
+  <div class="card">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+  <div class="grid p-fluid p-formgroup-inline">
 
+
+      <p></p>
+
+
+    <div class="col-12 md:col-6 lg:col-6 p-fluid">
+      <span class="p-float-label">
+      <p-autoComplete [(ngModel)]="subcategoria.categoria" appendTo="body" [showEmptyMessage]="true"
+      field="nomecategoria" [suggestions]="categorias"
+      (completeMethod)="carregarCategorias($event)" name="id" id="campo" [required]="true"
+      inputId="autocomplete" [minLength]="1" emptyMessage="Registro não ncontrato"></p-autoComplete>
+    <label for="subcategorias ">Categorias</label>
+    </span>
+    </div>
+   <div class="col-12 md:col-6 lg:col-6 p-fluid">
+    <span class="p-float-label">
+      <input type="text" id="subcat" pInputText name="nomeSubCategoria" required="true" ngModel #nomeSubCategoria="ngModel"
+        [(ngModel)]="subcategoria.nomeSubCategoria" />
+
+      <label for="subcat">subcategoria</label>
+
+      <app-message [control]="nomeSubCategoria" error="required" text="Informe  Nome do Subacategoria"></app-message>
+    </span>
+   </div>
+   <div class="col-6 md:col-6 lg:col-2 p-fluid">
+
+    <button pButton pRipple type="button" icon="pi pi-sign-in" label="Voltar" (click)="selecionarSubcatecoria()"
+      class="p-button-outlined p-button-lg p-button-danger"></button>
+  </div>
+  <div class="col-6 md:col-6 lg:col-2 p-fluid">
+    <button pButton pRipple type="submit"  [disabled]="!f.valid" class="p-button-lg p-button-success"
+      icon="pi pi-save" label="Salvar"></button>
+
+
+  </div>
+
+
+  </div>
+</form>
+   </div>
 </div>
+
+
+
+
+
+

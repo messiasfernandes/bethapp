@@ -9,7 +9,7 @@
 
   <div class="card">
     <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
-      <div class="grid nested-grid">
+      <div class="grid nested-grid p-fluid">
         <div class="col-8 md:col-6 lg:col-8 p-fluid">
           <div class="grid">
             <div class="col-12 md:col-6 lg:col-7 p-fluid">
@@ -80,12 +80,12 @@
               </span>
 
             </div>
-            <div class="col-12 md:col-6 lg:col-6 p-fluid">
+            <div class="col-12 md:col-6 lg:col-5 p-fluid">
 
 
               <span class="p-float-label">
                 <p-autoComplete [(ngModel)]="produto.subcategoria" appendTo="body" [showEmptyMessage]="true"
-                  field="nomeSubCategoria" [suggestions]="subcategorias" [(ngModel)]="produto.subcategoria"
+                  field="nomeSubCategoria" [suggestions]="subcategorias"
                   (completeMethod)="carregarSubcategorias($event)" name="nomeSubCategoria" id="campo" [required]="true"
                   inputId="autocomplete" [minLength]="1" emptyMessage="Registro não ncontrato"></p-autoComplete>
                 <label for="subcategorias ">SubCategorias</label>
@@ -93,10 +93,12 @@
 
 
             </div>
-            <div class="col-12 md:col-6 lg:col-2 p-fluid">
+            <div class="col-12 md:col-6 lg:col-1  p-fluid  flex flex-wrap align-items-center justify-content-center ">
 
-              <button pButton pRipple type="button" icon="pi pi-check" (click)="showSubcategoria()"  pTooltip="Adicionar subcategoria"
-                class=" p-button-lg p-button-primary"></button>
+              <button pButton pRipple type="button" icon="pi pi-plus"   (click)="showSubcategoria()"  pTooltip="Adicionar subcategoria"
+                class=" p-button-lg p-button-info"></button>
+
+
             </div>
 
 

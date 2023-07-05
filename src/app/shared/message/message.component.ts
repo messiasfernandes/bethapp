@@ -5,7 +5,7 @@ import { AbstractControl, FormControl } from '@angular/forms';
   selector: 'app-message',
   template: `
   <div *ngIf="temErro()"
-    class="p-message p-message-error">
+    class="p-error">
     {{ text }}
   </div>
 `,
