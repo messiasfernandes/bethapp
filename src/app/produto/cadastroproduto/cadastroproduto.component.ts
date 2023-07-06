@@ -1,3 +1,5 @@
+import { Produto } from './../../model/produto';
+import { ListadialogprodutoComponent } from './../listadialogproduto/listadialogproduto.component';
 import { Subcategoria } from './../../model/subcategoria';
 import { Atributo } from './../../model/atributo';
 import { Component, OnInit } from '@angular/core';
@@ -8,13 +10,14 @@ import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dy
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { catchError } from 'rxjs/operators';
 import { Filtro } from 'src/app/model/filtro';
-import { Produto } from 'src/app/model/produto';
+
 
 import { ArquivoService } from 'src/app/service/arquivo.service';
 import { ErrohandlerService } from 'src/app/service/errohandler.service';
 import { ProdutoService } from 'src/app/service/produto.service';
 import { SubcategoriaService } from 'src/app/service/subcategoria.service';
 import { SubcategoriadialogComponent } from 'src/app/subcategoria/subcategoriadialog/subcategoriadialog.component';
+import { Componente } from 'src/app/model/componente';
 
 @Component({
   selector: 'app-cadastroproduto',
@@ -29,6 +32,7 @@ export class CadastroprodutoComponent implements OnInit {
   totalRegistros = 0;
   exibirFormAtributos= false;
    atributo= new Atributo();
+   componente= new Componente();
   url: string;
   constructor(
     private subcategoriaService: SubcategoriaService,
@@ -166,6 +170,25 @@ export class CadastroprodutoComponent implements OnInit {
     this.ref.onClose.subscribe((subcategoria: Subcategoria) => {
       if (subcategoria) {
        // this.produtov.produto = produto;
+      }
+    });
+  }
+  showLIstaProduto() {
+    this.ref = this.dialogService.open(ListadialogprodutoComponent, {
+      header: 'Lista de Produtos',
+      width: '75%',
+
+      styleClass:"{'960px': '70vw'}",
+     contentStyle: { 'max-height': '1000px', overflow: 'auto' },
+
+     resizable: false,
+
+    baseZIndex: 10000,
+      // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
+    });
+    this.ref.onClose.subscribe((produto: Produto) => {
+      if (produto) {
+       this.componente.produto = produto;
       }
     });
   }

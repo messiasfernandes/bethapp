@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="card">
+
+    <div class="grid">
+      <div class="col-12 md:col-6 lg:col-3">
+        <h2> Consulta Produto</h2>
+      </div>
+    </div>
+
+
+    <div class="p-fluid grid">
+
+
+      <div class="col-6 md:col-6 lg:col-4 p-fluid">
+        <form autocomplete="off" (ngSubmit)="buscar()">
+
+          <span class="p-float-label ">
+            <span class="p-float-label p-input-icon-right">
+              <i class="pi pi-search"></i>
+              <input type="text" id="inputgroup" name="paramentro" pInputText [(ngModel)]="produtofiltro.parametro"
+                class="p-inputtext" placeholder="id, nome do produto, código ean 13">
+              <label for="inputgroup">Pesquisar</label>
+
+            </span>
+          </span>
+
+        </form>
+
+      </div>
+
+
+    </div>
+    <div class="grid">
+      <div class="col-12 tabela ">
+        <p-table [value]="produtos" responsiveLayout="stack" selectionMode="single" [rowHover]="true"
+          [rows]="produtofiltro.itensPorPagina" #tabela dataKey="id"
+          styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer" [lazy]="true"
+          (onLazyLoad)="aoMudarPagina($event)" [paginator]="true" [totalRecords]="totalRegistros">
+          <ng-template pTemplate="caption">
+
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+
+              <th>Código</th>
+              <th>Nome Produto
+              </th>
+              <th>Código Ean 13</th>
+              <th style="text-align: right;"> Preço Custo</th>
+              <th style="text-align: right;"> Preço Venda</th>
+              <th style="text-align: center;">Quantidade </th>
+              <th style="text-align: center;">Estoque Mínimo </th>
+              <th style="text-align: center;">Opções</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-produto>
+            <tr [pSelectableRow]="produto">
+              <td>{{produto.id}}</td>
+              <td>{{produto.nomeproduto}}</td>
+              <td> {{produto.codigoEan13}}</td>
+              <td style="text-align: right;">{{produto.precocusto | currency}}</td>
+              <td style="text-align: right;">{{produto.precovenda | currency }}</td>
+              <td style="text-align: center;">{{ produto.estoque?.quantidade !== null ? produto.estoque.quantidade : 0 }}</td>
+
+
+              <td style="text-align: center;"> {{produto.estoqueminimo}}</td>
+              <td>
+                <div class="flex flex-wrap align-items-center justify-content-center ">
+                  <a>
+
+                    <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                      class="p-button-primary mr-2" (click)=" selecionarProduto(produto)"  type="button"></button>
+                  </a>
+
+                </div>
+
+              </td>
+
+
+          </ng-template>
+
+        </p-table>
+      </div>
+    </div>
+
+  </div>
+</div>

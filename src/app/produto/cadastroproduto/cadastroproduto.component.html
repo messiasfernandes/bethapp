@@ -217,7 +217,50 @@
     </form>
       </p-tabPanel>
       <p-tabPanel header="Produto Composto" >
+        <div class="p-fluid grid">
+        <div class="col-12 md:col-6 lg:col-5 p-fluid">
 
+
+          <span class="p-float-label">
+            <input type="text" id="produtonome" required="true" name="nomeproduto" pInputText
+              [(ngModel)]="componente.produto.nomeproduto" ngModel #nomeproduto="ngModel" />
+
+            <label for="produtonome">Nome Produto</label>
+
+
+          </span>
+          <app-message [control]="nomeproduto" error="required" text="Informe  Nome do produto"></app-message>
+        </div>
+
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <span class="p-float-label">
+            <p-inputNumber inputId="custo" currency="BRL" mode="currency" name="precovenda" locale="pt-Br"
+              [(ngModel)]="componente.produto.precovenda" [minFractionDigits]="2"></p-inputNumber>
+            <label for="custo"> Preço Venda</label>
+          </span>
+
+        </div>
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <span class="p-float-label">
+            <p-inputNumber inputId="custo"  mode="decimal" name="qtde" locale="pt-Br"
+              [(ngModel)]="componente.qtde" [minFractionDigits]="3"></p-inputNumber>
+            <label for="custo"> Quantidade</label>
+          </span>
+
+        </div>
+        <div class="col-5 md:col-6 lg:col-2 p-fluid">
+
+          <button pButton icon="pi pi-plus" pTooltip="Adicoinar Componete" label="Produtos" (click)="showLIstaProduto()"
+
+         class="p-button-info p-button-lg"></button>
+      </div>
+      <div class="col-5 md:col-6 lg:col-1 p-fluid">
+
+        <button pButton icon="pi pi-plus" pTooltip="Adicoinar Componete"
+
+         class="p.p-button-success p-button-lg"></button>
+    </div>
+        </div>
       </p-tabPanel>
     </p-tabView>
   </div>

@@ -24,6 +24,7 @@ import { SubcategoriaService } from './service/subcategoria.service';
 import { HomeComponent } from './shared/home/home.component';
 import { ConsultarnotafiscalComponent } from './notafiscal/consultarnotafiscal/consultarnotafiscal.component';
 import { SubcategoriadialogComponent } from './subcategoria/subcategoriadialog/subcategoriadialog.component';
+import { ListadialogprodutoComponent } from './produto/listadialogproduto/listadialogproduto.component';
 
 registerLocaleData(ptBr, localePt);
 @NgModule({
@@ -38,6 +39,7 @@ registerLocaleData(ptBr, localePt);
     HomeComponent,
     ConsultarnotafiscalComponent,
     SubcategoriadialogComponent,
+    ListadialogprodutoComponent,
 
   ],
   imports: [
