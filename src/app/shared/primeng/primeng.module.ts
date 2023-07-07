@@ -66,12 +66,13 @@ import {CalendarModule} from 'primeng/calendar';
     DialogModule,
     ConfirmDialogModule,
     ImageModule,
+    TabViewModule
 
 
 
 
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers:[MessageService, ConfirmationService,DialogService]
+  providers:[MessageService, ConfirmationService,DialogService,DynamicDialogConfig]
 })
 export class PrimengModule { }

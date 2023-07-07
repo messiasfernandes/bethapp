@@ -229,7 +229,7 @@
 
 
           </span>
-          <app-message [control]="nomeproduto" error="required" text="Informe  Nome do produto"></app-message>
+
         </div>
 
         <div class="col-12 md:col-6 lg:col-2 p-fluid">
@@ -256,10 +256,64 @@
       </div>
       <div class="col-5 md:col-6 lg:col-1 p-fluid">
 
-        <button pButton icon="pi pi-plus" pTooltip="Adicoinar Componete"
+        <button pButton icon="pi pi-plus" pTooltip="Adicoinar Componete" (click)="addComponete()"
 
          class="p.p-button-success p-button-lg"></button>
     </div>
+        </div>
+
+        <div class="grid">
+          <div class="col-12 tabela ">
+            <p-table [value]="produto.componentes" responsiveLayout="stack" selectionMode="single" [rowHover]="true"
+             #tabela dataKey="id"
+              styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer" [lazy]="true"
+           >
+              <ng-template pTemplate="caption">
+
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+
+                  <th>Código</th>
+                  <th>Nome Produto
+                  </th>
+                  <th style="text-align: center;">Quantidade </th>
+                  <th style="text-align: right;"> Preço Venda</th>
+                  <th style="text-align: right;"> Subtotal</th>
+                  <th style="text-align: center;">Estqoue </th>
+
+                  <th style="text-align: center;">Opções</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-componente  let-rowIndex="rowIndex">
+                <tr [pSelectableRow]="componente">
+                  <td>{{componente.id}}</td>
+                  <td>{{componente.produto.nomeproduto}}</td>
+                  <td style="text-align: center;"> {{componente
+                    .qtde}}</td>
+                  <td style="text-align: right;">{{componente.produto.precovenda | currency}}</td>
+                  <td style="text-align: right;">{{componente.subtotal | currency }}</td>
+                  <td style="text-align: center;">{{ componente.produto.estoque?.quantidade !== null ? componente.produto.estoque.quantidade : 0 }}</td>
+
+
+
+                  <td>
+                    <div class="flex flex-wrap align-items-center justify-content-center ">
+                      <a>
+
+                        <button pButton pRipple icon="pi pi-minus" pTooltip="Editar" tooltipPosition="top"
+                          class=" p-button-danger -button-s mr-2"  (click)="removerCompnente(rowIndex)"  type="button"></button>
+                      </a>
+
+                    </div>
+
+                  </td>
+
+
+              </ng-template>
+
+            </p-table>
+          </div>
         </div>
       </p-tabPanel>
     </p-tabView>

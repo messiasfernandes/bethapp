@@ -192,5 +192,27 @@ export class CadastroprodutoComponent implements OnInit {
       }
     });
   }
+  addComponete(){
+    console.log(this.componente)
+
+    this.componente.subtotal= this.componente.qtde* this.componente.produto.precovenda;
+    this.produto.precovenda=  this.produto.precovenda+ this.componente.produto.precovenda*this.componente.qtde;
+    this.produto.precocusto= this.produto.precocusto+ this.componente.produto.precocusto*this.componente.qtde
+    this.produto.customedio=  this.produto.customedio+this.componente.produto.customedio * this.componente.qtde
+    this.produto.componentes.push(this.componente)
+    this.componente = new Componente()
+    console.log(this.produto)
+  }
+  removerCompnente(index: number) {
+    this.diminuirVarlor(index)
+    this.produto.componentes.splice(index, 1);
+  }
+  diminuirVarlor(index: number){
+
+    this.produto.precovenda-= this.produto.componentes[index].produto.precovenda*this.produto.componentes[index].qtde;
+   // this.produto.precocusto-= this.componente.produto.precocusto*this.componente.qtde
+  //  this.produto.customedio+= this.componente.produto.customedio * this.componente.qtde
+
+  }
 }
 

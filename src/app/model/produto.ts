@@ -1,3 +1,4 @@
+import { Componente } from './componente';
 import { Atributo } from "./atributo";
 import { Subcategoria } from "./subcategoria";
 
@@ -20,4 +21,5 @@ export class Produto {
   estoqueminimo: number;
   subcategoria = new Subcategoria();
   atributos : Atributo [] = [];
+  componentes: Componente[]=[];
 }
