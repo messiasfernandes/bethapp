@@ -34,6 +34,9 @@ export class CadastroprodutoComponent implements OnInit {
    atributo= new Atributo();
    componente= new Componente();
   url: string;
+  bloqueiaboatao =false
+  show = false;
+
   constructor(
     private subcategoriaService: SubcategoriaService,
     private arquivoService: ArquivoService,
@@ -44,7 +47,9 @@ export class CadastroprodutoComponent implements OnInit {
     private idParametro: ActivatedRoute,
     private errorHandler: ErrohandlerService,
     public config: DynamicDialogConfig,
-  ) {}
+  ) {
+
+  }
   ngOnInit(): void {
     let codigoproduto = this.idParametro.snapshot.params['id'];
 
@@ -189,18 +194,28 @@ export class CadastroprodutoComponent implements OnInit {
     this.ref.onClose.subscribe((produto: Produto) => {
       if (produto) {
        this.componente.produto = produto;
+
+          this.bloqueiaboatao=true;
+
+
+       console.log(this.bloqueiaboatao)
       }
     });
   }
   addComponete(){
-    console.log(this.componente)
 
-    this.componente.subtotal= this.componente.qtde* this.componente.produto.precovenda;
-    this.produto.precovenda=  this.produto.precovenda+ this.componente.produto.precovenda*this.componente.qtde;
-    this.produto.precocusto= this.produto.precocusto+ this.componente.produto.precocusto*this.componente.qtde
-    this.produto.customedio=  this.produto.customedio+this.componente.produto.customedio * this.componente.qtde
-    this.produto.componentes.push(this.componente)
-    this.componente = new Componente()
+if(this.componente.qtde<=0){
+  this.messageService.add({severity:'error', summary: 'Error', detail: 'qtde não pdoe ser menor que zero ou igual a 0'})
+}else{
+  this.componente.subtotal= this.componente.qtde* this.componente.produto.precovenda;
+  this.produto.precovenda=  this.produto.precovenda+ this.componente.produto.precovenda*this.componente.qtde;
+  this.produto.precocusto= this.produto.precocusto+ this.componente.produto.precocusto*this.componente.qtde
+  this.produto.customedio=  this.produto.customedio+this.componente.produto.customedio * this.componente.qtde
+  this.produto.componentes.push(this.componente)
+  this.componente = new Componente()
+  this.bloqueiaboatao=false;
+}
+
     console.log(this.produto)
   }
   removerCompnente(index: number) {
@@ -209,9 +224,11 @@ export class CadastroprodutoComponent implements OnInit {
   }
   diminuirVarlor(index: number){
 
-    this.produto.precovenda-= this.produto.componentes[index].produto.precovenda*this.produto.componentes[index].qtde;
-   // this.produto.precocusto-= this.componente.produto.precocusto*this.componente.qtde
-  //  this.produto.customedio+= this.componente.produto.customedio * this.componente.qtde
+    this.produto.precovenda-= this.produto.componentes[index].produto.precovenda
+
+   this.produto.precocusto-= this.produto.componentes[index].produto.precocusto
+
+     this.produto.customedio-= this.produto.componentes[index].produto.customedio
 
   }
 }

@@ -2,7 +2,7 @@ import { Produto } from "./produto";
 
 export class Componente {
   id: number;
-  qtde: number;
+  qtde: number=1;
   subtotal: number;
   produto= new Produto()
 }

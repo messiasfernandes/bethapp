@@ -223,7 +223,7 @@
 
           <span class="p-float-label">
             <input type="text" id="produtonome" required="true" name="nomeproduto" pInputText
-              [(ngModel)]="componente.produto.nomeproduto" ngModel #nomeproduto="ngModel" />
+              [(ngModel)]="componente.produto.nomeproduto" [readOnly]="true" ngModel #nomeproduto="ngModel" />
 
             <label for="produtonome">Nome Produto</label>
 
@@ -231,11 +231,16 @@
           </span>
 
         </div>
+        <div class="col-5 md:col-6 lg:col-2 p-fluid">
 
+          <button pButton icon="pi pi-plus" pTooltip="Adicoinar Componete" label="Produtos" (click)="showLIstaProduto()"
+
+         class="p-button-info p-button-lg"></button>
+      </div>
         <div class="col-12 md:col-6 lg:col-2 p-fluid">
           <span class="p-float-label">
             <p-inputNumber inputId="custo" currency="BRL" mode="currency" name="precovenda" locale="pt-Br"
-              [(ngModel)]="componente.produto.precovenda" [minFractionDigits]="2"></p-inputNumber>
+              [(ngModel)]="componente.produto.precovenda" [readonly]="true" [minFractionDigits]="2"></p-inputNumber>
             <label for="custo"> Preço Venda</label>
           </span>
 
@@ -248,15 +253,10 @@
           </span>
 
         </div>
-        <div class="col-5 md:col-6 lg:col-2 p-fluid">
 
-          <button pButton icon="pi pi-plus" pTooltip="Adicoinar Componete" label="Produtos" (click)="showLIstaProduto()"
-
-         class="p-button-info p-button-lg"></button>
-      </div>
       <div class="col-5 md:col-6 lg:col-1 p-fluid">
 
-        <button pButton icon="pi pi-plus" pTooltip="Adicoinar Componete" (click)="addComponete()"
+        <button pButton icon="pi pi-plus" pTooltip="Adicoinar Componete" [disabled]="!bloqueiaboatao" (click)="addComponete()"
 
          class="p.p-button-success p-button-lg"></button>
     </div>

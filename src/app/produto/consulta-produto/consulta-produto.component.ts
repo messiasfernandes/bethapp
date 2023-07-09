@@ -15,6 +15,7 @@ export class ConsultaProdutoComponent implements OnInit {
   produtofiltro = new Filtro();
   produtos: any[] = [];
   totalRegistros = 0;
+
   @ViewChild('tabela') grid: any;
   constructor(
     private produtoService: ProdutoService,
