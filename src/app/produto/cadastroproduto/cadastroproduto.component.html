@@ -265,7 +265,7 @@
         <div class="grid">
           <div class="col-12 tabela ">
             <p-table [value]="produto.componentes" responsiveLayout="stack" selectionMode="single" [rowHover]="true"
-             #tabela dataKey="id"
+             #tabela dataKey="qtde"
               styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer" [lazy]="true"
            >
               <ng-template pTemplate="caption">
@@ -285,7 +285,7 @@
                   <th style="text-align: center;">Opções</th>
                 </tr>
               </ng-template>
-              <ng-template pTemplate="body" let-componente  let-rowIndex="rowIndex">
+              <ng-template pTemplate="body" let-componente key let-rowIndex="rowIndex">
                 <tr [pSelectableRow]="componente">
                   <td>{{componente.id}}</td>
                   <td>{{componente.produto.nomeproduto}}</td>

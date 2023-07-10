@@ -25,16 +25,16 @@ import { Componente } from 'src/app/model/componente';
   styleUrls: ['./cadastroproduto.component.css'],
 })
 export class CadastroprodutoComponent implements OnInit {
-  subcategorias: any = ([] = []);
+  subcategorias: any = [] = [];
   produto = new Produto();
   subcategoriaFiltro = new Filtro();
-  ref : DynamicDialogRef;
+  ref: DynamicDialogRef;
   totalRegistros = 0;
-  exibirFormAtributos= false;
-   atributo= new Atributo();
-   componente= new Componente();
+  exibirFormAtributos = false;
+  atributo = new Atributo();
+  componente = new Componente();
   url: string;
-  bloqueiaboatao =false
+  bloqueiaboatao = false
   show = false;
 
   constructor(
@@ -63,29 +63,26 @@ export class CadastroprodutoComponent implements OnInit {
     console.log('inicou');
     this.produtoService.detalhar(codigoproduto).subscribe((data) => {
       this.produto = data;
-      console.log(this.produto);
       this.getbuscarfoto(this.produto.imagemPrincipal);
       console.log(this.produto.imagemPrincipal);
     });
 
 
   }
-  addAtributo(){
+  addAtributo() {
     this.produto.atributos.push(this.atributo);
-   this.atributo= new Atributo();
+    this.atributo = new Atributo();
   }
   carregarSubcategorias(evento: any) {
     this.subcategoriaFiltro.pagina = 0;
-    this.subcategoriaFiltro.parametro = evento.query;
-    console.log(this.subcategoriaFiltro.parametro);
+    this.subcategoriaFiltro.parametro = evento.query
     this.subcategoriaService
       .pesquisar(this.subcategoriaFiltro)
       .subscribe((dados: any) => {
-        console.log(dados.content);
         this.subcategorias = dados.content;
         this.totalRegistros = dados.total;
       });
-      this.produto.subcategoria=this.subcategorias[0]
+    this.produto.subcategoria = this.subcategorias[0]
   }
   upLoad() {
     let input = document.createElement('input');
@@ -120,30 +117,30 @@ export class CadastroprodutoComponent implements OnInit {
   }
   getbuscarfoto(image: string) {
     console.log(image)
-    if (image){
+    if (image) {
       this.url = this.arquivoService.buscarfoto(image);
-  }else{
-    this.url ='/assets/no-image-icon.jpg'
-  }
-  return this.url
+    } else {
+      this.url = '/assets/no-image-icon.jpg'
+    }
+    return this.url
   }
   salvar(form: NgForm) {
     if (this.produto.id != null) {
       this.produtoService.editar(this.produto)
-      .pipe(
-        catchError((erro: any) => {
-          return throwError(() => this.errorHandler.erroHandler(erro));
-        })
-      )
-      .subscribe();
+        .pipe(
+          catchError((erro: any) => {
+            return throwError(() => this.errorHandler.erroHandler(erro));
+          })
+        )
+        .subscribe();
       this.messageService.add({
-      severity: 'info',
-      detail: 'Produto editado com sucesso!',
-    })
+        severity: 'info',
+        detail: 'Produto editado com sucesso!',
+      })
     } else {
       console.log(this.produto);
       this.produtoService.salvar(this.produto).subscribe();
-     ;
+      ;
       this.messageService.add({
         severity: 'success',
         detail: 'Produto salvo com sucesso!',
@@ -153,8 +150,8 @@ export class CadastroprodutoComponent implements OnInit {
     this.router.navigate(['/produtos'])
 
   }
-  abrirdialog(){
-    this.exibirFormAtributos= true
+  abrirdialog() {
+    this.exibirFormAtributos = true
   }
   remover(index: number) {
     this.produto.atributos.splice(index, 1);
@@ -164,17 +161,17 @@ export class CadastroprodutoComponent implements OnInit {
       header: 'SubCategorias',
       width: '50%',
 
-      styleClass:"{'960px': '70vw'}",
-     contentStyle: { 'max-height': '800px', overflow: 'auto' },
+      styleClass: "{'960px': '70vw'}",
+      contentStyle: { 'max-height': '800px', overflow: 'auto' },
 
-     resizable: false,
+      resizable: false,
 
-    baseZIndex: 10000,
+      baseZIndex: 10000,
       // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
     });
     this.ref.onClose.subscribe((subcategoria: Subcategoria) => {
       if (subcategoria) {
-       // this.produtov.produto = produto;
+        // this.produtov.produto = produto;
       }
     });
   }
@@ -183,52 +180,43 @@ export class CadastroprodutoComponent implements OnInit {
       header: 'Lista de Produtos',
       width: '75%',
 
-      styleClass:"{'960px': '70vw'}",
-     contentStyle: { 'max-height': '1000px', overflow: 'auto' },
+      styleClass: "{'960px': '70vw'}",
+      contentStyle: { 'max-height': '1000px', overflow: 'auto' },
 
-     resizable: false,
+      resizable: false,
 
-    baseZIndex: 10000,
+      baseZIndex: 10000,
       // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
     });
     this.ref.onClose.subscribe((produto: Produto) => {
       if (produto) {
-       this.componente.produto = produto;
+        this.componente.produto = produto;
 
-          this.bloqueiaboatao=true;
+        this.bloqueiaboatao = true;
 
 
-       console.log(this.bloqueiaboatao)
       }
     });
   }
-  addComponete(){
+  addComponete() {
 
-if(this.componente.qtde<=0){
-  this.messageService.add({severity:'error', summary: 'Error', detail: 'qtde não pdoe ser menor que zero ou igual a 0'})
-}else{
-  this.componente.subtotal= this.componente.qtde* this.componente.produto.precovenda;
-  this.produto.precovenda=  this.produto.precovenda+ this.componente.produto.precovenda*this.componente.qtde;
-  this.produto.precocusto= this.produto.precocusto+ this.componente.produto.precocusto*this.componente.qtde
-  this.produto.customedio=  this.produto.customedio+this.componente.produto.customedio * this.componente.qtde
-  this.produto.componentes.push(this.componente)
-  this.componente = new Componente()
-  this.bloqueiaboatao=false;
-}
+    if (this.componente.qtde <= 0) {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'qtde não pdoe ser menor que zero ou igual a 0' })
+    } else {
+      this.produto.componentes.push(this.produtoService.adiCionarComponente(this.produto, this.componente))
+      this.componente = new Componente()
+      this.bloqueiaboatao = false;
+    }
 
-    console.log(this.produto)
+
   }
   removerCompnente(index: number) {
     this.diminuirVarlor(index)
     this.produto.componentes.splice(index, 1);
   }
-  diminuirVarlor(index: number){
+  diminuirVarlor(index: number) {
 
-    this.produto.precovenda-= this.produto.componentes[index].produto.precovenda
-
-   this.produto.precocusto-= this.produto.componentes[index].produto.precocusto
-
-     this.produto.customedio-= this.produto.componentes[index].produto.customedio
+    this.produto = this.produtoService.removerComponente(index, this.produto)
 
   }
 }
