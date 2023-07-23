@@ -2,9 +2,10 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subcategoria } from '../model/subcategoria';
-import { config } from 'src/config/config';
+
 import { Filtro } from '../model/filtro';
 import { Servicemodel } from './servicemodel';
+import { config } from '../shared/config/config';
 
 @Injectable({
   providedIn: 'root'

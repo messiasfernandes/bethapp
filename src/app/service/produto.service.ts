@@ -1,4 +1,4 @@
-import { config } from './../../config/config';
+
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Filtro } from '../model/filtro';
@@ -7,6 +7,7 @@ import { Produto } from '../model/produto';
 import { Observable } from 'rxjs';
 import { Servicemodel } from './servicemodel';
 import { Componente } from '../model/componente';
+import { config } from '../shared/config/config';
 
 @Injectable({
   providedIn: 'root',

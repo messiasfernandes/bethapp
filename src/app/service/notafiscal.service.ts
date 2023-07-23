@@ -3,7 +3,7 @@ import { Servicemodel } from './servicemodel';
 import { Observable } from 'rxjs';
 import { Filtro } from '../model/filtro';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { config } from '../shared/config';
+import { config } from '../shared/config/config';
 
 @Injectable({
   providedIn: 'root'

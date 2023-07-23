@@ -3,7 +3,7 @@
 
     <div class="grid">
       <div class="col-12 md:col-6 lg:col-3">
-        <h2> Consulta Nota  Fiscal</h2>
+        <h2> Consulta Nota Fiscal</h2>
       </div>
     </div>
 
@@ -29,8 +29,9 @@
       </div>
 
       <div class="col-6 md:col-6 lg:col-2 p-fluid">
-        <button pButton icon="pi pi-plus" pTooltip="Adicoinar Produto" label="novo" routerLink="/importarnotalfiscal/novo"
-          routerLinkActive="active-link" class="p-button-success p-button-lg"></button>
+        <button pButton icon="pi pi-plus" pTooltip="Adicoinar Produto" label="novo"
+          routerLink="/importarnotalfiscal/novo" routerLinkActive="active-link"
+          class="p-button-success p-button-lg"></button>
       </div>
     </div>
     <div class="grid">
@@ -46,7 +47,7 @@
             <tr>
 
               <th>Código</th>
-              <th>NNumero da nota
+              <th>Numero da nota
               </th>
               <th>Data de Entrada</th>
               <th style="text-align: right;"> data de Emissão</th>
@@ -60,8 +61,8 @@
             <tr [pSelectableRow]="notafiscal">
               <td>{{notafiscal.id}}</td>
               <td>{{notafiscal.numerodanota}}</td>
-              <td> {{notafiscal.data_entrada| date}}</td>
-              <td style="text-align: right;">{{notafiscal.data_emissao_nota | date}}</td>
+              <td> {{notafiscal.data_entrada}}</td>
+              <td style="text-align: right;">{{notafiscal.data_emissao_nota }}</td>
               <td style="text-align: right;">{{notafiscal.fornecedor.nome }}</td>
               <td style="text-align: center;">{{ notafiscal.arquivo_nota }}</td>
 
@@ -75,7 +76,7 @@
                       class="p-button-primary mr-2" type="button"></button>
                   </a>
                   <button pButton pRipple icon="pi pi-trash" type="button" pTooltip="Excluir" tooltipPosition="top"
-                      class=" p-button-danger mr2 "></button>
+                    class=" p-button-danger mr2 "></button>
                 </div>
 
               </td>
@@ -89,4 +90,3 @@
 
   </div>
 </div>
-

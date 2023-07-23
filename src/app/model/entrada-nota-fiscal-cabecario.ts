@@ -8,5 +8,6 @@ export class EntradaNotaFiscalCabecario {
   data_emissao_nota: string
   fornecedor = new Fornecedor()
   items_entrada: IntemsEntrada[]=[]
+  arquivo_nota:string;
 
 }

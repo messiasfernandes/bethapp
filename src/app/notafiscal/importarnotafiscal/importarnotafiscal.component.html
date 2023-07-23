@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="card">
+
+    <div class="grid">
+      <div class="col-12 md:col-6 lg:col-3">
+        <h2> Cadastro Nota Fiscal</h2>
+      </div>
+    </div>
+
+
+    <div class="p-fluid grid">
+      <div class="col-12 md:col-6 lg:col-5 p-fluid">
+
+
+        <span class="p-float-label">
+          <input type="text" id="arquivo" required="true" name="arquivo_nota" pInputText readonly="true"
+            [(ngModel)]="notaFiscal.arquivo_nota" />
+
+          <label for="arquivo">Nome Arquivo</label>
+
+
+        </span>
+
+      </div>
+      <div class="col-12 md:col-6 lg:col-2 p-fluid">
+        <button pButton icon="pi pi-file-import" class="p-button-success p-button-lg" (click)="enviaXmlNota()"
+          label="Importar Nota"></button>
+      </div>
+      <div class="col-12 md:col-6 lg:col-4 p-fluid">
+        <span class="p-float-label">
+          <p-dropdown appendTo="body" [filter]="true" [autoDisplayFirst]="false" [showClear]="true"
+            [options]="formasdepagamento" [(ngModel)]="formadePagmento">
+
+          </p-dropdown>
+          <label for="dropdown">Forma de Pagamento</label>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

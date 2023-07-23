@@ -35,7 +35,7 @@ import {DataViewModule} from 'primeng/dataview';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {CalendarModule} from 'primeng/calendar';
 
-
+import {ListboxModule} from 'primeng/listbox';
 
 
 @NgModule({
@@ -66,7 +66,8 @@ import {CalendarModule} from 'primeng/calendar';
     DialogModule,
     ConfirmDialogModule,
     ImageModule,
-    TabViewModule
+    TabViewModule,
+    ListboxModule
 
 
 
