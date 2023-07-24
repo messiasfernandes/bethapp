@@ -52,11 +52,62 @@
       </span>
       <app-message [control]="quatidadeparcela" error="required" text="Informe  quantidade de parcelas"></app-message>
       </div>
-
       <div class="col-12 md:col-6 lg:col-2 p-fluid">
         <button pButton icon="pi pi-send" class="p-button-success p-button-lg" type="submit" [disabled]="!f.valid"
           label="importar notal "></button>
       </div>
+      <div class="col-12 md:col-6 lg:col-2 p-fluid">
+
+        <button pButton pRipple type="button" icon="pi pi-sign-in" label="Voltar" routerLink="/importarnotalfiscal"
+          class="p-button-outlined p-button-lg p-button-danger"></button>
+      </div>
+        <div class="col-12 ">
+          <p-table [value]="notaFiscal.items_entrada"
+           responsiveLayout="stack" selectionMode="single" [rowHover]="true"
+           #tabela dataKey="id"
+            styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer" [lazy]="true"
+         >
+            <ng-template pTemplate="caption">
+
+            </ng-template>
+            <ng-template pTemplate="header">
+              <tr>
+
+                <th>Código</th>
+                <th>Nome Produto
+                </th>
+                <th style="text-align: center;">Quantidade </th>
+                <th style="text-align: right;"> Preço Venda</th>
+                <th style="text-align: right;"> Subtotal</th>
+                <th style="text-align: center;">Preço Custo </th>
+
+
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item >
+              <tr [pSelectableRow]="item" >
+                <td>{{item.produto.id}}</td>
+                <td>{{item.produto.nomeproduto}}</td>
+                <td style="text-align: center;"> {{item
+                  .qtde}}</td>
+                <td style="text-align: right;">{{item.produto.precovenda | currency}}</td>
+                <td style="text-align: right;">{{item.subtotal | currency }}</td>
+                <td style="text-align: right;">{{ item.produto.precocusto| currency}}</td>
+
+
+
+                <td>
+
+
+                </td>
+
+
+            </ng-template>
+
+          </p-table>
+        </div>
+
+
 
     </div>
     </form>

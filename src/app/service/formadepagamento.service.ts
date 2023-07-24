@@ -11,8 +11,8 @@ import { config } from '../shared/config/config';
 export class FormadepagamentoService {
 
   constructor(private http: HttpClient) { }
-  listaTodas():Promise<Formadepagamento[]>{
-    return this.http.get<Formadepagamento[]>(`${config.baseurl}formadepagamentos`).toPromise()
-
+  listaTodas():Observable<Formadepagamento[]>{
+    console.log(config.baseurl)
+    return this.http.get<Formadepagamento[]>(`${config.baseurl}formasdepagamentos`)
   }
 }

@@ -43,17 +43,19 @@ export class NotafiscalService implements Servicemodel{
   excluir(id: number): Observable<any> {
     throw new Error('Method not implemented.');
   }
-  enviarnota(xml:string, margem:number, idforma:number,qtdeparecla:number ): Observable<EntradaNotaFiscalCabecario>{
-    let params = new HttpParams()
-      .set('xml', xml)
-      .set('margem', margem.toString())
-      .set('idforma', idforma.toString())
-      .set('qtdeparecla',qtdeparecla.toString())
-      ;
-      const response = this.http.get<any>(`${config.baseurl}importarnotasfiscais`, {
-        params,
-      });
+  enviarnota(xml: string, margem: number, idforma: number, qtdeparcela: number): Observable<any> {
+    // Crie um objeto HttpParams e adicione os parâmetros
+    let params = new HttpParams();
+    params = params.set('xml', xml);
+    params = params.set('margem', margem.toString());
+    params = params.set('idforma', idforma.toString());
+    params = params.set('qtdeparcela', qtdeparcela.toString());
 
-      return response;
-    }
+   return this.http.post<EntradaNotaFiscalCabecario>(`${config.baseurl}importarnotasfiscais`, {}, {
+    params: params,
+    observe: 'response',
+  });
+
+
+}
 }
