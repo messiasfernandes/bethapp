@@ -6,11 +6,14 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import {
+  DialogService,
+  DynamicDialogConfig,
+  DynamicDialogRef,
+} from 'primeng/dynamicdialog';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { catchError } from 'rxjs/operators';
 import { Filtro } from 'src/app/model/filtro';
-
 
 import { ArquivoService } from 'src/app/service/arquivo.service';
 import { ErrohandlerService } from 'src/app/service/errohandler.service';
@@ -25,7 +28,7 @@ import { Componente } from 'src/app/model/componente';
   styleUrls: ['./cadastroproduto.component.css'],
 })
 export class CadastroprodutoComponent implements OnInit {
-  subcategorias: any = [] = [];
+  subcategorias: any = ([] = []);
   produto = new Produto();
   subcategoriaFiltro = new Filtro();
   ref: DynamicDialogRef;
@@ -34,7 +37,7 @@ export class CadastroprodutoComponent implements OnInit {
   atributo = new Atributo();
   componente = new Componente();
   url: string;
-  bloqueiaboatao = false
+  bloqueiaboatao = false;
   show = false;
 
   constructor(
@@ -46,10 +49,8 @@ export class CadastroprodutoComponent implements OnInit {
     public dialogService: DialogService,
     private idParametro: ActivatedRoute,
     private errorHandler: ErrohandlerService,
-    public config: DynamicDialogConfig,
-  ) {
-
-  }
+    public config: DynamicDialogConfig
+  ) {}
   ngOnInit(): void {
     let codigoproduto = this.idParametro.snapshot.params['id'];
 
@@ -66,8 +67,6 @@ export class CadastroprodutoComponent implements OnInit {
       this.getbuscarfoto(this.produto.imagemPrincipal);
       console.log(this.produto.imagemPrincipal);
     });
-
-
   }
   addAtributo() {
     this.produto.atributos.push(this.atributo);
@@ -75,14 +74,14 @@ export class CadastroprodutoComponent implements OnInit {
   }
   carregarSubcategorias(evento: any) {
     this.subcategoriaFiltro.pagina = 0;
-    this.subcategoriaFiltro.parametro = evento.query
+    this.subcategoriaFiltro.parametro = evento.query;
     this.subcategoriaService
       .pesquisar(this.subcategoriaFiltro)
       .subscribe((dados: any) => {
         this.subcategorias = dados.content;
         this.totalRegistros = dados.total;
       });
-    this.produto.subcategoria = this.subcategorias[0]
+    this.produto.subcategoria = this.subcategorias[0];
   }
   upLoad() {
     let input = document.createElement('input');
@@ -94,9 +93,7 @@ export class CadastroprodutoComponent implements OnInit {
       const formadata = new FormData();
       formadata.append('arquivo', arquivo[0]);
       if (this.produto.imagemPrincipal) {
-        this.arquivoService.removerArquivo(
-          this.produto.imagemPrincipal
-        );
+        this.arquivoService.removerArquivo(this.produto.imagemPrincipal);
       }
       this.produto.imagemPrincipal = arquivo[0].name;
       var reader = new FileReader();
@@ -116,17 +113,18 @@ export class CadastroprodutoComponent implements OnInit {
     input.click();
   }
   getbuscarfoto(image: string) {
-    console.log(image)
+    console.log(image);
     if (image) {
       this.url = this.arquivoService.buscarfoto(image);
     } else {
-      this.url = '/assets/no-image-icon.jpg'
+      this.url = '/assets/no-image-icon.jpg';
     }
-    return this.url
+    return this.url;
   }
   salvar(form: NgForm) {
     if (this.produto.id != null) {
-      this.produtoService.editar(this.produto)
+      this.produtoService
+        .editar(this.produto)
         .pipe(
           catchError((erro: any) => {
             return throwError(() => this.errorHandler.erroHandler(erro));
@@ -136,22 +134,20 @@ export class CadastroprodutoComponent implements OnInit {
       this.messageService.add({
         severity: 'info',
         detail: 'Produto editado com sucesso!',
-      })
+      });
     } else {
       console.log(this.produto);
       this.produtoService.salvar(this.produto).subscribe();
-      ;
       this.messageService.add({
         severity: 'success',
         detail: 'Produto salvo com sucesso!',
       });
     }
     form.reset();
-    this.router.navigate(['/produtos'])
-
+    this.router.navigate(['/produtos']);
   }
   abrirdialog() {
-    this.exibirFormAtributos = true
+    this.exibirFormAtributos = true;
   }
   remover(index: number) {
     this.produto.atributos.splice(index, 1);
@@ -193,31 +189,29 @@ export class CadastroprodutoComponent implements OnInit {
         this.componente.produto = produto;
 
         this.bloqueiaboatao = true;
-
-
       }
     });
   }
   addComponete() {
-
     if (this.componente.qtde <= 0) {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'qtde não pdoe ser menor que zero ou igual a 0' })
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'qtde não pdoe ser menor que zero ou igual a 0',
+      });
     } else {
-      this.produto.componentes.push(this.produtoService.adiCionarComponente(this.produto, this.componente))
-      this.componente = new Componente()
+      this.produto.componentes.push(
+        this.produtoService.adiCionarComponente(this.produto, this.componente)
+      );
+      this.componente = new Componente();
       this.bloqueiaboatao = false;
     }
-
-
   }
   removerCompnente(index: number) {
-    this.diminuirVarlor(index)
+    this.diminuirVarlor(index);
     this.produto.componentes.splice(index, 1);
   }
   diminuirVarlor(index: number) {
-
-    this.produto = this.produtoService.removerComponente(index, this.produto)
-
+    this.produto = this.produtoService.removerComponente(index, this.produto);
   }
 }
-

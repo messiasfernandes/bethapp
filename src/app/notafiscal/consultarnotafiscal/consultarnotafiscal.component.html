@@ -35,8 +35,8 @@
       </div>
     </div>
     <div class="grid">
-      <div class="col-12 tabela ">
-        <p-table [value]="notasfiscais" responsiveLayout="stack" selectionMode="single" [rowHover]="true"
+      <div class="col-12 ">
+        <p-table [value]="notasfiscais" responsiveLayout="stack"  [breakpoint]="'960px'" selectionMode="single" [rowHover]="true"
           [rows]="notafiscalfiltro.itensPorPagina" #tabela dataKey="id"
           styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer" [lazy]="true"
           (onLazyLoad)="aoMudarPagina($event)" [paginator]="true" [totalRecords]="totalRegistros">
@@ -69,7 +69,7 @@
 
 
               <td>
-                <div class="flex flex-wrap align-items-center justify-content-center ">
+                <div class="flex align-items-center justify-content-center">
                   <a>
 
                     <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"

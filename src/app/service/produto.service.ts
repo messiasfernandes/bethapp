@@ -13,7 +13,9 @@ import { config } from '../shared/config/config';
   providedIn: 'root',
 })
 export class ProdutoService implements Servicemodel {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+
+  }
 
   pesquisar(filtro: Filtro): Observable<Produto> {
 
@@ -62,14 +64,26 @@ export class ProdutoService implements Servicemodel {
    }
 
    adiCionarComponente(produto:Produto, componente: Componente){
-    componente.subtotal= componente.qtde* componente.produto.precovenda;
-    produto.precovenda+=   componente.produto.precovenda*componente.qtde;
-    produto.precocusto+=  componente.produto.precocusto*componente.qtde
-    produto.customedio+=  componente.produto.customedio * componente.qtde
+     produto.customedio=this.converterNaN(produto.customedio)
+     produto.precocusto=this.converterNaN(produto.precocusto)
+     produto.precovenda=this.converterNaN(produto.precovenda)
+     componente.subtotal = componente.qtde * componente.produto.precovenda;
+     produto.precovenda += componente.subtotal //componente.produto.precovenda * componente.qtde;
+     produto.precocusto += componente.produto.precocusto * componente.qtde;
+     produto.customedio += componente.produto.customedio * componente.qtde;
+
    // this.produto.componentes.push(this.componente)
    return componente
    }
+
+   converterNaN(valor:number) {
+    console.log(valor)
+    return isNaN(valor) ? 0 : valor;
+  }
    removerComponente(index: number, produto: Produto){
+    produto.customedio=this.converterNaN(produto.customedio)
+    produto.precocusto=this.converterNaN(produto.precocusto)
+    produto.precovenda=this.converterNaN(produto.precovenda)
 console.log(produto.componentes[index].produto.precovenda * produto.componentes[index].qtde )
     produto.precovenda-= produto.componentes[index].produto.precovenda * produto.componentes[index].qtde
 

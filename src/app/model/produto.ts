@@ -15,9 +15,9 @@ export class Produto {
   caracteristica: string;
   codigofabricante: string;
    controlarestoque: boolean;
-  precovenda: number=0;
-  precocusto: number=0;
-  customedio: number=0;
+  precovenda !: number;
+  precocusto!: number;
+  customedio!: number;
   estoqueminimo: number;
   subcategoria = new Subcategoria();
   atributos : Atributo [] = [];

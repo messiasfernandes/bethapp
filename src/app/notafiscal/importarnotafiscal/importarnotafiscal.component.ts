@@ -5,6 +5,9 @@ import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { NotafiscalService } from 'src/app/service/notafiscal.service';
 import { FormadepagamentoService } from 'src/app/service/formadepagamento.service';
 import { Formadepagamento } from 'src/app/model/formadepagamento';
+import { Auxiliar } from 'src/app/model/auxiliar';
+import { NgForm } from '@angular/forms';
+import { ArquivoService } from 'src/app/service/arquivo.service';
 
 @Component({
   selector: 'app-importarnotafiscal',
@@ -15,7 +18,8 @@ export class ImportarnotafiscalComponent implements OnInit {
   formasdepagamento:any=[]=[]
   formadePagmento= new Formadepagamento()
   notaFiscal = new EntradaNotaFiscalCabecario();
-  constructor(private notafiscalservice:NotafiscalService, private formadePaganetoService: FormadepagamentoService) {}
+ auxiliar= new Auxiliar()
+  constructor(private notafiscalservice:NotafiscalService, private formadePaganetoService: FormadepagamentoService, private arquivoService: ArquivoService) {}
   ngOnInit(): void {
     this.listaformas();
   }
@@ -36,8 +40,14 @@ export class ImportarnotafiscalComponent implements OnInit {
         console.log(event);
         //  this.url = event.target.result;
       };
+      this.arquivoService.enviarNota(formadata).subscribe((resposta) => {
+        console.log(resposta);
 
-      ///  this.getbuscarfoto(this.produtoVariacao.imagemPrncipal);
+        /// this.produto.imagemproduto = resposta.nomeArquivo;
+      });
+
+
+
     };
     input.click();
   }
@@ -60,5 +70,8 @@ export class ImportarnotafiscalComponent implements OnInit {
     } else {
       return String(value).trim();
     }
+  }
+  enviarNota(form: NgForm){
+
   }
 }

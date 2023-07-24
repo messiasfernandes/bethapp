@@ -1,3 +1,4 @@
+import { EntradaNotaFiscalCabecario } from './../model/entrada-nota-fiscal-cabecario';
 import { Injectable } from '@angular/core';
 import { Servicemodel } from './servicemodel';
 import { Observable } from 'rxjs';
@@ -42,4 +43,17 @@ export class NotafiscalService implements Servicemodel{
   excluir(id: number): Observable<any> {
     throw new Error('Method not implemented.');
   }
+  enviarnota(xml:string, margem:number, idforma:number,qtdeparecla:number ): Observable<EntradaNotaFiscalCabecario>{
+    let params = new HttpParams()
+      .set('xml', xml)
+      .set('margem', margem.toString())
+      .set('idforma', idforma.toString())
+      .set('qtdeparecla',qtdeparecla.toString())
+      ;
+      const response = this.http.get<any>(`${config.baseurl}importarnotasfiscais`, {
+        params,
+      });
+
+      return response;
+    }
 }

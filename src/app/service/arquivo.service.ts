@@ -31,4 +31,10 @@ export class ArquivoService {
     .subscribe(
     () => null);
   }
+  enviarNota(arquivo: FormData): Observable<any> {
+
+    return this.http
+      .post(`${config.baseurl}arquivos`, arquivo);
+
+  }
 }
