@@ -8,65 +8,65 @@
     </div>
 
     <form #f="ngForm" autocomplete="off" (ngSubmit)="enviarNota(f)">
-    <div class="p-fluid grid">
-      <div class="col-12 md:col-6 lg:col-4 p-fluid">
+      <div class="p-fluid grid">
+        <div class="col-12 md:col-6 lg:col-4 p-fluid">
 
 
-        <span class="p-float-label">
-          <input type="text" id="arquivo" required="true" name="arquivo_nota" pInputText readonly="true" [required]="true" #arquivo_nota="ngModel"
-            [(ngModel)]="notaFiscal.arquivo_nota" />
+          <span class="p-float-label">
+            <input type="text" id="arquivo" required="true" name="arquivo_nota" pInputText readonly="true"
+              [required]="true" #arquivo_nota="ngModel" [(ngModel)]="notaFiscal.arquivo_nota" />
 
-          <label for="arquivo">Nome Arquivo</label>
+            <label for="arquivo">Nome Arquivo</label>
 
 
-        </span>
-        <app-message [control]="arquivo_nota" error="required" text="Informe  a Forma de Pagamento"></app-message>
-      </div>
-      <div class="col-12 md:col-6 lg:col-2 p-fluid">
-        <button pButton icon="pi pi-file-import" type="button" class="p-button-info p-button-lg" (click)="enviaXmlNota()"
-          label="Selecionar xml Nota"></button>
-      </div>
-      <div class="col-12 md:col-6 lg:col-4 p-fluid">
-        <span class="p-float-label">
-          <p-dropdown appendTo="body" [filter]="true" [autoDisplayFirst]="false" [showClear]="true" [required]="true"  #id="ngModel" name="id"
-            [options]="formasdepagamento" [(ngModel)]="formadePagmento.id">
+          </span>
+          <app-message [control]="arquivo_nota" error="required" text="Informe  a Forma de Pagamento"></app-message>
+        </div>
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <button pButton icon="pi pi-file-import" type="button" class="p-button-info p-button-lg"
+            (click)="enviaXmlNota()" label="Selecionar xml Nota"></button>
+        </div>
+        <div class="col-12 md:col-6 lg:col-4 p-fluid">
+          <span class="p-float-label">
+            <p-dropdown appendTo="body" [filter]="true" [autoDisplayFirst]="false" [showClear]="true" [required]="true"
+              #id="ngModel" name="id" [options]="formasdepagamento" [(ngModel)]="formadePagmento.id">
 
-          </p-dropdown>
-          <label for="dropdown">Forma de Pagamento</label>
-        </span>
-        <app-message [control]="id" error="required" text="Informe  a Forma de Pagamento"></app-message>
-      </div>
-      <div class="col-12 md:col-6 lg:col-2 p-fluid">
-        <span class="p-float-label">
-          <p-inputNumber  mode="decimal" [(ngModel)]="auxiliar.percentual" [minFractionDigits]="3" [maxFractionDigits]="3" prefix="%"   #percentual="ngModel" [required]="true" name="percentual"> </p-inputNumber>
-          <label htmlFor="number-input">Percentual</label>
-      </span>
-      <app-message [control]="percentual" error="required" text="Informe  percentual de lucro"></app-message>
-      </div>
-      <div class="col-12 md:col-6 lg:col-2 p-fluid">
-        <span class="p-float-label">
+            </p-dropdown>
+            <label for="dropdown">Forma de Pagamento</label>
+          </span>
+          <app-message [control]="id" error="required" text="Informe  a Forma de Pagamento"></app-message>
+        </div>
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <span class="p-float-label">
+            <p-inputNumber mode="decimal" [(ngModel)]="auxiliar.percentual" [minFractionDigits]="3"
+              [maxFractionDigits]="3" prefix="%" #percentual="ngModel" [required]="true" name="percentual">
+            </p-inputNumber>
+            <label htmlFor="number-input">Percentual</label>
+          </span>
+          <app-message [control]="percentual" error="required" text="Informe  percentual de lucro"></app-message>
+        </div>
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <span class="p-float-label">
 
-          <p-inputNumber inputId="integeronly" [(ngModel)]="auxiliar.quatidadeparcela"
-             #quatidadeparcela="ngModel" [required]="true" name="quatidadeparcela"> </p-inputNumber>
-          <label htmlFor="number-input">Quande de Parcela </label>
-      </span>
-      <app-message [control]="quatidadeparcela" error="required" text="Informe  quantidade de parcelas"></app-message>
-      </div>
-      <div class="col-12 md:col-6 lg:col-2 p-fluid">
-        <button pButton icon="pi pi-send" class="p-button-success p-button-lg" type="submit" [disabled]="!f.valid"
-          label="importar notal "></button>
-      </div>
-      <div class="col-12 md:col-6 lg:col-2 p-fluid">
+            <p-inputNumber inputId="integeronly" [(ngModel)]="auxiliar.quatidadeparcela" #quatidadeparcela="ngModel"
+              [required]="true" name="quatidadeparcela"> </p-inputNumber>
+            <label htmlFor="number-input">Quande de Parcela </label>
+          </span>
+          <app-message [control]="quatidadeparcela" error="required"
+            text="Informe  quantidade de parcelas"></app-message>
+        </div>
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <button pButton icon="pi pi-send" class="p-button-success p-button-lg" type="submit" [disabled]="!f.valid"
+            label="importar notal "></button>
+        </div>
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
 
-        <button pButton pRipple type="button" icon="pi pi-sign-in" label="Voltar" routerLink="/importarnotalfiscal"
-          class="p-button-outlined p-button-lg p-button-danger"></button>
-      </div>
+          <button pButton pRipple type="button" icon="pi pi-sign-in" label="Voltar" routerLink="/importarnotalfiscal"
+            class="p-button-outlined p-button-lg p-button-danger"></button>
+        </div>
         <div class="col-12 ">
-          <p-table [value]="notaFiscal.items_entrada"
-           responsiveLayout="stack" selectionMode="single" [rowHover]="true"
-           #tabela dataKey="id"
-            styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer" [lazy]="true"
-         >
+          <p-table [value]="notaFiscal.items_entrada" responsiveLayout="stack" selectionMode="single" [rowHover]="true"
+            #tabela dataKey="id" styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer">
             <ng-template pTemplate="caption">
 
             </ng-template>
@@ -76,19 +76,20 @@
                 <th>Código</th>
                 <th>Nome Produto
                 </th>
-                <th style="text-align: center;">Quantidade </th>
+                <th style="text-align: right;">Quantidade </th>
                 <th style="text-align: right;"> Preço Venda</th>
                 <th style="text-align: right;"> Subtotal</th>
-                <th style="text-align: center;">Preço Custo </th>
+                <th style="text-align: right;">Preço Custo </th>
 
 
               </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-item >
-              <tr [pSelectableRow]="item" >
-                <td>{{item.produto.id}}</td>
+            <ng-template pTemplate="body" let-item>
+              <tr [pSelectableRow]="item">
+
+                <td>{{item.id}}</td>
                 <td>{{item.produto.nomeproduto}}</td>
-                <td style="text-align: center;"> {{item
+                <td style="text-align: right;"> {{item
                   .qtde}}</td>
                 <td style="text-align: right;">{{item.produto.precovenda | currency}}</td>
                 <td style="text-align: right;">{{item.subtotal | currency }}</td>
@@ -96,10 +97,7 @@
 
 
 
-                <td>
 
-
-                </td>
 
 
             </ng-template>
@@ -109,7 +107,7 @@
 
 
 
-    </div>
+      </div>
     </form>
   </div>
 </div>
