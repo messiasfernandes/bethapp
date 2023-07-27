@@ -13,6 +13,6 @@ export class FormadepagamentoService {
   constructor(private http: HttpClient) { }
   listaTodas():Observable<Formadepagamento[]>{
     console.log(config.baseurl)
-    return this.http.get<Formadepagamento[]>(`${config.baseurl}formadepagamentos`)
+    return this.http.get<Formadepagamento[]>(`${config.baseurl}formasdepagamentos`)
   }
 }

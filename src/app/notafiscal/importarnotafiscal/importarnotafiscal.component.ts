@@ -1,3 +1,4 @@
+import { IntemsEntrada } from './../../model/intems-entrada';
 import { Filtro } from 'src/app/model/filtro';
 import { EntradaNotaFiscalCabecario } from './../../model/entrada-nota-fiscal-cabecario';
 import { Component, OnInit } from '@angular/core';
@@ -24,6 +25,10 @@ export class ImportarnotafiscalComponent implements OnInit {
   formadePagmento= new Formadepagamento()
   notaFiscal = new EntradaNotaFiscalCabecario();
  auxiliar= new Auxiliar()
+ totalnota=0
+ numeroDoItem : number
+ totalDeItens: number;
+ numeroDoItemNaTabela :any
   constructor(private notafiscalservice:NotafiscalService, private formadePaganetoService: FormadepagamentoService, private arquivoService: ArquivoService,
     private messageService: MessageService, private errorHandler: ErrohandlerService,) {}
   ngOnInit(): void {
@@ -87,10 +92,11 @@ export class ImportarnotafiscalComponent implements OnInit {
     .subscribe( resposta=>{
       const statusCode = resposta.status;
       const body = resposta.body;
+      this.notaFiscal.fornecedor.nome= body.fornecedor.nome;
       this.notaFiscal.items_entrada =   body.items_entrada;
-
+      this.getTotal(this.notaFiscal.items_entrada)
       console.log(body)
-      console.log(this.notaFiscal)
+      console.log(this.notaFiscal.items_entrada)
       if(statusCode===201){
 
         this.messageService.add({
@@ -101,5 +107,26 @@ export class ImportarnotafiscalComponent implements OnInit {
 
     })
 
+  }
+  getTotal(items:IntemsEntrada[]){
+    this.numeroDoItem=0;
+    this.totalDeItens=0
+    this.numeroDoItemNaTabela=0
+    this.totalnota =this.notafiscalservice.totalNota(items);
+    items.forEach((item, index) => {
+      const numeroDoItem = index + 1;
+      const totalDeItens = items.length;
+     this.numeroDoItemNaTabela =  `${numeroDoItem}/${totalDeItens}`;
+       console.log(numeroDoItem)
+       console.log(totalDeItens)
+    });
+  }
+  novo(){
+   this.notaFiscal= new EntradaNotaFiscalCabecario()
+   this.auxiliar= new Auxiliar()
+   this. formadePagmento = new Formadepagamento()
+   this.numeroDoItem=0;
+    this.totalDeItens=0
+    this.numeroDoItemNaTabela=0
   }
 }

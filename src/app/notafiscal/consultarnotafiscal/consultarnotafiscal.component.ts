@@ -38,6 +38,7 @@ export class ConsultarnotafiscalComponent implements OnInit {
 
         this.totalRegistros = dados.totalElements;
       });
+
   }
 
 

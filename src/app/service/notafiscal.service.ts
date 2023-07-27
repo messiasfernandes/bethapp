@@ -5,13 +5,13 @@ import { Observable } from 'rxjs';
 import { Filtro } from '../model/filtro';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { config } from '../shared/config/config';
+import { IntemsEntrada } from '../model/intems-entrada';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class NotafiscalService implements Servicemodel{
-
-  constructor(private http: HttpClient) { }
+export class NotafiscalService implements Servicemodel {
+  constructor(private http: HttpClient) {}
   pesquisar(filtro: Filtro): Observable<any> {
     const headers = new HttpHeaders().append(
       'Content-Type',
@@ -24,10 +24,13 @@ export class NotafiscalService implements Servicemodel{
     if (filtro.parametro) {
       params = params.set('paramentro', filtro.parametro);
     }
-    const response = this.http.get<any>(`${config.baseurl}importarnotasfiscais`, {
-      headers,
-      params,
-    });
+    const response = this.http.get<any>(
+      `${config.baseurl}importarnotasfiscais`,
+      {
+        headers,
+        params,
+      }
+    );
 
     return response;
   }
@@ -43,7 +46,12 @@ export class NotafiscalService implements Servicemodel{
   excluir(id: number): Observable<any> {
     throw new Error('Method not implemented.');
   }
-  enviarnota(xml: string, margem: number, idforma: number, qtdeparcela: number): Observable<any> {
+  enviarnota(
+    xml: string,
+    margem: number,
+    idforma: number,
+    qtdeparcela: number
+  ): Observable<any> {
     // Crie um objeto HttpParams e adicione os parâmetros
     let params = new HttpParams();
     params = params.set('xml', xml);
@@ -51,11 +59,28 @@ export class NotafiscalService implements Servicemodel{
     params = params.set('idforma', idforma.toString());
     params = params.set('qtdeparcela', qtdeparcela.toString());
 
-   return this.http.post<EntradaNotaFiscalCabecario>(`${config.baseurl}importarnotasfiscais`, {}, {
-    params: params,
-    observe: 'response',
-  });
+    return this.http.post<EntradaNotaFiscalCabecario>(
+      `${config.baseurl}importarnotasfiscais`,
+      {},
+      {
+        params: params,
+        observe: 'response',
+      }
+    );
+  }
+  totalNota(items: IntemsEntrada[]): number {
+    if (!items) {
+      return 0; // ou algum valor padrão, dependendo do comportamento desejado
+    }
 
+    var total = 0;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].subtotal) {
+        total += items[i].subtotal as number;
+      }
+    }
 
-}
+    return total;
+  }
+
 }

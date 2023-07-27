@@ -64,6 +64,24 @@
           <button pButton pRipple type="button" icon="pi pi-sign-in" label="Voltar" routerLink="/importarnotalfiscal"
             class="p-button-outlined p-button-lg p-button-danger"></button>
         </div>
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+
+          <button pButton pRipple type="button" icon="pi pi-plus" label="novo" (click)="novo()"
+            class="p-button-outlined p-button-lg "></button>
+        </div>
+        <div class="col-12 md:col-6 lg:col-4 p-fluid">
+
+
+          <span class="p-float-label">
+            <input type="text" id="arquivo"  name="nome" pInputText readonly="true"
+               [(ngModel)]="notaFiscal.fornecedor.nome " [readOnly]="true"/>
+
+            <label for="arquivo">Nome do Fornecedor</label>
+
+
+          </span>
+
+        </div>
         <div class="col-12 ">
           <p-table [value]="notaFiscal.items_entrada" responsiveLayout="stack" selectionMode="single" [rowHover]="true"
             #tabela dataKey="id" styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer">
@@ -71,8 +89,8 @@
 
             </ng-template>
             <ng-template pTemplate="header">
-              <tr>
-
+              <tr  >
+                <th>Intem da nota </th>
                 <th>Código</th>
                 <th>Nome Produto
                 </th>
@@ -85,8 +103,8 @@
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-item>
-              <tr [pSelectableRow]="item">
-
+              <tr [pSelectableRow]="item" *ngFor=" item of notaFiscal.items_entrada; let i = index">
+                <td>{{ i + 1 }} / {{ notaFiscal.items_entrada.length }}</td>
                 <td>{{item.id}}</td>
                 <td>{{item.produto.nomeproduto}}</td>
                 <td style="text-align: right;"> {{item
@@ -95,13 +113,10 @@
                 <td style="text-align: right;">{{item.subtotal | currency }}</td>
                 <td style="text-align: right;">{{ item.produto.precocusto| currency}}</td>
 
-
-
-
-
-
             </ng-template>
-
+            <ng-template pTemplate="summary">
+             <div style="text-align: right;">Total da Nota:  {{totalnota| currency}}</div>
+          </ng-template>
           </p-table>
         </div>
 
