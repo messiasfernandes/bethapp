@@ -26,6 +26,7 @@ export class ImportarnotafiscalComponent implements OnInit {
   notaFiscal = new EntradaNotaFiscalCabecario();
  auxiliar= new Auxiliar()
  totalnota=0
+
  numeroDoItem : number
  totalDeItens: number;
  numeroDoItemNaTabela :any
@@ -111,15 +112,15 @@ export class ImportarnotafiscalComponent implements OnInit {
   getTotal(items:IntemsEntrada[]){
     this.numeroDoItem=0;
     this.totalDeItens=0
-    this.numeroDoItemNaTabela=0
+    this.numeroDoItemNaTabela=1
     this.totalnota =this.notafiscalservice.totalNota(items);
     items.forEach((item, index) => {
-      const numeroDoItem = index + 1;
-      const totalDeItens = items.length;
-     this.numeroDoItemNaTabela =  `${numeroDoItem}/${totalDeItens}`;
-       console.log(numeroDoItem)
-       console.log(totalDeItens)
+   //  this. numeroDoItem = index + 1;
+    this. totalDeItens = this.notaFiscal.items_entrada.length;
+   //  this.numeroDoItemNaTabela =  `${numeroDoItem}/${totalDeItens}`;
+
     });
+
   }
   novo(){
    this.notaFiscal= new EntradaNotaFiscalCabecario()
@@ -129,4 +130,5 @@ export class ImportarnotafiscalComponent implements OnInit {
     this.totalDeItens=0
     this.numeroDoItemNaTabela=0
   }
+
 }
