@@ -91,6 +91,11 @@ export class MenuComponent implements OnInit {
         icon: PrimeIcons.DOLLAR,
         items:[
           {
+            label: 'Condições de Pagamento',
+            icon: 'pi pi-tablet',
+      //      routerLink: ['/contaspagar'],
+          },
+          {
             label: 'Contas Receber',
             icon: PrimeIcons.MONEY_BILL,
            // routerLink: ['/contasreceber'],
@@ -101,6 +106,7 @@ export class MenuComponent implements OnInit {
             icon: 'pi pi-calculator',
       //      routerLink: ['/contaspagar'],
           }
+
 
         ]
 
