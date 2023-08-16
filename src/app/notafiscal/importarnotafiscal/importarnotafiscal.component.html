@@ -96,9 +96,9 @@
                 </th>
                 <th style="text-align: right;">Quantidade </th>
                 <th style="text-align: right;"> Preço Venda</th>
-                <th style="text-align: right;"> Subtotal</th>
-                <th style="text-align: right;">Preço Custo </th>
 
+                <th style="text-align: right;">Preço Custo </th>
+                <th style="text-align: right;"> Subtotal</th>
 
               </tr>
             </ng-template>
@@ -110,9 +110,9 @@
                 <td style="text-align: right;"> {{item
                   .qtde}}</td>
                 <td style="text-align: right;">{{item.produto.precovenda | currency}}</td>
-                <td style="text-align: right;">{{item.subtotal | currency }}</td>
-                <td style="text-align: right;">{{ item.produto.precocusto| currency}}</td>
 
+                <td style="text-align: right;">{{ item.produto.precocusto| currency : 'BRL':true:'1.2-3'}}</td>
+                <td style="text-align: right;">{{item.subtotal | currency }}</td>
             </ng-template>
             <ng-template pTemplate="summary">
              <div style="text-align: right;">Total da Nota:  {{totalnota| currency}}</div>
