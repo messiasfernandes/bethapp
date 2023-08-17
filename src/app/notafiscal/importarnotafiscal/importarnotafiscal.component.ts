@@ -129,6 +129,7 @@ export class ImportarnotafiscalComponent implements OnInit {
    this.numeroDoItem=0;
     this.totalDeItens=0
     this.numeroDoItemNaTabela=0
+    this.totalnota=0;
   }
 
 }
