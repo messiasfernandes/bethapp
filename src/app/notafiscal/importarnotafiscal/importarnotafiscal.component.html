@@ -148,7 +148,52 @@
             <label for="arquivo">Nome do Fornecedor</label>
           </span>
         </div>
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <span class="p-float-label">
+            <input
+              type="text"
+              id="serie"
+              name="serie"
+              pInputText
+              readonly="true"
+              [(ngModel)]="notaFiscal.serie"
+              [readOnly]="true"
+            />
 
+            <label for="serie">Serie</label>
+          </span>
+        </div>
+
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <span class="p-float-label">
+            <input
+              type="text"
+              id="modelo"
+              name="modelo"
+              pInputText
+              readonly="true"
+              [(ngModel)]="notaFiscal.modelo"
+              [readOnly]="true"
+            />
+
+            <label for="modelo">Modelo</label>
+          </span>
+        </div>
+        <div class="col-12 md:col-6 lg:col-4 p-fluid">
+          <span class="p-float-label">
+            <input
+              type="text"
+              id="chave"
+              name="chaveNota"
+              pInputText
+              readonly="true"
+              [(ngModel)]="notaFiscal.chaveNota"
+              [readOnly]="true"
+            />
+
+            <label for="chave">Chave</label>
+          </span>
+        </div>
         <div class="col-12 md:col-6 lg:col-2 p-fluid">
           <span class="p-float-label">
             <p-inputNumber
@@ -169,8 +214,7 @@
               inputId="integeronly"
               [(ngModel)]="notaFiscal.transporteNotafiscal.qtevolume"
               [readonly]="true"
-              name="qtevolume"
-            >
+              name="qtevolume">
             </p-inputNumber>
             <label htmlFor="number-input">Qtde de Volumes </label>
           </span>
@@ -190,7 +234,7 @@
           </span>
         </div>
 
-        <div class="col-12 md:col-6 lg:col-4 p-fluid">
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
           <span class="p-float-label">
             <input
               type="text"
@@ -202,6 +246,22 @@
             />
 
             <label for="arquivo">Placa Veiculo</label>
+          </span>
+        </div>
+
+        <div class="col-12 md:col-6 lg:col-6 p-fluid">
+          <span class="p-float-label">
+            <input
+              type="text"
+              id="arquivo"
+              name="naturezaopercao"
+              pInputText
+              readonly="true"
+              [(ngModel)]="notaFiscal.naturezaopercao"
+              [readOnly]="true"
+            />
+
+            <label for="arquivo">Natureza da Operção</label>
           </span>
         </div>
         <div class="col-12">
