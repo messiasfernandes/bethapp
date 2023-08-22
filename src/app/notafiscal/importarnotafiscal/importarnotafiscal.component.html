@@ -249,7 +249,7 @@
           </span>
         </div>
 
-        <div class="col-12 md:col-6 lg:col-6 p-fluid">
+        <div class="col-12 md:col-6 lg:col-4 p-fluid">
           <span class="p-float-label">
             <input
               type="text"
@@ -262,6 +262,77 @@
             />
 
             <label for="arquivo">Natureza da Operção</label>
+          </span>
+        </div>
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <span class="p-float-label">
+            <p-inputNumber
+              mode="decimal"
+              [(ngModel)]="notaFiscal.transporteNotafiscal.pesoLiquido"
+              [minFractionDigits]="3"
+              [readonly]="true"
+              [maxFractionDigits]="3"
+              name="pesoLiquido"
+            >
+            </p-inputNumber>
+            <label htmlFor="number-input">Peso Luíquido</label>
+          </span>
+        </div>
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <span class="p-float-label">
+            <p-inputNumber
+            currency="BRL" mode="currency"  locale="pt-Br"
+              [(ngModel)]="notaFiscal.impostoNota.totalNota"
+              [minFractionDigits]="2"
+              [readonly]="true"
+              [maxFractionDigits]="3"
+              name="totalNota"
+            >
+            </p-inputNumber>
+            <label htmlFor="number-input">Total da Nota</label>
+          </span>
+        </div>
+
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <span class="p-float-label">
+            <p-inputNumber
+          currency="BRL" mode="currency"  locale="pt-Br"
+              [(ngModel)]="notaFiscal.impostoNota.valorIcms"
+              [minFractionDigits]="2"
+              [readonly]="true"
+              [maxFractionDigits]="3"
+              name="valorIcms"
+            >
+            </p-inputNumber>
+            <label htmlFor="number-input">Total Icms</label>
+          </span>
+        </div>
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <span class="p-float-label">
+            <p-inputNumber
+           currency="BRL" mode="currency"  locale="pt-Br"
+              [(ngModel)]="notaFiscal.impostoNota.valorIpi"
+              [minFractionDigits]="2"
+              [readonly]="true"
+              [maxFractionDigits]="3"
+              name="valorIpi"
+            >
+            </p-inputNumber>
+            <label htmlFor="number-input">Total Ipi</label>
+          </span>
+        </div>
+        <div class="col-12 md:col-6 lg:col-2 p-fluid">
+          <span class="p-float-label">
+            <p-inputNumber
+           currency="BRL" mode="currency"  locale="pt-Br"
+              [(ngModel)]="notaFiscal.impostoNota.valorTributo"
+              [minFractionDigits]="2"
+              [readonly]="true"
+              [maxFractionDigits]="3"
+              name="valorTributo"
+            >
+            </p-inputNumber>
+            <label htmlFor="number-input">Total Tributo</label>
           </span>
         </div>
         <div class="col-12">

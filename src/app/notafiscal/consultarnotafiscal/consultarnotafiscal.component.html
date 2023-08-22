@@ -52,8 +52,8 @@
               <th>Data de Entrada</th>
               <th style="text-align: right;"> data de Emissão</th>
               <th style="text-align: right;"> Fornecedor</th>
-              <th style="text-align: center;">Nome do arquivo </th>
-              <th style="text-align: center;">Total da Nota</th>
+              <th style="text-align: right;">Total de Produto </th>
+              <th style="text-align: right;">Total da Nota</th>
               <th style="text-align: center;">Opções</th>
             </tr>
           </ng-template>
@@ -64,19 +64,19 @@
               <td> {{notafiscal.data_entrada}}</td>
               <td style="text-align: right;">{{notafiscal.data_emissao_nota }}</td>
               <td style="text-align: right;">{{notafiscal.fornecedor.nome }}</td>
-              <td style="text-align: center;">{{ notafiscal.arquivo_nota }}</td>
-              <td style="text-align: right;">{{ notafiscal.totalInf|currency}}</td>
+              <td style="text-align: center;">{{ notafiscal.totalProduto| currency}}</td>
+              <td style="text-align: right;">{{ notafiscal.impostoNota.totalNota|currency}}</td>
 
 
               <td>
                 <div class="flex align-items-center justify-content-center">
                   <a>
 
-                    <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                    <button pButton pRipple icon="pi pi-eye" pTooltip="Visualizar" tooltipPosition="top"
                       class="p-button-primary mr-2" type="button"></button>
                   </a>
-                  <button pButton pRipple icon="pi pi-trash" type="button" pTooltip="Excluir" tooltipPosition="top"
-                    class=" p-button-danger mr2 "></button>
+                  <button pButton pRipple icon="pi pi-times" type="button" pTooltip="Cancelar Nota" tooltipPosition="top"
+                    class=" p-button-info mr2 "></button>
                 </div>
 
               </td>

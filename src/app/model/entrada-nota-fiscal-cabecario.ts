@@ -1,4 +1,5 @@
 import { Fornecedor } from './fornecedor';
+import { ImpostoNota } from './imposto-nota';
 import { IntemsEntrada } from './intems-entrada';
 import { TransporteNotafiscal } from './transporte-notafiscal';
 
@@ -14,5 +15,7 @@ export class EntradaNotaFiscalCabecario {
   serie: string;
   modelo: string;
   chaveNota: string;
+  totalProduto:number;
+  impostoNota =  new ImpostoNota()
   transporteNotafiscal = new TransporteNotafiscal();
 }
