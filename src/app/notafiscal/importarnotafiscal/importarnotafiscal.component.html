@@ -353,8 +353,8 @@
                 <th>Nome Produto</th>
                 <th style="text-align: right">Quantidade</th>
                 <th style="text-align: right">Preço Venda</th>
-
-                <th style="text-align: right">Preço Custo</th>
+                <th style="text-align: right"> Custo </th>
+                <th style="text-align: right">Custo Medio</th>
                 <th style="text-align: right">Subtotal</th>
               </tr>
             </ng-template>
@@ -371,6 +371,11 @@
                 <td style="text-align: right">
                   {{
                     item.produto.precocusto | currency : "BRL" : true : "1.2-3"
+                  }}
+                </td>
+                <td style="text-align: right">
+                  {{
+                    item.produto.customedio | currency : "BRL" : true : "1.2-3"
                   }}
                 </td>
                 <td style="text-align: right">

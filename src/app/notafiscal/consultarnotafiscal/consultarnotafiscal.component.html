@@ -50,8 +50,8 @@
               <th>Numero da nota
               </th>
               <th>Data de Entrada</th>
-              <th style="text-align: right;"> data de Emissão</th>
-              <th style="text-align: right;"> Fornecedor</th>
+              <th style="text-align: left;"> data de Emissão</th>
+              <th style="text-align: center;"> Fornecedor</th>
               <th style="text-align: right;">Total de Produto </th>
               <th style="text-align: right;">Total da Nota</th>
               <th style="text-align: center;">Opções</th>
@@ -62,8 +62,8 @@
               <td>{{notafiscal.id}}</td>
               <td>{{notafiscal.numerodanota}}</td>
               <td> {{notafiscal.data_entrada}}</td>
-              <td style="text-align: right;">{{notafiscal.data_emissao_nota }}</td>
-              <td style="text-align: right;">{{notafiscal.fornecedor.nome }}</td>
+              <td style="text-align: left;">{{notafiscal.data_emissao_nota }}</td>
+              <td style="text-align: left;">{{notafiscal.fornecedor.nome }}</td>
               <td style="text-align: right;">{{ notafiscal.totalProduto| currency}}</td>
               <td style="text-align: right;">{{ notafiscal.impostoNota.totalNota|currency}}</td>
 
