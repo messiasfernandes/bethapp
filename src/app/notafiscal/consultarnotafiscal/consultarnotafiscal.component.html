@@ -61,8 +61,8 @@
             <tr [pSelectableRow]="notafiscal">
               <td>{{notafiscal.id}}</td>
               <td>{{notafiscal.numerodanota}}</td>
-              <td> {{notafiscal.data_entrada}}</td>
-              <td style="text-align: left;">{{notafiscal.data_emissao_nota }}</td>
+              <td> {{notafiscal.data_hora_entrada}}</td>
+              <td style="text-align: left;">{{notafiscal.data_hora_emissao_nota }}</td>
               <td style="text-align: left;">{{notafiscal.fornecedor.nome }}</td>
               <td style="text-align: right;">{{ notafiscal.totalProduto| currency}}</td>
               <td style="text-align: right;">{{ notafiscal.impostoNota.totalNota|currency}}</td>
