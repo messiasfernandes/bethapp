@@ -52,7 +52,7 @@ export class NotafiscalService implements Servicemodel {
     idforma: number,
     qtdeparcela: number
   ): Observable<any> {
-    // Crie um objeto HttpParams e adicione os parâmetros
+
     let params = new HttpParams();
     params = params.set('xml', xml);
     params = params.set('margem', margem.toString());
@@ -70,7 +70,7 @@ export class NotafiscalService implements Servicemodel {
   }
   totalNota(items: IntemsEntrada[]): number {
     if (!items) {
-      return 0; // ou algum valor padrão, dependendo do comportamento desejado
+      return 0;
     }
 
     var total = 0;
