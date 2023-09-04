@@ -10,7 +10,7 @@ import { Formadepagamento } from 'src/app/model/formadepagamento';
 import { Auxiliar } from 'src/app/model/auxiliar';
 import { NgForm } from '@angular/forms';
 import { ArquivoService } from 'src/app/service/arquivo.service';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ErrohandlerService } from 'src/app/service/errohandler.service';
 import { catchError, throwError } from 'rxjs';
 
@@ -99,11 +99,7 @@ export class ImportarnotafiscalComponent implements OnInit {
       .subscribe((resposta) => {
         const statusCode = resposta.status;
         const body = resposta.body;
-        this.notaFiscal= body
-     //   this.notaFiscal.fornecedor.nome = body.fornecedor.nome;
-     //   this.notaFiscal.items_entrada = body.items_entrada;
-     //   this.notaFiscal.transporteNotafiscal=body.transporteNotafiscal
-        console.log(this.notaFiscal)
+        this.notaFiscal= body;
         this.getTotal(this.notaFiscal.items_entrada);
         console.log(body);
         console.log(this.notaFiscal.items_entrada);

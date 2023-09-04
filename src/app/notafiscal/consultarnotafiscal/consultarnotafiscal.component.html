@@ -54,6 +54,7 @@
               <th style="text-align: center;"> Fornecedor</th>
               <th style="text-align: right;">Total de Produto </th>
               <th style="text-align: right;">Total da Nota</th>
+              <th>Status da Nota</th>
               <th style="text-align: center;">Opções</th>
             </tr>
           </ng-template>
@@ -67,7 +68,7 @@
               <td style="text-align: right;">{{ notafiscal.totalProduto| currency}}</td>
               <td style="text-align: right;">{{ notafiscal.impostoNota.totalNota|currency}}</td>
 
-
+              <td style="text-align: center;"> {{notafiscal.statusEntradaNota}}</td>
               <td>
                 <div class="flex align-items-center justify-content-center">
                   <a>
@@ -75,7 +76,7 @@
                     <button pButton pRipple icon="pi pi-eye" pTooltip="Visualizar" tooltipPosition="top"
                       class="p-button-primary mr-2" type="button"></button>
                   </a>
-                  <button pButton pRipple icon="pi pi-times" type="button" pTooltip="Cancelar Nota" tooltipPosition="top"
+                  <button pButton pRipple icon="pi pi-times" type="button" (click)="confirmarCancelar(notafiscal)" pTooltip="Cancelar Nota" tooltipPosition="top"
                     class="  p-button-danger mr2 "></button>
                 </div>
 
