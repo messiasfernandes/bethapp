@@ -40,6 +40,24 @@ export class ConsultarnotafiscalComponent implements OnInit {
       });
   }
 
+  buscarCancelado(pagina: number = 0): void {
+    this.notafiscalfiltro.pagina = pagina;
+    this.notafiscalService
+      .pesquisarCancelado(this.notafiscalfiltro)
+      .pipe(
+        catchError((erro: any) => {
+          return throwError(() => this.erroService.erroHandler(erro));
+        })
+      )
+      .subscribe((dados: any) => {
+        console.log(dados.content);
+        this.notasfiscais = dados.content;
+
+        this.totalRegistros = dados.totalElements;
+      });
+  }
+
+
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event!.first! / event!.rows!;
     this.buscar(pagina);

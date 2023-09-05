@@ -21,7 +21,7 @@ import { DialogModule } from 'primeng/dialog';
 import { FileUploadModule } from 'primeng/fileupload';
 import { GalleriaModule } from 'primeng/galleria';
 import { CheckboxModule } from 'primeng/checkbox';
-
+import { RadioButtonModule } from 'primeng/radiobutton';
 import { DividerModule } from 'primeng/divider';
 import { DropdownModule } from 'primeng/dropdown';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -67,7 +67,8 @@ import {ListboxModule} from 'primeng/listbox';
     ConfirmDialogModule,
     ImageModule,
     TabViewModule,
-    ListboxModule
+    ListboxModule,
+    RadioButtonModule
 
 
 

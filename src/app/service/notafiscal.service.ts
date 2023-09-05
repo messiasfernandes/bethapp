@@ -34,6 +34,28 @@ export class NotafiscalService implements Servicemodel {
 
     return response;
   }
+  pesquisarCancelado(filtro: Filtro): Observable<any> {
+    const headers = new HttpHeaders().append(
+      'Content-Type',
+      'application/json'
+    );
+    let params = new HttpParams()
+      .set('page', filtro.pagina.toString())
+      .set('size', filtro.itensPorPagina.toString());
+
+    if (filtro.parametro) {
+      params = params.set('paramentro', filtro.parametro);
+    }
+    const response = this.http.get<any>(
+      `${config.baseurl}importarnotasfiscais/canceladadas`,
+      {
+        headers,
+        params,
+      }
+    );
+
+    return response;
+  }
   detalhar(id: number): Observable<any> {
     throw new Error('Method not implemented.');
   }
