@@ -18,7 +18,7 @@
             <span class="p-float-label p-input-icon-right">
               <i class="pi pi-search"></i>
               <input type="text" id="inputgroup" name="paramentro" pInputText [(ngModel)]="notafiscalfiltro.parametro"
-                class="p-inputtext" placeholder="id, nome do produto, código ean 13">
+                class="p-inputtext" placeholder="id, nome do fornecedor, numero da nota ">
               <label for="inputgroup">Pesquisar</label>
 
             </span>
@@ -29,13 +29,13 @@
       </div>
 
       <div class="col-6 md:col-6 lg:col-2 p-fluid">
-        <button pButton icon="pi pi-plus" pTooltip="Adicoinar Produto" label="novo"
+        <button pButton icon="pi pi-plus" pTooltip="Adicoinar Nota fiscal" label="novo"
           routerLink="/importarnotalfiscal/novo" routerLinkActive="active-link"
           class="p-button-success p-button-lg"></button>
       </div>
       <div class="col-6 md:col-6 lg:col-2 p-fluid">
       <div class="flex align-items-center">
-        <button pButton icon="pi-file-edit" (click)="buscarCancelado()"  pTooltip="buscar  Entrada Cancelado" label="Cancelado"
+        <button pButton icon=" pi pi-file-edit" (click)="buscarCancelado()"  pTooltip="buscar  Entrada Cancelado" label="Cancelado"
 
         class="p-button-danger p-button-lg"></button>
     </div>
