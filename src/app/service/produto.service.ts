@@ -47,7 +47,7 @@ export class ProdutoService implements Servicemodel {
     return resposta;
 
   }
-  editar(objeto: Produto): Observable<any> {
+  editar(objeto: Produto): Observable<Produto> {
     const headers = new HttpHeaders().append(
       'Content-Type',
       'application/json'
@@ -68,6 +68,7 @@ export class ProdutoService implements Servicemodel {
      produto.precocusto=this.converterNaN(produto.precocusto)
      produto.precovenda=this.converterNaN(produto.precovenda)
      componente.subtotal = componente.qtde * componente.produto.precovenda;
+     console.log(componente.subtotal)
      produto.precovenda += componente.subtotal //componente.produto.precovenda * componente.qtde;
      produto.precocusto += componente.produto.precocusto * componente.qtde;
      produto.customedio += componente.produto.customedio * componente.qtde;
