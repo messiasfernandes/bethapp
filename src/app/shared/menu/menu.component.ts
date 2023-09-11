@@ -82,6 +82,10 @@ export class MenuComponent implements OnInit {
             expanded: true,
            routerLink:['/importarnotalfiscal'],
             command: () => this.closeSidebar(),
+          },
+          {
+            label:'Kits/Combos',
+            icon:PrimeIcons.TICKET,
           }
 
         ]

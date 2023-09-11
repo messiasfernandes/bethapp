@@ -1,3 +1,4 @@
+import { FornecedorService } from './../../service/fornecedor.service';
 import { Produto } from './../../model/produto';
 import { ListadialogprodutoComponent } from './../listadialogproduto/listadialogproduto.component';
 import { Subcategoria } from './../../model/subcategoria';
@@ -29,8 +30,10 @@ import { Componente } from 'src/app/model/componente';
 })
 export class CadastroprodutoComponent implements OnInit {
   subcategorias: any = ([] = []);
+  fornecedores: any = ([] = []);
   produto = new Produto();
   subcategoriaFiltro = new Filtro();
+  forncedorFiltro = new Filtro();
   ref: DynamicDialogRef;
   totalRegistros = 0;
   exibirFormAtributos = false;
@@ -49,7 +52,8 @@ export class CadastroprodutoComponent implements OnInit {
     public dialogService: DialogService,
     private idParametro: ActivatedRoute,
     private errorHandler: ErrohandlerService,
-    public config: DynamicDialogConfig
+    public config: DynamicDialogConfig,
+    private fornecdorservice: FornecedorService
   ) {}
   ngOnInit(): void {
     let codigoproduto = this.idParametro.snapshot.params['id'];
@@ -65,7 +69,7 @@ export class CadastroprodutoComponent implements OnInit {
     this.produtoService.detalhar(codigoproduto).subscribe((data) => {
       this.produto = data;
       this.getbuscarfoto(this.produto.imagemPrincipal);
-      console.log(this.produto.imagemPrincipal);
+
     });
   }
   addAtributo() {
@@ -213,5 +217,16 @@ export class CadastroprodutoComponent implements OnInit {
   }
   diminuirVarlor(index: number) {
     this.produto = this.produtoService.removerComponente(index, this.produto);
+  }
+  buscarForncedor(evento: any){
+    this.forncedorFiltro.pagina = 0;
+    this.forncedorFiltro.parametro = evento.query;
+    this.fornecdorservice
+      .pesquisar(this.forncedorFiltro)
+      .subscribe((dados: any) => {
+        this.fornecedores = dados.content;
+       // this.totalRegistros = dados.total;
+      });
+    this.produto.fornecedor = this.fornecedores[0];
   }
 }

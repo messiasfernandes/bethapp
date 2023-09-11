@@ -19,7 +19,7 @@
 
               <span class="p-float-label">
                 <input type="text" id="produtonome" required="true" name="nomeproduto" pInputText
-                  [(ngModel)]="produto.nomeproduto" ngModel #nomeproduto="ngModel" />
+                  [(ngModel)]="produto.nomeproduto" ngModel #nomeproduto="ngModel" placeholder="nome produto, kit ou combo" />
 
                 <label for="produtonome">Nome Produto</label>
 
@@ -160,7 +160,7 @@
 
             <div class="col-12 md:col-6 lg:col-2 p-fluid">
 
-              <button pButton pRipple type="button" icon="pi pi-check" (click)="abrirdialog()" label="Variações"
+              <button pButton pRipple type="button" icon="pi pi-check" (click)="abrirdialog()" label="Atributos"
                 pTooltip="Adicionar Variacões" class=" p-button-lg p-button-secondary"></button>
             </div>
 
@@ -180,11 +180,22 @@
 
 
         </div>
-        <div class="col-12 md:col-6 lg:col-8 p-fluid">
+        <div class="col-12 md:col-6 lg:col-5 p-fluid">
           <span class="p-float-label">
             <input type="text" id="descricao" pInputText name="descricao" [(ngModel)]="produto.descricao" />
 
             <label for="descricao">Descrição</label>
+          </span>
+        </div>
+        <div class="col-12 md:col-6 lg:col-5 p-fluid">
+
+
+          <span class="p-float-label">
+            <p-autoComplete [(ngModel)]="produto.fornecedor" appendTo="body" [showEmptyMessage]="true"
+              field="nome" [suggestions]="fornecedores" placeholder="nome fornecedor campo opicional"
+              (completeMethod)="  buscarForncedor($event)" name="nome" id="campo"
+              inputId="autocomplete" [minLength]="1" emptyMessage="Registro não ncontrato"></p-autoComplete>
+            <label for="forncedor ">Fornecedores</label>
           </span>
         </div>
         <div class="col-12 md:col-6 lg:col-2 p-fluid">
@@ -192,12 +203,9 @@
             pTooltip="Adicionar Imagem" (click)="upLoad()"></button>
         </div>
 
-        <div class="col-12 md:col-6 lg:col-2 p-fluid">
-          <button pButton pRipple type="button" class="p-button-lg p-button-danger" icon="pi pi-minus"
-            label="Remover"></button>
 
 
-        </div>
+
 
 
 
@@ -208,7 +216,7 @@
         </div>
         <div class="col-6 md:col-6 lg:col-2 p-fluid">
           <button pButton pRipple type="submit" [disabled]="!f.valid" class="p-button-lg p-button-success"
-            icon="pi pi-save" label="Cadastrar"></button>
+            icon="pi pi-save" label="Salvar"></button>
 
 
         </div>
@@ -216,7 +224,7 @@
 
     </form>
       </p-tabPanel>
-      <p-tabPanel header="Produto Composto" >
+      <p-tabPanel header="Kit/Combo" >
         <div class="p-fluid grid">
         <div class="col-12 md:col-6 lg:col-5 p-fluid">
 
@@ -225,7 +233,7 @@
             <input type="text" id="produtonome" required="true" name="nomeproduto" pInputText
               [(ngModel)]="componente.produto.nomeproduto" [readOnly]="true" ngModel #nomeproduto="ngModel" />
 
-            <label for="produtonome">Nome Produto</label>
+            <label for="produtonome">Nome Componente</label>
 
 
           </span>
@@ -256,7 +264,7 @@
 
       <div class="col-5 md:col-6 lg:col-1 p-fluid">
 
-        <button pButton icon="pi pi-plus" pTooltip="Adicoinar Componete" [disabled]="!bloqueiaboatao" (click)="addComponete()"
+        <button pButton icon="pi pi-plus" pTooltip="Adicoinar Componente" [disabled]="!bloqueiaboatao" (click)="addComponete()"
 
          class="p.p-button-success p-button-lg"></button>
     </div>
