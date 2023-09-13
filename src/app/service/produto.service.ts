@@ -92,8 +92,9 @@ console.log(produto.componentes[index].produto.precovenda * produto.componentes[
 
       produto.customedio-= produto.componentes[index].produto.customedio * produto.componentes[index].qtde
 
-      console.log(produto.customedio)
-      console.log(produto.precocusto)
+      produto.customedio=this.converterNaN( produto.customedio)
+      produto.precocusto=this.converterNaN(produto.precocusto)
+      produto.precovenda=this.converterNaN(produto.precovenda)
       return produto
    }
 
