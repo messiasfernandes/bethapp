@@ -227,6 +227,11 @@ export class CadastroprodutoComponent implements OnInit {
         this.fornecedores = dados.content;
        // this.totalRegistros = dados.total;
       });
-    this.produto.fornecedor = this.fornecedores[0];
+  //  this.produto.fornecedor =
+ //    this.fornecedores[0];
+  }
+  removerFornecedor(index: number) {
+
+    this.produto.fornecedores.splice(index, 1);
   }
 }

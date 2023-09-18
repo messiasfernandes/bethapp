@@ -25,6 +25,7 @@ import { HomeComponent } from './shared/home/home.component';
 import { ConsultarnotafiscalComponent } from './notafiscal/consultarnotafiscal/consultarnotafiscal.component';
 import { SubcategoriadialogComponent } from './subcategoria/subcategoriadialog/subcategoriadialog.component';
 import { ListadialogprodutoComponent } from './produto/listadialogproduto/listadialogproduto.component';
+import { VicularFonecedorprodutoComponent } from './produto/vicular-fonecedorproduto/vicular-fonecedorproduto.component';
 
 
 registerLocaleData(ptBr, localePt);
@@ -40,7 +41,8 @@ registerLocaleData(ptBr, localePt);
     HomeComponent,
     ConsultarnotafiscalComponent,
     SubcategoriadialogComponent,
-    ListadialogprodutoComponent
+    ListadialogprodutoComponent,
+    VicularFonecedorprodutoComponent
 
 
   ],

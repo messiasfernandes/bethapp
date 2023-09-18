@@ -2,6 +2,7 @@ import { Componente } from './componente';
 import { Atributo } from "./atributo";
 import { Subcategoria } from "./subcategoria";
 import { Fornecedor } from './fornecedor';
+import { Produtofornecedor } from './produtofornecedor';
 
 export class Produto {
   id: number;
@@ -23,5 +24,5 @@ export class Produto {
   subcategoria = new Subcategoria();
   atributos : Atributo [] = [];
   componentes: Componente[]=[];
-  fornecedor =new Fornecedor()
+  fornecedores :Produtofornecedor[]=[]
 }
