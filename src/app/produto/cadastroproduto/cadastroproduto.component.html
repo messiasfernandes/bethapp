@@ -478,13 +478,29 @@
       <p-tabPanel header="Fornecedores">
         <div class="grid">
           <div class="col-12 tabela">
+            <p-toolbar >
+              <ng-template pTemplate="left">
+
+            </ng-template>
+
+              <ng-template pTemplate="right">
+                <button
+                  pButton
+                  pRipple
+                  label="Export"
+                  icon="pi pi-upload"
+                  (click)="addFronecedor()"
+                  class="p-button-help"
+                ></button>
+              </ng-template>
+            </p-toolbar>
             <p-table
               [value]="produto.fornecedores"
               responsiveLayout="stack"
               selectionMode="single"
               [rowHover]="true"
               #tabela
-              dataKey="produto.fonecedores.forncedor.id"
+              dataKey="produto.fonecedores.fornecedor.id"
               styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer"
               [lazy]="true"
             >
@@ -495,8 +511,6 @@
                   <th>Nome fornecedor</th>
                   <th style="text-align: center">Data compra</th>
                   <th style="text-align: right">Custo produto</th>
-
-
 
                   <th style="text-align: center">Opções</th>
                 </tr>
@@ -527,7 +541,7 @@
                           pTooltip="Editar"
                           tooltipPosition="top"
                           class="p-button-danger -button-s mr-2"
-                          (click)="removerCompnente(rowIndex)"
+                          (click)="removerFornecedor(rowIndex)"
                           type="button"
                         ></button>
                       </a>

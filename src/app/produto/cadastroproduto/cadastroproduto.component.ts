@@ -1,3 +1,4 @@
+import { Produtofornecedor } from './../../model/produtofornecedor';
 import { FornecedorService } from './../../service/fornecedor.service';
 import { Produto } from './../../model/produto';
 import { ListadialogprodutoComponent } from './../listadialogproduto/listadialogproduto.component';
@@ -22,6 +23,7 @@ import { ProdutoService } from 'src/app/service/produto.service';
 import { SubcategoriaService } from 'src/app/service/subcategoria.service';
 import { SubcategoriadialogComponent } from 'src/app/subcategoria/subcategoriadialog/subcategoriadialog.component';
 import { Componente } from 'src/app/model/componente';
+import { VicularFonecedorprodutoComponent } from '../vicular-fonecedorproduto/vicular-fonecedorproduto.component';
 
 @Component({
   selector: 'app-cadastroproduto',
@@ -42,6 +44,7 @@ export class CadastroprodutoComponent implements OnInit {
   url: string;
   bloqueiaboatao = false;
   show = false;
+  produtofornecedor =new Produtofornecedor()
 
   constructor(
     private subcategoriaService: SubcategoriaService,
@@ -233,5 +236,27 @@ export class CadastroprodutoComponent implements OnInit {
   removerFornecedor(index: number) {
 
     this.produto.fornecedores.splice(index, 1);
+  }
+
+  addFronecedor() {
+    this.ref = this.dialogService.open(VicularFonecedorprodutoComponent, {
+      header: 'Cadastro de Fronecedor',
+      width: '75%',
+
+      styleClass: "{'960px': '70vw'}",
+      contentStyle: { 'max-height': '1000px', overflow: 'auto' },
+
+      resizable: false,
+
+      baseZIndex: 10000,
+      // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
+    });
+    this.ref.onClose.subscribe((produtoforncedor :Produtofornecedor ) => {
+      if (produtoforncedor) {
+        this.produtofornecedor= produtoforncedor;
+
+        //this.bloqueiaboatao = true;
+      }
+    });
   }
 }
