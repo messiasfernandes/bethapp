@@ -1,1 +1,26 @@
-<p>vicular-fonecedorproduto works!</p>
+<div class="container">
+  <div class="grid">
+<br>
+    <div class="col-12 md:col-6 lg:col-5 p-fluid">
+      <span class="p-float-label">
+        <p-autoComplete
+          [(ngModel)]="produutoforncedor.fornecedor"
+          appendTo="body"
+          [showEmptyMessage]="true"
+          field="nome"
+          [suggestions]="fornecedores"
+          placeholder="nome fornecedor "
+          [required]="true"
+          (completeMethod)="buscarForncedor($event)"
+          name="nome"
+          id="campo"
+          inputId="autocomplete"
+          [minLength]="1"
+          emptyMessage="Registro não ncontrato"
+        ></p-autoComplete>
+        <label for="forncedor ">Fornecedores</label>
+      </span>
+    </div>
+
+  </div>
+</div>
