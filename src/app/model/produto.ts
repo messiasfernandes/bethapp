@@ -24,5 +24,5 @@ export class Produto {
   subcategoria = new Subcategoria();
   atributos : Atributo [] = [];
   componentes: Componente[]=[];
-  fornecedores :Produtofornecedor[]=[]
+  produtoFonecedores :Produtofornecedor[]=[]
 }

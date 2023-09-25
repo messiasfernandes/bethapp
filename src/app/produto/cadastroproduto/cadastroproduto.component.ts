@@ -235,7 +235,7 @@ export class CadastroprodutoComponent implements OnInit {
   }
   removerFornecedor(index: number) {
 
-    this.produto.fornecedores.splice(index, 1);
+    this.produto.produtoFonecedores.splice(index, 1);
   }
 
   addFronecedor() {
