@@ -522,7 +522,7 @@
                 let-rowIndex="rowIndex"
               >
                 <tr [pSelectableRow]="produtofornecedor">
-                  <td>{{ produtofornecedor.id }}</td>
+                  <td>{{ produtofornecedor.id.fornecedoid }}</td>
                   <td>{{ produtofornecedor.fornecedor.nome }}</td>
                   <td style="text-align: center">
                     {{ produtofornecedor.dataCompra | date }}

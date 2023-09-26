@@ -11,7 +11,7 @@ import { FornecedorService } from 'src/app/service/fornecedor.service';
 export class VicularFonecedorprodutoComponent {
   fornecedores: any = ([] = []);
   forncedorFiltro = new Filtro();
-  produutoforncedor= new Produtofornecedor();
+  produtoforncedor= new Produtofornecedor();
 constructor(private fornecdorservice: FornecedorService){
 
 }
@@ -27,7 +27,7 @@ constructor(private fornecdorservice: FornecedorService){
         console.log(this.fornecedores)
        // this.totalRegistros = dados.total;
       });
- this.produutoforncedor.fornecedor =
+ this.produtoforncedor.fornecedor =
   this.fornecedores[0];
   }
 

@@ -240,7 +240,7 @@ export class CadastroprodutoComponent implements OnInit {
 
   addFronecedor() {
     this.ref = this.dialogService.open(VicularFonecedorprodutoComponent, {
-      header: 'Cadastro de Fronecedor',
+      header: 'Vincular Forncedor ao Produto',
       width: '75%',
 
       styleClass: "{'960px': '70vw'}",
