@@ -253,10 +253,18 @@ export class CadastroprodutoComponent implements OnInit {
     });
     this.ref.onClose.subscribe((produtoforncedor :Produtofornecedor ) => {
       if (produtoforncedor) {
+     console.log(produtoforncedor)
+       produtoforncedor.id.produtoid= this.produto.id;
+       produtoforncedor.id.fornecedoid= produtoforncedor.fornecedor.id
+
         this.produtofornecedor= produtoforncedor;
+        this.addProdutofonecedor();
 
         //this.bloqueiaboatao = true;
       }
     });
+  }
+  addProdutofonecedor(){
+    this.produto.produtoFonecedores.push(this.produtofornecedor);
   }
 }
