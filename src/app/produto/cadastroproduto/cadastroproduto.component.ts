@@ -24,6 +24,7 @@ import { SubcategoriaService } from 'src/app/service/subcategoria.service';
 import { SubcategoriadialogComponent } from 'src/app/subcategoria/subcategoriadialog/subcategoriadialog.component';
 import { Componente } from 'src/app/model/componente';
 import { VicularFonecedorprodutoComponent } from '../vicular-fonecedorproduto/vicular-fonecedorproduto.component';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-cadastroproduto',
@@ -44,7 +45,7 @@ export class CadastroprodutoComponent implements OnInit {
   url: string;
   bloqueiaboatao = false;
   show = false;
-  produtofornecedor =new Produtofornecedor()
+  produtofornecedor = new Produtofornecedor();
 
   constructor(
     private subcategoriaService: SubcategoriaService,
@@ -72,7 +73,6 @@ export class CadastroprodutoComponent implements OnInit {
     this.produtoService.detalhar(codigoproduto).subscribe((data) => {
       this.produto = data;
       this.getbuscarfoto(this.produto.imagemPrincipal);
-
     });
   }
   addAtributo() {
@@ -137,11 +137,16 @@ export class CadastroprodutoComponent implements OnInit {
             return throwError(() => this.errorHandler.erroHandler(erro));
           })
         )
-        .subscribe();
-      this.messageService.add({
-        severity: 'info',
-        detail: 'Produto editado com sucesso!',
-      });
+        .subscribe((response: HttpResponse<any>) => {
+          const statusCode = response.status;
+          console.log(statusCode)
+          if (statusCode === 200) {
+            this.messageService.add({
+              severity: 'info',
+              detail: 'Produto editado com sucesso!',
+            });
+          }
+        });
     } else {
       console.log(this.produto);
       this.produtoService.salvar(this.produto).subscribe();
@@ -179,25 +184,26 @@ export class CadastroprodutoComponent implements OnInit {
     });
   }
   showLIstaProduto() {
-    this.ref = this.dialogService.open(ListadialogprodutoComponent, {
-      header: 'Lista de Produtos',
-      width: '75%',
 
-      styleClass: "{'960px': '70vw'}",
-      contentStyle: { 'max-height': '1000px', overflow: 'auto' },
+    this.produtoService.showdialog(this.componente)  //  this.ref = this.dialogService.open(ListadialogprodutoComponent, {
+  //    header: 'Lista de Produtos',
+   //   width: '75%',
 
-      resizable: false,
+ //     styleClass: "{'960px': '70vw'}",
+ //     contentStyle: { 'max-height': '1000px', overflow: 'auto' },
 
-      baseZIndex: 10000,
+   //   resizable: false,
+
+  //    baseZIndex: 10000,
       // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
-    });
-    this.ref.onClose.subscribe((produto: Produto) => {
-      if (produto) {
-        this.componente.produto = produto;
+ //   });
+  //  this.ref.onClose.subscribe((produto: Produto) => {
+   //   if (produto) {
+///        this.componente.produto = produto;
 
-        this.bloqueiaboatao = true;
-      }
-    });
+      this.bloqueiaboatao = true;
+ //     }
+ //   });
   }
   addComponete() {
     if (this.componente.qtde <= 0) {
@@ -221,20 +227,19 @@ export class CadastroprodutoComponent implements OnInit {
   diminuirVarlor(index: number) {
     this.produto = this.produtoService.removerComponente(index, this.produto);
   }
-  buscarForncedor(evento: any){
+  buscarForncedor(evento: any) {
     this.forncedorFiltro.pagina = 0;
     this.forncedorFiltro.parametro = evento.query;
     this.fornecdorservice
       .pesquisar(this.forncedorFiltro)
       .subscribe((dados: any) => {
         this.fornecedores = dados.content;
-       // this.totalRegistros = dados.total;
+        // this.totalRegistros = dados.total;
       });
-  //  this.produto.fornecedor =
- //    this.fornecedores[0];
+    //  this.produto.fornecedor =
+    //    this.fornecedores[0];
   }
   removerFornecedor(index: number) {
-
     this.produto.produtoFonecedores.splice(index, 1);
   }
 
@@ -251,20 +256,20 @@ export class CadastroprodutoComponent implements OnInit {
       baseZIndex: 10000,
       // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
     });
-    this.ref.onClose.subscribe((produtoforncedor :Produtofornecedor ) => {
+    this.ref.onClose.subscribe((produtoforncedor: Produtofornecedor) => {
       if (produtoforncedor) {
-     console.log(produtoforncedor)
-       produtoforncedor.id.produtoid= this.produto.id;
-       produtoforncedor.id.fornecedoid= produtoforncedor.fornecedor.id
+        console.log(produtoforncedor);
+        produtoforncedor.id.produtoid = this.produto.id;
+        produtoforncedor.id.fornecedoid = produtoforncedor.fornecedor.id;
 
-        this.produtofornecedor= produtoforncedor;
+        this.produtofornecedor = produtoforncedor;
         this.addProdutofonecedor();
 
         //this.bloqueiaboatao = true;
       }
     });
   }
-  addProdutofonecedor(){
+  addProdutofonecedor() {
     this.produto.produtoFonecedores.push(this.produtofornecedor);
   }
 }

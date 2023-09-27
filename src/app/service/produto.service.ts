@@ -1,19 +1,24 @@
 
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Filtro } from '../model/filtro';
 
 import { Produto } from '../model/produto';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Servicemodel } from './servicemodel';
 import { Componente } from '../model/componente';
 import { config } from '../shared/config/config';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { ListadialogprodutoComponent } from '../produto/listadialogproduto/listadialogproduto.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProdutoService implements Servicemodel {
-  constructor(private http: HttpClient) {
+  ref: DynamicDialogRef;
+  componente = new Componente();
+  constructor(private http: HttpClient,
+    public dialogService: DialogService,) {
 
   }
 
@@ -47,13 +52,13 @@ export class ProdutoService implements Servicemodel {
     return resposta;
 
   }
-  editar(objeto: Produto): Observable<Produto> {
+  editar(objeto: Produto): Observable<any> {
     const headers = new HttpHeaders().append(
       'Content-Type',
       'application/json'
     );
 
-    return this.http.put<Produto>(`${config.baseurl}produtos/${objeto.id}`, objeto);
+    return this.http.put<Produto>(`${config.baseurl}produtos/${objeto.id}`, objeto, { headers, observe: 'response' });
 
   }
   detalhar(id: number): Observable<Produto> {
@@ -96,6 +101,27 @@ console.log(produto.componentes[index].produto.precovenda * produto.componentes[
       produto.precocusto=this.converterNaN(produto.precocusto)
       produto.precovenda=this.converterNaN(produto.precovenda)
       return produto
+   }
+   showdialog(componente: Componente){
+    this.ref = this.dialogService.open(ListadialogprodutoComponent, {
+      header: 'Lista de Produtos',
+      width: '75%',
+
+      styleClass: "{'960px': '70vw'}",
+      contentStyle: { 'max-height': '1000px', overflow: 'auto' },
+
+      resizable: false,
+
+      baseZIndex: 10000,
+      // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
+    });
+    this.ref.onClose.subscribe((produto: Produto) => {
+      if (produto) {
+        componente.produto = produto;
+
+       // this.bloqueiaboatao = true;
+      }
+    });
    }
 
 }
