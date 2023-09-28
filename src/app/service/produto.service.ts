@@ -1,5 +1,9 @@
-
-import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams,
+  HttpResponse,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Filtro } from '../model/filtro';
 
@@ -17,13 +21,9 @@ import { ListadialogprodutoComponent } from '../produto/listadialogproduto/lista
 export class ProdutoService implements Servicemodel {
   ref: DynamicDialogRef;
   componente = new Componente();
-  constructor(private http: HttpClient,
-    public dialogService: DialogService,) {
-
-  }
+  constructor(private http: HttpClient, public dialogService: DialogService) {}
 
   pesquisar(filtro: Filtro): Observable<Produto> {
-
     const headers = new HttpHeaders().append(
       'Content-Type',
       'application/json'
@@ -47,10 +47,12 @@ export class ProdutoService implements Servicemodel {
       'Content-Type',
       'application/json'
     );
-    const resposta= this.http
-    .post<Produto>(`${config.baseurl}produtos`, objeto, { headers });
+    const resposta = this.http.post<Produto>(
+      `${config.baseurl}produtos`,
+      objeto,
+      { headers }
+    );
     return resposta;
-
   }
   editar(objeto: Produto): Observable<any> {
     const headers = new HttpHeaders().append(
@@ -58,51 +60,63 @@ export class ProdutoService implements Servicemodel {
       'application/json'
     );
 
-    return this.http.put<Produto>(`${config.baseurl}produtos/${objeto.id}`, objeto, { headers, observe: 'response' });
-
+    return this.http.put<Produto>(
+      `${config.baseurl}produtos/${objeto.id}`,
+      objeto,
+      { headers, observe: 'response' }
+    );
   }
   detalhar(id: number): Observable<Produto> {
     return this.http.get<Produto>(`${config.baseurl}produtos/${id}`);
   }
   excluir(id: number): Observable<any> {
     return this.http.delete(`${config.baseurl}produtos/${id}`);
-   }
+  }
 
-   adiCionarComponente(produto:Produto, componente: Componente){
-     produto.customedio=this.converterNaN(produto.customedio)
-     produto.precocusto=this.converterNaN(produto.precocusto)
-     produto.precovenda=this.converterNaN(produto.precovenda)
-     componente.subtotal = componente.qtde * componente.produto.precovenda;
-     console.log(componente.subtotal)
-     produto.precovenda += componente.subtotal //componente.produto.precovenda * componente.qtde;
-     produto.precocusto += componente.produto.precocusto * componente.qtde;
-     produto.customedio += componente.produto.customedio * componente.qtde;
+  adiCionarComponente(produto: Produto, componente: Componente) {
+    produto.customedio = this.converterNaN(produto.customedio);
+    produto.precocusto = this.converterNaN(produto.precocusto);
+    produto.precovenda = this.converterNaN(produto.precovenda);
+    componente.subtotal = componente.qtde * componente.produto.precovenda;
+    console.log(componente.subtotal);
+    produto.precovenda += componente.subtotal; //componente.produto.precovenda * componente.qtde;
+    produto.precocusto += componente.produto.precocusto * componente.qtde;
+    produto.customedio += componente.produto.customedio * componente.qtde;
 
-   // this.produto.componentes.push(this.componente)
-   return componente
-   }
+    // this.produto.componentes.push(this.componente)
+    return componente;
+  }
 
-   converterNaN(valor:number) {
-    console.log(valor)
+  converterNaN(valor: number) {
+    console.log(valor);
     return isNaN(valor) ? 0 : valor;
   }
-   removerComponente(index: number, produto: Produto){
-    produto.customedio=this.converterNaN(produto.customedio)
-    produto.precocusto=this.converterNaN(produto.precocusto)
-    produto.precovenda=this.converterNaN(produto.precovenda)
-console.log(produto.componentes[index].produto.precovenda * produto.componentes[index].qtde )
-    produto.precovenda-= produto.componentes[index].produto.precovenda * produto.componentes[index].qtde
+  removerComponente(index: number, produto: Produto) {
+    produto.customedio = this.converterNaN(produto.customedio);
+    produto.precocusto = this.converterNaN(produto.precocusto);
+    produto.precovenda = this.converterNaN(produto.precovenda);
+    console.log(
+      produto.componentes[index].produto.precovenda *
+        produto.componentes[index].qtde
+    );
+    produto.precovenda -=
+      produto.componentes[index].produto.precovenda *
+      produto.componentes[index].qtde;
 
-    produto.precocusto-=produto.componentes[index].produto.precocusto * produto.componentes[index].qtde
+    produto.precocusto -=
+      produto.componentes[index].produto.precocusto *
+      produto.componentes[index].qtde;
 
-      produto.customedio-= produto.componentes[index].produto.customedio * produto.componentes[index].qtde
+    produto.customedio -=
+      produto.componentes[index].produto.customedio *
+      produto.componentes[index].qtde;
 
-      produto.customedio=this.converterNaN( produto.customedio)
-      produto.precocusto=this.converterNaN(produto.precocusto)
-      produto.precovenda=this.converterNaN(produto.precovenda)
-      return produto
-   }
-   showdialog(componente: Componente){
+    produto.customedio = this.converterNaN(produto.customedio);
+    produto.precocusto = this.converterNaN(produto.precocusto);
+    produto.precovenda = this.converterNaN(produto.precovenda);
+    return produto;
+  }
+  showdialog(componente: Componente) {
     this.ref = this.dialogService.open(ListadialogprodutoComponent, {
       header: 'Lista de Produtos',
       width: '75%',
@@ -119,9 +133,24 @@ console.log(produto.componentes[index].produto.precovenda * produto.componentes[
       if (produto) {
         componente.produto = produto;
 
-       // this.bloqueiaboatao = true;
+        // this.bloqueiaboatao = true;
       }
     });
-   }
+  }
+  GerarEn13(cnpj: string, coadigoFabricante: string) {
+    let params = new HttpParams();
+    params = params.set('cnpj', cnpj);
+    params = params.set('codigofabricandte', coadigoFabricante);
+    return this.http.post<string>(
+      `${config.baseurl}produtos/gerarean13`,
+      {},
+      {
+        params: params,
+        observe: 'response',
+      }
+      ).pipe(
+        map(response => response.body as string) // Extrair o corpo da resposta e convertê-lo em string
 
+    );
+  }
 }

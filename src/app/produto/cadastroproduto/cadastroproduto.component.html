@@ -174,7 +174,7 @@
                   </span>
                 </div>
 
-                <div class="col-12 md:col-6 lg:col-5 p-fluid">
+                <div class="col-12 md:col-6 lg:col-3 p-fluid">
                   <span class="p-float-label">
                     <input
                       type="text"
@@ -186,6 +186,11 @@
 
                     <label for="marca">Codigo Ean 13</label>
                   </span>
+                </div>
+                <div class="col-12 md:col-6 lg:col-2 p-fluid">
+                  <button pButton  class="p-button-lg p-button-info p-button-outlined" type="button" (click)="gerarEan13()"
+                  label="Gerar Ean"><i class="fa-solid fa-barcode fa-lg" style="font-size: 2rem" ></i></button>
+
                 </div>
                 <div class="col-12 md:col-6 lg:col-4 p-fluid">
                   <span class="p-float-label">
@@ -484,14 +489,21 @@
             </ng-template>
 
               <ng-template pTemplate="right">
+
                 <button
                   pButton
                   pRipple
-                  label="Fonecedor"
-                  icon="pi pi-user-plus"
+
+
+
                   (click)="addFronecedor()"
                   class="p-button-help"
-                ></button>
+
+                >
+                <span style="margin-right: 3px;">Fornecedor</span>
+                <i class="fa-solid fa-truck-field" style="font-size: 1.5rem"></i>
+              </button>
+
               </ng-template>
             </p-toolbar>
             <p-table

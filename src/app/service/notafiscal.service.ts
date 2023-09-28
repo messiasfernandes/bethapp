@@ -120,5 +120,4 @@ export class NotafiscalService implements Servicemodel {
 
     return total;
   }
-
 }

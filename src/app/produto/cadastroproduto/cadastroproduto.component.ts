@@ -165,45 +165,12 @@ export class CadastroprodutoComponent implements OnInit {
     this.produto.atributos.splice(index, 1);
   }
   showSubcategoria() {
-    this.ref = this.dialogService.open(SubcategoriadialogComponent, {
-      header: 'SubCategorias',
-      width: '50%',
-
-      styleClass: "{'960px': '70vw'}",
-      contentStyle: { 'max-height': '800px', overflow: 'auto' },
-
-      resizable: false,
-
-      baseZIndex: 10000,
-      // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
-    });
-    this.ref.onClose.subscribe((subcategoria: Subcategoria) => {
-      if (subcategoria) {
-        // this.produtov.produto = produto;
-      }
-    });
+   this.subcategoriaService.showSubcategoria();
   }
   showLIstaProduto() {
+    this.produtoService.showdialog(this.componente)
+    this.bloqueiaboatao = true;
 
-    this.produtoService.showdialog(this.componente)  //  this.ref = this.dialogService.open(ListadialogprodutoComponent, {
-  //    header: 'Lista de Produtos',
-   //   width: '75%',
-
- //     styleClass: "{'960px': '70vw'}",
- //     contentStyle: { 'max-height': '1000px', overflow: 'auto' },
-
-   //   resizable: false,
-
-  //    baseZIndex: 10000,
-      // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
- //   });
-  //  this.ref.onClose.subscribe((produto: Produto) => {
-   //   if (produto) {
-///        this.componente.produto = produto;
-
-      this.bloqueiaboatao = true;
- //     }
- //   });
   }
   addComponete() {
     if (this.componente.qtde <= 0) {
@@ -246,7 +213,7 @@ export class CadastroprodutoComponent implements OnInit {
   addFronecedor() {
     this.ref = this.dialogService.open(VicularFonecedorprodutoComponent, {
       header: 'Vincular Forncedor ao Produto',
-      width: '75%',
+      width: '75%', modal: true,
 
       styleClass: "{'960px': '70vw'}",
       contentStyle: { 'max-height': '1000px', overflow: 'auto' },
@@ -271,5 +238,14 @@ export class CadastroprodutoComponent implements OnInit {
   }
   addProdutofonecedor() {
     this.produto.produtoFonecedores.push(this.produtofornecedor);
+  }
+  gerarEan13(){
+    console.log(this.produto.produtoFonecedores[0].fornecedor.cpfouCnpj)
+  this.produtoService.GerarEn13(this.produto.produtoFonecedores[0].fornecedor.cpfouCnpj, this.produto.codigofabricante).subscribe(
+    (codigoean: any)=>{
+      console.log(codigoean.ean13+ "meu codigo")
+      this.produto.codigoEan13= codigoean.ean13
+    }
+  )
   }
 }
