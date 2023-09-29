@@ -74,11 +74,11 @@ export class MenuComponent implements OnInit {
         items:[
          {
             label:'Estoque Movimento',
-            icon:PrimeIcons.WALLET,
+            icon:'fa-solid fa-warehouse fa-xl',
           },
           {
             label: 'Importar Nota fiscal',
-            icon: 'pi pi-file-import',
+            icon: 'fa-solid fa-file-invoice fa-xl',
             expanded: true,
            routerLink:['/importarnotalfiscal'],
             command: () => this.closeSidebar(),
@@ -117,11 +117,11 @@ export class MenuComponent implements OnInit {
       },
       {
         label:"Vendas",
-        icon: ' pi pi-compass',
+        icon: ' fa-solid fa-cart-shopping fa-xl',
         items:[
           {
             label: 'Vendas',
-            icon: 'pi pi-shopping-cart',
+            icon: 'fa-solid fa-cart-plus fa-xl',
             routerLink: ['/vendas'],
 
           },
