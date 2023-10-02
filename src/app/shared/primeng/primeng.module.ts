@@ -68,7 +68,8 @@ import {ListboxModule} from 'primeng/listbox';
     ImageModule,
     TabViewModule,
     ListboxModule,
-    RadioButtonModule
+    RadioButtonModule,
+    CalendarModule
 
 
 

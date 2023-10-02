@@ -46,7 +46,7 @@ export class CadastroprodutoComponent implements OnInit {
   bloqueiaboatao = false;
   show = false;
   produtofornecedor = new Produtofornecedor();
-
+  isButtonDisabled: boolean =true;
   constructor(
     private subcategoriaService: SubcategoriaService,
     private arquivoService: ArquivoService,
@@ -56,9 +56,23 @@ export class CadastroprodutoComponent implements OnInit {
     public dialogService: DialogService,
     private idParametro: ActivatedRoute,
     private errorHandler: ErrohandlerService,
-    public config: DynamicDialogConfig,
+
     private fornecdorservice: FornecedorService
-  ) {}
+
+  ) {
+
+  }
+  bloqueBoataoEan13(): boolean {
+    if (this.produto.codigoEan13 === '' || this.produto.codigoEan13 === 'SEM GTIN') {
+      console.log(this.isButtonDisabled+'falso')
+      this.isButtonDisabled = true; // Habilita o botão se codigoEan13 for vazio ou igual a 'SEM GTIN'
+    } else {
+      this.isButtonDisabled = false; // Desabilita o botão para outros casos
+      console.log(this.isButtonDisabled+'verdadeiro')
+    }
+    return this.isButtonDisabled;
+  }
+
   ngOnInit(): void {
     let codigoproduto = this.idParametro.snapshot.params['id'];
 
@@ -67,6 +81,7 @@ export class CadastroprodutoComponent implements OnInit {
 
       this.carregarProduto(codigoproduto);
     }
+  /// this.bloqueBoataoEan13()
   }
   carregarProduto(codigoproduto: number) {
     console.log('inicou');
@@ -225,12 +240,17 @@ export class CadastroprodutoComponent implements OnInit {
     });
     this.ref.onClose.subscribe((produtoforncedor: Produtofornecedor) => {
       if (produtoforncedor) {
-        console.log(produtoforncedor);
-        produtoforncedor.id.produtoid = this.produto.id;
-        produtoforncedor.id.fornecedoid = produtoforncedor.fornecedor.id;
+        console.log(produtoforncedor + "forecedor");
 
-        this.produtofornecedor = produtoforncedor;
-        this.addProdutofonecedor();
+
+
+        if(produtoforncedor!=null&& produtoforncedor.fornecedor.id!=null){
+          produtoforncedor.id.produtoid = this.produto.id;
+          produtoforncedor.id.fornecedoid = produtoforncedor.fornecedor.id;
+          this.produtofornecedor = produtoforncedor;
+          this.addProdutofonecedor();
+        }
+
 
         //this.bloqueiaboatao = true;
       }
@@ -240,11 +260,13 @@ export class CadastroprodutoComponent implements OnInit {
     this.produto.produtoFonecedores.push(this.produtofornecedor);
   }
   gerarEan13(){
-    console.log(this.produto.produtoFonecedores[0].fornecedor.cpfouCnpj)
-  this.produtoService.GerarEn13(this.produto.produtoFonecedores[0].fornecedor.cpfouCnpj, this.produto.codigofabricante).subscribe(
+    const cpfouCnpj = this.produto.produtoFonecedores[0]?.fornecedor?.cpfouCnpj || '';
+    const codigofabricante = this.produto.codigofabricante || '';
+    this.produtoService.GerarEn13().subscribe(
     (codigoean: any)=>{
       console.log(codigoean.ean13+ "meu codigo")
       this.produto.codigoEan13= codigoean.ean13
+
     }
   )
   }

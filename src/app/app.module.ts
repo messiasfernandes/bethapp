@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ConsultaProdutoComponent } from './produto/consulta-produto/consulta-produto.component';
 import { ImportarnotafiscalComponent } from './notafiscal/importarnotafiscal/importarnotafiscal.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { CadastroprodutoComponent } from './produto/cadastroproduto/cadastroproduto.component';
@@ -26,9 +26,17 @@ import { ConsultarnotafiscalComponent } from './notafiscal/consultarnotafiscal/c
 import { SubcategoriadialogComponent } from './subcategoria/subcategoriadialog/subcategoriadialog.component';
 import { ListadialogprodutoComponent } from './produto/listadialogproduto/listadialogproduto.component';
 import { VicularFonecedorprodutoComponent } from './produto/vicular-fonecedorproduto/vicular-fonecedorproduto.component';
-
-
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 registerLocaleData(ptBr, localePt);
+
+registerLocaleData(localePt, 'pt-BR');
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,12 +61,20 @@ registerLocaleData(ptBr, localePt);
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
 
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
-    ProdutoService, ArquivoService, ErrohandlerService, SubcategoriaService , MessageService
+    ProdutoService, ArquivoService, ErrohandlerService, SubcategoriaService , MessageService,TranslateService,
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
   ],
   bootstrap: [AppComponent],
 

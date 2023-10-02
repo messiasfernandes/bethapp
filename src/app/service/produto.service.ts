@@ -137,20 +137,15 @@ export class ProdutoService implements Servicemodel {
       }
     });
   }
-  GerarEn13(cnpj: string, coadigoFabricante: string) {
-    let params = new HttpParams();
-    params = params.set('cnpj', cnpj);
-    params = params.set('codigofabricandte', coadigoFabricante);
+  GerarEn13(): Observable<string> {
     return this.http.post<string>(
       `${config.baseurl}produtos/gerarean13`,
       {},
       {
-        params: params,
         observe: 'response',
       }
-      ).pipe(
-        map(response => response.body as string) // Extrair o corpo da resposta e convertê-lo em string
-
+    ).pipe(
+      map(response => response.body as string) // Extrair o corpo da resposta e convertê-lo em string
     );
   }
 }

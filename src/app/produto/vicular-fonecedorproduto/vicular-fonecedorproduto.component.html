@@ -45,7 +45,7 @@
         </span>
       </div>
 
-      <div class="col-12 md:col-6 lg:col-3 p-fluid">
+      <div class="col-12 md:col-6 lg:col-6 p-fluid">
         <span class="p-float-label">
           <p-inputNumber
             [(ngModel)]="produtoforncedor.garantia"
@@ -62,14 +62,21 @@
           <label for="garantia">Garantia</label>
         </span>
       </div>
-
+      <div class="col-12 md:col-6 lg:col-6 p-fluid">
+        <span class="p-float-label">
+          <p-calendar inputId="calendar" [(ngModel)]="produtoforncedor.dataCompra"   appendTo="body" name="dataCompra" dateFormat="dd/mm/yy"></p-calendar>
+          <label for="calendar">Data da Compra</label>
+      </span>
+      </div>
 
       <div class="col-6 md:col-6 lg:col-2 p-fluid">
         <p-button
         type="button"
-          label="Adicionar" icon="pi pi-user-minus" (click)="selecionarProdutoFornecedor()"
+          label="Adicionar"  (click)="selecionarProdutoFornecedor()"
           styleClass="p-button-success p-button-outlined p-button-lg  "
-        ></p-button>
+
+        ><i class="fa-solid fa-person-circle-plus fa-2xl"></i>
+      </p-button>
       </div>
     </div>
 

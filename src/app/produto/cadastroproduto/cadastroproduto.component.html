@@ -181,14 +181,14 @@
                       id="marca"
                       pInputText
                       name="codigoEan13"
-                      [(ngModel)]="produto.codigoEan13"
+                      [(ngModel)]="produto.codigoEan13" readonly="true"
                     />
 
                     <label for="marca">Codigo Ean 13</label>
                   </span>
                 </div>
                 <div class="col-12 md:col-6 lg:col-2 p-fluid">
-                  <button pButton  class="p-button-lg p-button-info p-button-outlined" type="button" (click)="gerarEan13()"
+                  <button pButton  class="p-button-lg p-button-info p-button-outlined" type="button" (click)="gerarEan13()" [disabled]="!bloqueBoataoEan13()"
                   label="Gerar Ean"> <i class="fa-solid fa-barcode fa-lg" style="font-size: 1.5rem" ></i></button>
 
                 </div>
@@ -199,7 +199,7 @@
                       id="fabricante"
                       pInputText
                       name="codigofabricante"
-                      [(ngModel)]="produto.codigofabricante"
+                      [(ngModel)]="produto.codigofabricante"  readonly="true"
                     />
 
                     <label for="fabricante">Código Fabricante</label>
@@ -270,7 +270,7 @@
                 <span class="picture__image"> <img [src]="url" /></span>
               </div>
             </div>
-            <div class="col-12 md:col-6 lg:col-5 p-fluid">
+            <div class="col-12 md:col-6 lg:col-10 p-fluid">
               <span class="p-float-label">
                 <input
                   type="text"
@@ -283,26 +283,7 @@
                 <label for="descricao">Descrição</label>
               </span>
             </div>
-            <div class="col-12 md:col-6 lg:col-5 p-fluid">
-              <span class="p-float-label">
-                <p-autoComplete
-                  [(ngModel)]="produto"
-                  appendTo="body"
-                  [showEmptyMessage]="true"
-                  field="nome"
-                  [suggestions]="fornecedores"
-                  placeholder="nome fornecedor "
-                  [required]="true"
-                  (completeMethod)="buscarForncedor($event)"
-                  name="nome"
-                  id="campo"
-                  inputId="autocomplete"
-                  [minLength]="1"
-                  emptyMessage="Registro não ncontrato"
-                ></p-autoComplete>
-                <label for="forncedor ">Fornecedores</label>
-              </span>
-            </div>
+
             <div class="col-12 md:col-6 lg:col-2 p-fluid">
               <button
                 pButton
@@ -333,6 +314,7 @@
                 type="submit"
                 [disabled]="!f.valid"
                 class="p-button-lg p-button-success"
+                iconPos="left"
                 icon="pi pi-save"
                 label="Salvar"
               ></button>
@@ -495,13 +477,13 @@
                   pRipple
 
 
-
+            label="Fornecedor"
                   (click)="addFronecedor()"
-                  class="p-button-help p-button-outlined"
+                  class="p-button-help  p-button-lg"
 
                 >
-                <span style="margin-right: 3px;">Fornecedor</span>
-                <i class="fa-solid fa-truck-field" style="font-size: 1.5rem"></i>
+
+                <i class="fa-solid fa-boxes-packing fa-lg" style="margin-right: 10px" ></i>
               </button>
 
               </ng-template>
