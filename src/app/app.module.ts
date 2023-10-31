@@ -39,7 +39,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
 @NgModule({
   declarations: [
-    AppComponent,
+   AppComponent,
     MenuComponent,
 
     ConsultaProdutoComponent,
@@ -50,7 +50,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ConsultarnotafiscalComponent,
     SubcategoriadialogComponent,
     ListadialogprodutoComponent,
-    VicularFonecedorprodutoComponent
+    VicularFonecedorprodutoComponent,
+
 
 
   ],
@@ -70,6 +71,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     }),
 
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
