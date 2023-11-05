@@ -119,7 +119,7 @@ export class ProdutoService implements Servicemodel {
   showdialog(componente: Componente) {
     this.ref = this.dialogService.open(ListadialogprodutoComponent, {
       header: 'Lista de Produtos',
-      width: '75%',
+      width: '95%', modal:true,
 
       styleClass: "{'960px': '70vw'}",
       contentStyle: { 'max-height': '1000px', overflow: 'auto' },

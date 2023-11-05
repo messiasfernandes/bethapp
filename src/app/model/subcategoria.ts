@@ -2,6 +2,7 @@ import { Categoria } from "./categoria";
 
 export class Subcategoria {
   id: number;
-  nomeSubCategoria: string;
+  nomeSubCategoria: | null | undefined = null
   categoria = new Categoria();
+
 }

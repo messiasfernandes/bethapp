@@ -14,46 +14,25 @@
               <div class="grid">
                 <div class="col-12 md:col-6 lg:col-7 p-fluid">
                   <span class="p-float-label">
-                    <input
-                      type="text"
-                      id="produtonome"
-                      required="true"
-                      name="nomeproduto"
-                      pInputText
-                      [(ngModel)]="produto.nomeproduto"
-                      ngModel
-                      #nomeproduto="ngModel"
-                      placeholder="nome produto, kit ou combo"
-                    />
+                    <input type="text" id="produtonome" required="true" name="nomeproduto" pInputText
+                      [(ngModel)]="produto.nomeproduto" ngModel #nomeproduto="ngModel"
+                      placeholder="nome produto, kit ou combo" />
 
                     <label for="produtonome">Nome Produto</label>
                   </span>
-                  <app-message
-                    [control]="nomeproduto"
-                    error="required"
-                    text="Informe  Nome do produto"
-                  ></app-message>
+                  <app-message [control]="nomeproduto" error="required" text="Informe  Nome do produto"></app-message>
                 </div>
                 <div class="col-12 md:col-6 lg:col-1 p-fluid">
                   <div class="field-checkbox">
-                    <p-checkbox
-                      inputId="binary"
-                      name="ativo"
-                      [(ngModel)]="produto.ativo"
-                      [binary]="true"
-                    >
+                    <p-checkbox inputId="binary" name="ativo" [(ngModel)]="produto.ativo" [binary]="true">
                     </p-checkbox>
                     <label for="marca">Ativo</label>
                   </div>
                 </div>
                 <div class="col-12 md:col-6 lg:col-2 p-fluid">
                   <div class="field-checkbox">
-                    <p-checkbox
-                      inputId="binary"
-                      name="controlarestoque"
-                      [(ngModel)]="produto.controlarestoque"
-                      [binary]="true"
-                    >
+                    <p-checkbox inputId="binary" name="controlarestoque" [(ngModel)]="produto.controlarestoque"
+                      [binary]="true">
                     </p-checkbox>
                     <label for="marca">Controlar Estoque ?</label>
                   </div>
@@ -61,68 +40,36 @@
 
                 <div class="col-12 md:col-6 lg:col-2 p-fluid">
                   <span class="p-float-label">
-                    <input
-                      type="text"
-                      id="unidade"
-                      pInputText
-                      name="unidade"
-                      required="true"
-                      [(ngModel)]="produto.unidade"
-                    />
+                    <input type="text" id="unidade" pInputText name="unidade" required="true"
+                      [(ngModel)]="produto.unidade" />
 
                     <label for="unidade">Unidade</label>
                   </span>
                 </div>
                 <div class="col-12 md:col-6 lg:col-4 p-fluid">
                   <span class="p-float-label">
-                    <p-inputNumber
-                      inputId="custo"
-                      currency="BRL"
-                      mode="currency"
-                      name="precocusto"
-                      locale="pt-Br"
-                      [(ngModel)]="produto.precocusto"
-                      [minFractionDigits]="2"
-                    ></p-inputNumber>
+                    <p-inputNumber inputId="custo" currency="BRL" mode="currency" name="precocusto" locale="pt-Br"
+                      [(ngModel)]="produto.precocusto" [minFractionDigits]="2"></p-inputNumber>
                     <label for="custo"> Preço Custo</label>
                   </span>
                 </div>
                 <div class="col-12 md:col-6 lg:col-4 p-fluid">
                   <span class="p-float-label">
-                    <p-inputNumber
-                      inputId="custo_nedio"
-                      currency="BRL"
-                      [required]="true"
-                      #customedio="ngModel"
-                      name="customedio"
-                      mode="currency"
-                      locale="pt-Br"
-                      [(ngModel)]="produto.customedio"
-                      [minFractionDigits]="2"
-                    ></p-inputNumber>
+                    <p-inputNumber inputId="custo_nedio" currency="BRL" [required]="true" #customedio="ngModel"
+                      name="customedio" mode="currency" locale="pt-Br" [(ngModel)]="produto.customedio"
+                      [minFractionDigits]="2"></p-inputNumber>
                     <label for="custo_medio"> Custo Médio</label>
-                    <div
-                      *ngIf="
+                    <div *ngIf="
                         customedio.hasError('required') && customedio.dirty
-                      "
-                    >
-                      <small id="inputnumber" class="p-message p-message-error"
-                        >Campo requirdo.</small
-                      >
+                      ">
+                      <small id="inputnumber" class="p-message p-message-error">Campo requirdo.</small>
                     </div>
                   </span>
                 </div>
                 <div class="col-12 md:col-6 lg:col-4 p-fluid">
                   <span class="p-float-label">
-                    <p-inputNumber
-                      inputId="preco_venda"
-                      currency="BRL"
-                      mode="currency"
-                      name="precovenda"
-                      locale="pt-Br"
-                      [(ngModel)]="produto.precovenda"
-                      [minFractionDigits]="2"
-                    ></p-inputNumber>
+                    <p-inputNumber inputId="preco_venda" currency="BRL" mode="currency" name="precovenda" locale="pt-Br"
+                      [(ngModel)]="produto.precovenda" [minFractionDigits]="2"></p-inputNumber>
                     <label for="preco_venda"> Preço de Venda</label>
                   </span>
                 </div>
@@ -139,36 +86,23 @@
                       id="campo"
                       [required]="true"
                       inputId="autocomplete"
-                      [minLength]="1"
+                      [minLength]="4"
                       emptyMessage="Registro não ncontrato"
-                    ></p-autoComplete>
+                      #nomeSubCategoria="ngModel"
+    ></p-autoComplete>
                     <label for="subcategorias ">SubCategorias</label>
                   </span>
+                  <app-message [control]="nomeSubCategoria" error="required" text="Informe  Nome da subcategoria"></app-message>
                 </div>
-                <div
-                  class="col-12 md:col-6 lg:col-1 p-fluid flex flex-wrap align-items-center justify-content-center"
-                >
-                  <button
-                    pButton
-                    pRipple
-                    type="button"
-                    icon="pi pi-plus"
-                    (click)="showSubcategoria()"
-                    pTooltip="Adicionar subcategoria"
-                    class="p-button-lg p-button-info"
-                  ></button>
+                <div class="col-12 md:col-6 lg:col-1 p-fluid flex flex-wrap align-items-center justify-content-center">
+                  <button pButton pRipple type="button" icon="pi pi-plus" (click)="showSubcategoria()"
+                    pTooltip="Adicionar subcategoria" class="p-button-lg p-button-info"></button>
                 </div>
 
                 <div class="col-12 md:col-6 lg:col-6 p-fluid">
                   <span class="p-float-label">
-                    <input
-                      type="text"
-                      id="marcaproduto"
-                      required="true"
-                      pInputText
-                      name="marca"
-                      [(ngModel)]="produto.marca"
-                    />
+                    <input type="text" id="marcaproduto" required="true" pInputText name="marca"
+                      [(ngModel)]="produto.marca" />
 
                     <label for="marcaproduto">Marca</label>
                   </span>
@@ -176,49 +110,30 @@
 
                 <div class="col-12 md:col-6 lg:col-3 p-fluid">
                   <span class="p-float-label">
-                    <input
-                      type="text"
-                      id="marca"
-                      pInputText
-                      name="codigoEan13"
-                      [(ngModel)]="produto.codigoEan13" readonly="true"
-                    />
+                    <input type="text" id="marca" pInputText name="codigoEan13" [(ngModel)]="produto.codigoEan13"
+                      readonly="true" />
 
                     <label for="marca">Codigo Ean 13</label>
                   </span>
                 </div>
                 <div class="col-12 md:col-6 lg:col-2 p-fluid">
-                  <button pButton  class="p-button-lg p-button-info p-button-outlined" type="button" (click)="gerarEan13()" [disabled]="!bloqueBoataoEan13()"
-                  label="Gerar Ean"> <i class="fa-solid fa-barcode fa-lg" style="font-size: 1.5rem" ></i></button>
+                  <button pButton class="p-button-lg p-button-info p-button-outlined" type="button"
+                    (click)="gerarEan13()" [disabled]="!bloqueBoataoEan13()" label="Gerar Ean"> <i
+                      class="fa-solid fa-barcode fa-lg" style="font-size: 1.5rem"></i></button>
 
                 </div>
                 <div class="col-12 md:col-6 lg:col-4 p-fluid">
                   <span class="p-float-label">
-                    <input
-                      type="text"
-                      id="fabricante"
-                      pInputText
-                      name="codigofabricante"
-                      [(ngModel)]="produto.codigofabricante"  readonly="true"
-                    />
+                    <input type="text" id="fabricante" pInputText name="codigofabricante"
+                      [(ngModel)]="produto.codigofabricante" readonly="true" />
 
                     <label for="fabricante">Código Fabricante</label>
                   </span>
                 </div>
                 <div class="col-12 md:col-6 lg:col-3 p-fluid">
                   <span class="p-float-label">
-                    <p-inputNumber
-                      [(ngModel)]="produto.estoqueminimo"
-                      name="estoqueminimo"
-                      mode="decimal"
-                      dec
-                      [showButtons]="true"
-                      precision="0"
-                      inputId="minmax-buttons"
-                      [min]="0"
-                      [max]="100"
-
-                    >
+                    <p-inputNumber [(ngModel)]="produto.estoqueminimo" name="estoqueminimo" mode="decimal" dec
+                      [showButtons]="true" precision="0" inputId="minmax-buttons" [min]="0" [max]="100">
                     </p-inputNumber>
                     <label for="estoqueminimo">Estoque Minimo</label>
                   </span>
@@ -226,42 +141,23 @@
 
                 <div class="col-12 md:col-6 lg:col-4">
                   <span class="p-float-label">
-                    <input
-                      type="text"
-                      id="sku"
-                      pInputText
-                      name="sku"
-                      [(ngModel)]="produto.sku"
-                    />
+                    <input type="text" id="sku" pInputText name="sku" [(ngModel)]="produto.sku" />
 
                     <label for="sku">Sku</label>
                   </span>
                 </div>
                 <div class="col-12 md:col-6 lg:col-6 p-fluid">
                   <span class="p-float-label">
-                    <input
-                      type="text"
-                      id="caracteristica"
-                      pInputText
-                      name="caracteristica"
-                      [(ngModel)]="produto.caracteristica"
-                    />
+                    <input type="text" id="caracteristica" pInputText name="caracteristica"
+                      [(ngModel)]="produto.caracteristica" />
 
                     <label for="caracteristica">Caracteristicas</label>
                   </span>
                 </div>
 
                 <div class="col-12 md:col-6 lg:col-2 p-fluid">
-                  <button
-                    pButton
-                    pRipple
-                    type="button"
-                    icon="pi pi-check"
-                    (click)="abrirdialog()"
-                    label="Atributos"
-                    pTooltip="Adicionar Variacões"
-                    class="p-button-lg p-button-secondary"
-                  ></button>
+                  <button pButton pRipple type="button" icon="pi pi-check" (click)="abrirdialog()" label="Atributos"
+                    pTooltip="Adicionar Variacões" class="p-button-lg p-button-secondary"></button>
                 </div>
               </div>
             </div>
@@ -272,52 +168,24 @@
             </div>
             <div class="col-12 md:col-6 lg:col-10 p-fluid">
               <span class="p-float-label">
-                <input
-                  type="text"
-                  id="descricao"
-                  pInputText
-                  name="descricao"
-                  [(ngModel)]="produto.descricao"
-                />
+                <input type="text" id="descricao" pInputText name="descricao" [(ngModel)]="produto.descricao" />
 
                 <label for="descricao">Descrição</label>
               </span>
             </div>
 
             <div class="col-12 md:col-6 lg:col-2 p-fluid">
-              <button
-                pButton
-                type="button"
-                icon=" pi pi-images"
-                class="p-button-lg p-button-info"
-                label="Imagem"
-                pTooltip="Adicionar Imagem"
-                (click)="upLoad()"
-              ></button>
+              <button pButton type="button" icon=" pi pi-images" class="p-button-lg p-button-info" label="Imagem"
+                pTooltip="Adicionar Imagem" (click)="upLoad()"></button>
             </div>
 
             <div class="col-6 md:col-6 lg:col-2 p-fluid">
-              <button
-                pButton
-                pRipple
-                type="button"
-                icon="pi pi-sign-in"
-                label="Voltar"
-                routerLink="/produtos"
-                class="p-button-outlined p-button-lg p-button-danger"
-              ></button>
+              <button pButton pRipple type="button" icon="pi pi-sign-in" label="Voltar" routerLink="/produtos"
+                class="p-button-outlined p-button-lg p-button-danger"></button>
             </div>
             <div class="col-6 md:col-6 lg:col-2 p-fluid">
-              <button
-                pButton
-                pRipple
-                type="submit"
-                [disabled]="!f.valid"
-                class="p-button-lg p-button-success"
-                iconPos="left"
-                icon="pi pi-save"
-                label="Salvar"
-              ></button>
+              <button pButton pRipple type="submit" [disabled]="!f.valid" class="p-button-lg p-button-success"
+                iconPos="left" icon="pi pi-save" label="Salvar"></button>
             </div>
           </div>
         </form>
@@ -326,84 +194,42 @@
         <div class="p-fluid grid">
           <div class="col-12 md:col-6 lg:col-5 p-fluid">
             <span class="p-float-label">
-              <input
-                type="text"
-                id="produtonome"
-                required="true"
-                name="nomeproduto"
-                pInputText
-                [(ngModel)]="componente.produto.nomeproduto"
-                [readOnly]="true"
-                ngModel
-                #nomeproduto="ngModel"
-              />
+              <input type="text" id="produtonome" required="true" name="nomeproduto" pInputText
+                [(ngModel)]="componente.produto.nomeproduto" [readOnly]="true" ngModel #nomeproduto="ngModel" />
 
               <label for="produtonome">Nome Componente</label>
             </span>
           </div>
           <div class="col-5 md:col-6 lg:col-2 p-fluid">
-            <button
-              pButton
-              icon="pi pi-plus"
-              pTooltip="Adicoinar Componete"
-              label="Produtos"
-              (click)="showLIstaProduto()"
-              class="p-button-info p-button-lg"
-            ></button>
+            <button pButton icon="pi pi-plus" pTooltip="Adicoinar Componete" label="Produtos"
+              (click)="showLIstaProduto()" class="p-button-info p-button-lg"></button>
           </div>
           <div class="col-12 md:col-6 lg:col-2 p-fluid">
             <span class="p-float-label">
-              <p-inputNumber
-                inputId="custo"
-                currency="BRL"
-                mode="currency"
-                name="precovenda"
-                locale="pt-Br"
-                [(ngModel)]="componente.produto.precovenda"
-                [readonly]="true"
-                [minFractionDigits]="2"
-              ></p-inputNumber>
+              <p-inputNumber inputId="custo" currency="BRL" mode="currency" name="precovenda" locale="pt-Br"
+                [(ngModel)]="componente.produto.precovenda" [readonly]="true" [minFractionDigits]="2"></p-inputNumber>
               <label for="custo"> Preço Venda</label>
             </span>
           </div>
           <div class="col-12 md:col-6 lg:col-2 p-fluid">
             <span class="p-float-label">
-              <p-inputNumber
-                inputId="custo"
-                mode="decimal"
-                name="qtde"
-                locale="pt-Br"
-                [(ngModel)]="componente.qtde"
-                [minFractionDigits]="3"
-              ></p-inputNumber>
+              <p-inputNumber inputId="custo" mode="decimal" name="qtde" locale="pt-Br" [(ngModel)]="componente.qtde"
+                [minFractionDigits]="3"></p-inputNumber>
               <label for="custo"> Quantidade</label>
             </span>
           </div>
 
           <div class="col-5 md:col-6 lg:col-1 p-fluid">
-            <button
-              pButton
-              icon="pi pi-plus"
-              pTooltip="Adicoinar Componente"
-              [disabled]="!bloqueiaboatao"
-              (click)="addComponete()"
-              class="p.p-button-success p-button-lg"
-            ></button>
+            <button pButton icon="pi pi-plus" pTooltip="Adicoinar Componente" [disabled]="!bloqueiaboatao"
+              (click)="addComponete()" class="p.p-button-success p-button-lg"></button>
           </div>
         </div>
 
         <div class="grid">
           <div class="col-12 tabela">
-            <p-table
-              [value]="produto.componentes"
-              responsiveLayout="stack"
-              selectionMode="single"
-              [rowHover]="true"
-              #tabela
-              dataKey="produto.componentes.produto.id"
-              styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer"
-              [lazy]="true"
-            >
+            <p-table [value]="produto.componentes" responsiveLayout="stack" selectionMode="single" [rowHover]="true"
+              #tabela dataKey="produto.componentes.produto.id"
+              styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer" [lazy]="true">
               <ng-template pTemplate="caption"> </ng-template>
               <ng-template pTemplate="header">
                 <tr>
@@ -417,12 +243,7 @@
                   <th style="text-align: center">Opções</th>
                 </tr>
               </ng-template>
-              <ng-template
-                pTemplate="body"
-                let-componente
-                key
-                let-rowIndex="rowIndex"
-              >
+              <ng-template pTemplate="body" let-componente key let-rowIndex="rowIndex">
                 <tr [pSelectableRow]="componente">
                   <td>{{ componente.id }}</td>
                   <td>{{ componente.produto.nomeproduto }}</td>
@@ -435,29 +256,23 @@
                   </td>
                   <td style="text-align: center">
                     {{
-                      componente.produto.estoque?.quantidade !== null
-                        ? componente.produto.estoque.quantidade
-                        : 0
+                    componente.produto.estoque?.quantidade !== null
+                    ? componente.produto.estoque.quantidade
+                    : 0
                     }}
                   </td>
 
                   <td>
                     <div class="flex align-items-center justify-content-center">
                       <a>
-                        <button
-                          pButton
-                          pRipple
-                          icon="pi pi-minus"
-                          pTooltip="Editar"
-                          tooltipPosition="top"
-                          class="p-button-danger -button-s mr-2"
-                          (click)="removerCompnente(rowIndex)"
-                          type="button"
-                        ></button>
+                        <button pButton pRipple icon="pi pi-minus" pTooltip="Editar" tooltipPosition="top"
+                          class="p-button-danger -button-s mr-2" (click)="removerCompnente(rowIndex)"
+                          type="button"></button>
                       </a>
                     </div>
-                  </td></tr
-              ></ng-template>
+                  </td>
+                </tr>
+              </ng-template>
             </p-table>
           </div>
         </div>
@@ -465,39 +280,23 @@
       <p-tabPanel header="Fornecedores">
         <div class="grid">
           <div class="col-12 tabela">
-            <p-toolbar >
+            <p-toolbar>
               <ng-template pTemplate="left">
 
-            </ng-template>
+              </ng-template>
 
               <ng-template pTemplate="right">
 
-                <button
-                  pButton
-                  pRipple
+                <button pButton pRipple label="Fornecedor" (click)="addFronecedor()" class="p-button-help  p-button-lg">
 
-
-            label="Fornecedor"
-                  (click)="addFronecedor()"
-                  class="p-button-help  p-button-lg"
-
-                >
-
-                <i class="fa-solid fa-boxes-packing fa-lg" style="margin-right: 10px" ></i>
-              </button>
+                  <i class="fa-solid fa-boxes-packing fa-lg" style="margin-right: 10px"></i>
+                </button>
 
               </ng-template>
             </p-toolbar>
-            <p-table
-              [value]="produto.produtoFonecedores"
-              responsiveLayout="stack"
-              selectionMode="single"
-              [rowHover]="true"
-              #tabela
-              dataKey="produto.fonecedores.fornecedor.id"
-              styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer"
-              [lazy]="true"
-            >
+            <p-table [value]="produto.produtoFonecedores" responsiveLayout="stack" selectionMode="single"
+              [rowHover]="true" #tabela dataKey="produto.fonecedores.fornecedor.id"
+              styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer" [lazy]="true">
               <ng-template pTemplate="caption"> </ng-template>
               <ng-template pTemplate="header">
                 <tr>
@@ -509,12 +308,7 @@
                   <th style="text-align: center">Opções</th>
                 </tr>
               </ng-template>
-              <ng-template
-                pTemplate="body"
-                let-produtofornecedor
-                key
-                let-rowIndex="rowIndex"
-              >
+              <ng-template pTemplate="body" let-produtofornecedor key let-rowIndex="rowIndex">
                 <tr [pSelectableRow]="produtofornecedor">
                   <td>{{ produtofornecedor.id.fornecedoid }}</td>
                   <td>{{ produtofornecedor.fornecedor.nome }}</td>
@@ -528,51 +322,30 @@
                   <td>
                     <div class="flex align-items-center justify-content-center">
                       <a>
-                        <button
-                          pButton
-                          pRipple
-                          icon="pi pi-minus"
-                          pTooltip="Editar"
-                          tooltipPosition="top"
-                          class="p-button-danger -button-s mr-2"
-                          (click)="removerFornecedor(rowIndex)"
-                          type="button"
-                        ></button>
+                        <button pButton pRipple icon="pi pi-minus" pTooltip="Editar" tooltipPosition="top"
+                          class="p-button-danger -button-s mr-2" (click)="removerFornecedor(rowIndex)"
+                          type="button"></button>
                       </a>
                     </div>
-                  </td></tr
-              ></ng-template>
+                  </td>
+                </tr>
+              </ng-template>
             </p-table>
           </div>
         </div>
       </p-tabPanel>
     </p-tabView>
   </div>
-  <p-dialog
-    header="Atributos"
-    [(visible)]="exibirFormAtributos"
-    [breakpoints]="{ '960px': '70vw' }"
-    [style]="{ width: '55vw' }"
-    [responsive]="true"
-    [modal]="true"
-    [draggable]="false"
-    [resizable]="false"
-    styleClass="p-fluid"
-  >
+  <p-dialog header="Atributos" [(visible)]="exibirFormAtributos" [breakpoints]="{ '960px': '70vw' }"
+    [style]="{ width: '55vw' }" [responsive]="true" [modal]="true" [draggable]="false" [resizable]="false"
+    styleClass="p-fluid">
     <ng-template pTemplate="content">
       <p></p>
       <div class="grid p-fluid p-formgroup-inline">
         <div class="col-12 md:col-6 lg:col-6 p-fluid">
           <span class="p-float-label">
-            <input
-              type="text"
-              id="inptproduto"
-              pInputText
-              required="true"
-              pInputText
-              name="tipo"
-              [(ngModel)]="atributo.tipo"
-            />
+            <input type="text" id="inptproduto" pInputText required="true" pInputText name="tipo"
+              [(ngModel)]="atributo.tipo" />
 
             <label for="inptproduto">Tipo</label>
           </span>
@@ -580,36 +353,19 @@
 
         <div class="col-12 md:col-6 lg:col-5 p-fluid">
           <span class="p-float-label">
-            <input
-              type="text"
-              id="marca"
-              pInputText
-              name="valor"
-              [(ngModel)]="atributo.valor"
-            />
+            <input type="text" id="marca" pInputText name="valor" [(ngModel)]="atributo.valor" />
 
             <label for="marca">Valor</label>
           </span>
         </div>
         <div class="col-12 md:col-6 lg:col-1">
-          <button
-            pButton
-            pRipple
-            icon="pi pi-plus"
-            type="button"
-            (click)="addAtributo()"
-            pTooltip="Adicionar atributos"
-            class="p-button-success p-button-lg"
-          ></button>
+          <button pButton pRipple icon="pi pi-plus" type="button" (click)="addAtributo()" pTooltip="Adicionar atributos"
+            class="p-button-success p-button-lg"></button>
         </div>
 
         <div class="grid">
           <div class="col-12">
-            <p-table
-              [value]="produto.atributos"
-              [responsive]="true"
-              selectionMode="single"
-            >
+            <p-table [value]="produto.atributos" [responsive]="true" selectionMode="single">
               <ng-template pTemplate="header">
                 <tr>
                   <th style="width: 500px">Tipo</th>
@@ -618,22 +374,13 @@
                   <th>Opção</th>
                 </tr>
               </ng-template>
-              <ng-template
-                pTemplate="body"
-                let-atributo
-                let-rowIndex="rowIndex"
-              >
+              <ng-template pTemplate="body" let-atributo let-rowIndex="rowIndex">
                 <tr [pSelectableRow]="atributo">
                   <td>{{ atributo.tipo }}</td>
                   <td>{{ atributo.valor }}</td>
                   <td>
-                    <button
-                      pButton
-                      (click)="remover(rowIndex)"
-                      icon="pi pi-minus"
-                      pTooltip="Excluir"
-                      class="p-button-danger -button-sm -button-sm"
-                    ></button>
+                    <button pButton (click)="remover(rowIndex)" icon="pi pi-minus" pTooltip="Excluir"
+                      class="p-button-danger -button-sm -button-sm"></button>
                   </td>
                 </tr>
               </ng-template>
@@ -644,11 +391,7 @@
     </ng-template>
 
     <ng-template pTemplate="footer">
-      <p-button
-        (click)="exibirFormAtributos = false"
-        label="sair"
-        styleClass="p-button-text"
-      ></p-button>
+      <p-button (click)="exibirFormAtributos = false" label="sair" styleClass="p-button-text"></p-button>
     </ng-template>
   </p-dialog>
 </div>

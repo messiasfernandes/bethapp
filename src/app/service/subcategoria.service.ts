@@ -1,13 +1,15 @@
+import { Subcategoria } from './../model/subcategoria';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Subcategoria } from '../model/subcategoria';
+
 
 import { Filtro } from '../model/filtro';
 import { Servicemodel } from './servicemodel';
 import { config } from '../shared/config/config';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { SubcategoriadialogComponent } from '../subcategoria/subcategoriadialog/subcategoriadialog.component';
+import { ListaSubcategoriasdialogComponent } from '../subcategoria/listacategoriasdialog/ListasubcategoriasdialogComponent';
 
 @Injectable({
   providedIn: 'root'
@@ -65,15 +67,15 @@ export class SubcategoriaService  implements Servicemodel{
     excluir(id: number): Observable<Subcategoria> {
       throw new Error('Method not implemented.');
     }
-    showSubcategoria(){
+    showSubcategoria(subCategoria: any){
 
-    this.ref = this.dialogService.open(SubcategoriadialogComponent, {
-        header: 'SubCategorias',
-        width: '50%',
+    this.ref = this.dialogService.open(ListaSubcategoriasdialogComponent, {
+        header: 'Lista de SubCategorias',
+        width: '90%', modal:true,
 
-        styleClass: "{'960px': '70vw'}",
-        contentStyle: { 'max-height': '800px', overflow: 'auto' },
-
+       // styleClass: "{'960px': '70vw'}",
+      //  contentStyle: { 'max-height': '800px', overflow: 'auto' },
+      contentStyle: { overflow: 'auto' },
         resizable: false,
 
         baseZIndex: 10000,
@@ -81,9 +83,36 @@ export class SubcategoriaService  implements Servicemodel{
       });
       this.ref.onClose.subscribe((subcategoria: Subcategoria) => {
         if (subcategoria) {
-          // this.produtov.produto = produto;
+
+            subCategoria =subcategoria
+
         }
       });
 
     }
+    cadastroSubcategoriadialog(){
+
+      this.ref = this.dialogService.open(SubcategoriadialogComponent, {
+          header: 'SubCategorias',
+          width: '70%', modal:true,
+         // maximizable: true,
+
+          styleClass: "{'960px': '70vw'}",
+          contentStyle: { 'max-height': '800px', overflow: 'auto' },
+
+          resizable: false,
+
+          baseZIndex: 10000,
+          // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
+        });
+        this.ref.onClose.subscribe((subcategoria: Subcategoria) => {
+          if (subcategoria) {
+           this.addsubcategoria(subcategoria)
+          }
+        });
+
+      }
+      addsubcategoria( subcategoria: Subcategoria){
+        return subcategoria
+      }
 }

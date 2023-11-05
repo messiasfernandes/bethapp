@@ -28,6 +28,7 @@ import { ListadialogprodutoComponent } from './produto/listadialogproduto/listad
 import { VicularFonecedorprodutoComponent } from './produto/vicular-fonecedorproduto/vicular-fonecedorproduto.component';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ListaSubcategoriasdialogComponent } from './subcategoria/listacategoriasdialog/ListasubcategoriasdialogComponent';
 registerLocaleData(ptBr, localePt);
 
 registerLocaleData(localePt, 'pt-BR');
@@ -51,6 +52,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SubcategoriadialogComponent,
     ListadialogprodutoComponent,
     VicularFonecedorprodutoComponent,
+    ListadialogprodutoComponent,
+    ListaSubcategoriasdialogComponent
 
 
 

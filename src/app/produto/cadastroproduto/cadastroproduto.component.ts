@@ -25,6 +25,7 @@ import { SubcategoriadialogComponent } from 'src/app/subcategoria/subcategoriadi
 import { Componente } from 'src/app/model/componente';
 import { VicularFonecedorprodutoComponent } from '../vicular-fonecedorproduto/vicular-fonecedorproduto.component';
 import { HttpResponse } from '@angular/common/http';
+import { ListaSubcategoriasdialogComponent } from 'src/app/subcategoria/listacategoriasdialog/ListasubcategoriasdialogComponent';
 
 @Component({
   selector: 'app-cadastroproduto',
@@ -35,6 +36,7 @@ export class CadastroprodutoComponent implements OnInit {
   subcategorias: any = ([] = []);
   fornecedores: any = ([] = []);
   produto = new Produto();
+
   subcategoriaFiltro = new Filtro();
   forncedorFiltro = new Filtro();
   ref: DynamicDialogRef;
@@ -175,12 +177,37 @@ export class CadastroprodutoComponent implements OnInit {
   }
   abrirdialog() {
     this.exibirFormAtributos = true;
+
   }
   remover(index: number) {
     this.produto.atributos.splice(index, 1);
   }
   showSubcategoria() {
-   this.subcategoriaService.showSubcategoria();
+
+  //  this.subcategoriaService.showSubcategoria(this.produto.subcategoria)
+
+
+    this.ref = this.dialogService.open(ListaSubcategoriasdialogComponent, {
+      header: 'Lista de SubCategorias',
+      width: '90%', modal:true,
+
+     // styleClass: "{'960px': '70vw'}",
+    //  contentStyle: { 'max-height': '800px', overflow: 'auto' },
+    contentStyle: { overflow: 'auto' },
+      resizable: false,
+
+      baseZIndex: 10000,
+      // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
+    });
+    this.ref.onClose.subscribe((subcategoria: Subcategoria) => {
+      if (subcategoria) {
+
+       //   this.produto.subcategoria =subcategoria
+
+      }
+    });
+
+
   }
   showLIstaProduto() {
     this.produtoService.showdialog(this.componente)
@@ -228,7 +255,7 @@ export class CadastroprodutoComponent implements OnInit {
   addFronecedor() {
     this.ref = this.dialogService.open(VicularFonecedorprodutoComponent, {
       header: 'Vincular Forncedor ao Produto',
-      width: '75%', modal: true,
+      width: '90%', modal: true,
 
       styleClass: "{'960px': '70vw'}",
       contentStyle: { 'max-height': '1000px', overflow: 'auto' },
