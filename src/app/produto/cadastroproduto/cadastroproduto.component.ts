@@ -88,6 +88,7 @@ export class CadastroprodutoComponent implements OnInit {
   carregarProduto(codigoproduto: number) {
     console.log('inicou');
     this.produtoService.detalhar(codigoproduto).subscribe((data) => {
+      console.log(data)
       this.produto = data;
       this.getbuscarfoto(this.produto.imagemPrincipal);
     });
