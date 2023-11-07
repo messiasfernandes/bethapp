@@ -36,7 +36,7 @@ export class CadastroprodutoComponent implements OnInit {
   subcategorias: any = ([] = []);
   fornecedores: any = ([] = []);
   produto = new Produto();
-
+  subcategoria = new Subcategoria();
   subcategoriaFiltro = new Filtro();
   forncedorFiltro = new Filtro();
   ref: DynamicDialogRef;
@@ -89,8 +89,14 @@ export class CadastroprodutoComponent implements OnInit {
     console.log('inicou');
     this.produtoService.detalhar(codigoproduto).subscribe((data) => {
       console.log(data)
-      this.produto = data;
-      this.getbuscarfoto(this.produto.imagemPrincipal);
+      if(data.subcategoria != null){
+        this.subcategoria = data.subcategoria
+      }
+        this.produto = data;
+        this.getbuscarfoto(this.produto.imagemPrincipal);
+
+
+
     });
   }
   addAtributo() {
@@ -147,7 +153,9 @@ export class CadastroprodutoComponent implements OnInit {
     return this.url;
   }
   salvar(form: NgForm) {
+    this.produto.subcategoria= this.subcategoria;
     if (this.produto.id != null) {
+
       this.produtoService
         .editar(this.produto)
         .pipe(
@@ -192,18 +200,18 @@ export class CadastroprodutoComponent implements OnInit {
       header: 'Lista de SubCategorias',
       width: '90%', modal:true,
 
-     // styleClass: "{'960px': '70vw'}",
-    //  contentStyle: { 'max-height': '800px', overflow: 'auto' },
-    contentStyle: { overflow: 'auto' },
+      styleClass: "{'960px': '70vw'}",
+ //   contentStyle: { 'max-height': '800px', overflow: 'auto' },
+    contentStyle: { overflow: 'hidden' },
       resizable: false,
 
       baseZIndex: 10000,
-      // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
+     // style:"width:90vw!important; height:70% !important; top:25% !important; left: 30% !important;"
     });
     this.ref.onClose.subscribe((subcategoria: Subcategoria) => {
       if (subcategoria) {
 
-       //   this.produto.subcategoria =subcategoria
+      this.subcategoria =subcategoria
 
       }
     });

@@ -75,21 +75,11 @@
                 </div>
                 <div class="col-12 md:col-6 lg:col-5 p-fluid">
                   <span class="p-float-label">
-                    <p-autoComplete
-                      [(ngModel)]="produto.subcategoria"
-                      appendTo="body"
-                      [showEmptyMessage]="true"
-                      field="nomeSubCategoria"
-                      [suggestions]="subcategorias"
-                      (completeMethod)="carregarSubcategorias($event)"
-                      name="nomeSubCategoria"
-                      id="campo"
-                      [required]="true"
-                      inputId="autocomplete"
-                      [minLength]="4"
-                      emptyMessage="Registro não ncontrato"
-                      #nomeSubCategoria="ngModel"
-    ></p-autoComplete>
+                    <input type="text" id="produtonome" readonly="true" required="true" name="nomeSubCategoria" pInputText
+                    [(ngModel)]="subcategoria.nomeSubCategoria"  #nomeSubCategoria="ngModel"
+                    placeholder="subcategroria" />
+
+
                     <label for="subcategorias ">SubCategorias</label>
                   </span>
                   <app-message [control]="nomeSubCategoria" error="required" text="Informe  Nome da subcategoria"></app-message>

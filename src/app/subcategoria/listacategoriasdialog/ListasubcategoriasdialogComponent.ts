@@ -54,7 +54,7 @@ export class ListaSubcategoriasdialogComponent implements OnInit {
     showSubcategoria() {
       this.subCtegoriaService.cadastroSubcategoriadialog();
      }
-     selecionarProduto(subecategoria: any){
+     selecionaruSubcategoria(subecategoria: any){
       console.log(subecategoria)
 
        this.ref.close(subecategoria);

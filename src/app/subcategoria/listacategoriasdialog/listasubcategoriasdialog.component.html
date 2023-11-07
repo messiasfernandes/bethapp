@@ -3,7 +3,7 @@
 
     <div class="grid">
       <div class="col-12 md:col-6 lg:col-3">
-        <h2> Consulta Categoria</h2>
+        <h2> Consulta Subcategorias</h2>
       </div>
     </div>
 
@@ -33,10 +33,10 @@
       </div>
     </div>
 
-    </div>
+  </div>
     <div class="grid">
       <div class="col-12 tabela ">
-        <p-table [value]="subcategorias" responsiveLayout="stack" selectionMode="single" [rowHover]="true"
+        <p-table [value]="subcategorias" responsiveLayout="scroll" selectionMode="single" [rowHover]="true" [responsive]="true"
           [rows]="subcategoriaFiltro.itensPorPagina" #tabela dataKey="id"
           styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer" [lazy]="true"
           (onLazyLoad)="aoMudarPagina($event)" [paginator]="true" [totalRecords]="totalRegistros">
@@ -47,31 +47,38 @@
             <tr>
 
               <th>Código</th>
-              <th> subCategoria
+              <th> Categoria
               </th>
-              <th>Categoria</th>
+              <th>Sub Categoria</th>
 
-              <th style="text-align: center; width: 20%;" >Opções</th>
+              <th style="text-align: center; width: 25%;" >Opções</th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-subcategoria>
             <tr [pSelectableRow]="subcategoria">
               <td>{{subcategoria.id}}</td>
+              <td> {{subcategoria.categoria.nomecategoria}}</td>
               <td>{{subcategoria. nomeSubCategoria
               }}</td>
-              <td> {{subcategoria.categoria.nomecategoria}}</td>
+
 
               <td>
                 <div class="flex flex-wrap align-items-center justify-content-center ">
                   <a>
 
+                    <button
+                    pButton pRipple type="button" icon="pi pi-check" pTooltip="Adicionar"
+                      (click)="selecionaruSubcategoria(subcategoria)"
+                      class="p-button-info mr-2  "
 
-
+                    >
+                  </button>
+                </a>
                   <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
                   class="p-button-primary mr-2"  type="button"></button>
-                </a>
+
               <button pButton pRipple icon="pi pi-trash" type="button" pTooltip="Excluir" tooltipPosition="top"
-                class=" p-button-danger mr2 "></button>
+                class=" p-button-danger mr-2 "></button>
                 </div>
 
               </td>
