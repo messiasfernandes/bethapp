@@ -13,7 +13,7 @@ export class Produto {
   sku: string;
   descricao: string;
   ativo: boolean;
-  codigoEan13: string;
+  codigoEan13: string='';
   caracteristica: string;
   codigofabricante: string;
    controlarestoque: boolean;

@@ -65,12 +65,14 @@ export class CadastroprodutoComponent implements OnInit {
 
   }
   bloqueBoataoEan13(): boolean {
+    console.log(this.produto.codigoEan13)
     if (this.produto.codigoEan13 === '' || this.produto.codigoEan13 === 'SEM GTIN') {
-      console.log(this.isButtonDisabled+'falso')
+
       this.isButtonDisabled = true; // Habilita o botão se codigoEan13 for vazio ou igual a 'SEM GTIN'
+      console.log(`Botão habilitador: ${this.isButtonDisabled}`);
     } else {
       this.isButtonDisabled = false; // Desabilita o botão para outros casos
-      console.log(this.isButtonDisabled+'verdadeiro')
+      console.log(`Botão desabilitado: ${this.isButtonDisabled}`);
     }
     return this.isButtonDisabled;
   }
