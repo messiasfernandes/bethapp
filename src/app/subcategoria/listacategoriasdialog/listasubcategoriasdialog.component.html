@@ -26,7 +26,7 @@
 
       </div>
       <div class="col-5 md:col-6 lg:col-2 p-fluid">
-        <button pButton icon="pi pi-plus" pTooltip="Adicoinar Produto" label="novo" (click)=" showSubcategoria()"
+        <button pButton icon="pi pi-plus" pTooltip="Adicoinar Subgacategiura" label="novo" (click)=" showSubcategoria()"
 
 
           class="p-button-success p-button-lg"></button>
@@ -36,7 +36,7 @@
   </div>
     <div class="grid">
       <div class="col-12 tabela ">
-        <p-table [value]="subcategorias" responsiveLayout="scroll" selectionMode="single" [rowHover]="true" [responsive]="true"
+        <p-table [value]="subcategorias" responsiveLayout="scroll" selectionMode="single" [rowHover]="true"
           [rows]="subcategoriaFiltro.itensPorPagina" #tabela dataKey="id"
           styleClass="p-datatable-gridlines p-datatable-sm p-datatable-customer" [lazy]="true"
           (onLazyLoad)="aoMudarPagina($event)" [paginator]="true" [totalRecords]="totalRegistros">
@@ -51,7 +51,7 @@
               </th>
               <th>Sub Categoria</th>
 
-              <th style="text-align: center; width: 25%;" >Opções</th>
+              <th style="text-align: center; width: 40%;" >Opções</th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-subcategoria>
@@ -75,7 +75,7 @@
                   </button>
                 </a>
                   <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                  class="p-button-primary mr-2"  type="button"></button>
+                  class="p-button-primary mr-2"  type="button" (click)="edistarSubCategoria(subcategoria)" ></button>
 
               <button pButton pRipple icon="pi pi-trash" type="button" pTooltip="Excluir" tooltipPosition="top"
                 class=" p-button-danger mr-2 "></button>

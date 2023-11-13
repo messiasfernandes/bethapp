@@ -93,16 +93,16 @@ export class SubcategoriaService  implements Servicemodel{
     cadastroSubcategoriadialog(){
 
       this.ref = this.dialogService.open(SubcategoriadialogComponent, {
-          header: 'SubCategorias',
+          header: ' Adicionar SubCategorias',
           width: '70%', modal:true,
-         // maximizable: true,
+       //   maximizable: true,
 
-          styleClass: "{'960px': '70vw'}",
-          contentStyle: { 'max-height': '800px', overflow: 'auto' },
+       //  styleClass: "{'960px': '70vw'}",
+  //      contentStyle: { 'max-height': '800px', overflow: 'auto' },
 
-          resizable: false,
+         // resizable: false,
 
-          baseZIndex: 10000,
+         // baseZIndex: 10000,
           // style:"width:55vw!important; height:70% !important; top:25% !important; left: 30% !important;"
         });
         this.ref.onClose.subscribe((subcategoria: Subcategoria) => {
@@ -115,4 +115,21 @@ export class SubcategoriaService  implements Servicemodel{
       addsubcategoria( subcategoria: Subcategoria){
         return subcategoria
       }
+      showdialogEdit(subcategoria:any){
+       this.ref = this.dialogService.open(SubcategoriadialogComponent, {
+          data: {
+            objetoOriginal: subcategoria
+          },
+          modal: true,
+          header: 'Editar Subcategoria',
+          width: '70%'
+        });
+
+       this. ref.onClose.subscribe((objetoEditado:Subcategoria) => {
+          // Faça algo com o objeto editado, por exemplo, atualize a lista de objetos
+          console.log('Objeto Editado:', objetoEditado);
+        });
+      }
+
+
 }

@@ -1,3 +1,4 @@
+import { Subcategoria } from './../../model/subcategoria';
 import { Filtro } from 'src/app/model/filtro';
 import { SubcategoriaService } from '../../service/subcategoria.service';
 import { Component, OnInit } from '@angular/core';
@@ -5,7 +6,7 @@ import { ErrohandlerService } from 'src/app/service/errohandler.service';
 import { catchError, throwError } from 'rxjs';
 import { LazyLoadEvent } from 'primeng/api';
 import { ControllerUtil } from 'src/app/utils/controller-util';
-import { Subcategoria } from 'src/app/model/subcategoria';
+
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { SubcategoriadialogComponent } from '../subcategoriadialog/subcategoriadialog.component';
 
@@ -19,14 +20,12 @@ export class ListaSubcategoriasdialogComponent implements OnInit {
   totalRegistros = 0;
 
   subcategorias: any[] = [];
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
   constructor(
     private subCtegoriaService: SubcategoriaService,
     private erroService: ErrohandlerService,
     public dialogService: DialogService,
-    public ref: DynamicDialogRef,
+    public ref: DynamicDialogRef
   ) {}
 
   buscar(pagina: number = 0): void {
@@ -47,16 +46,22 @@ export class ListaSubcategoriasdialogComponent implements OnInit {
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
-    const pagina= event!.first! / event!.rows!;
+    const pagina = event!.first! / event!.rows!;
     this.buscar(pagina);
   }
 
-    showSubcategoria() {
-      this.subCtegoriaService.cadastroSubcategoriadialog();
-     }
-     selecionaruSubcategoria(subecategoria: any){
-      console.log(subecategoria)
+  showSubcategoria() {
+    this.subCtegoriaService.cadastroSubcategoriadialog();
+  }
+  selecionaruSubcategoria(subecategoria: any) {
+    console.log(subecategoria);
 
-       this.ref.close(subecategoria);
-       }
-      }
+    this.ref.close(subecategoria);
+  }
+  edistarSubCategoria(subcategoria: any) {
+    this.subCtegoriaService.showdialogEdit(subcategoria);
+
+  }
+
+
+}

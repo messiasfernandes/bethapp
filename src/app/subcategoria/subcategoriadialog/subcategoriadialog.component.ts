@@ -5,7 +5,7 @@ import { CategoriaService } from 'src/app/service/categoria.service';
 import { MessageService } from 'primeng/api';
 import { map } from 'rxjs/internal/operators/map';
 import { Filtro } from 'src/app/model/filtro';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DynamicDialogRef,DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { NgForm } from '@angular/forms';
 import { ErrohandlerService } from 'src/app/service/errohandler.service';
 import { SubcategoriaService } from 'src/app/service/subcategoria.service';
@@ -27,8 +27,20 @@ export class SubcategoriadialogComponent implements OnInit {
     private messageService: MessageService,
     public ref: DynamicDialogRef,
     private errorHandler: ErrohandlerService,
-    private subcategoriaService: SubcategoriaService
-  ) {}
+    private subcategoriaService: SubcategoriaService,
+    public config: DynamicDialogConfig
+  ) {
+
+  //  console.log('config.data:', this.config.data);
+   // console.log('config.data.objetoOriginal:', this.config.data.objetoOriginal);
+
+  //  if (this.config.data.objetoOriginal != null) {
+ // this.subcategoria = this.config.data.objetoOriginal;
+// }
+if (this.config.data && this.config.data.objetoOriginal != null) {
+  this.subcategoria = this.config.data.objetoOriginal;
+}
+  }
   ngOnInit(): void {}
 
   carregarCategorias(evento: any) {
@@ -49,6 +61,27 @@ export class SubcategoriadialogComponent implements OnInit {
   }
   salvar(form: NgForm) {
    let erroOcorrido= false;
+   if (this.subcategoria.id != null) {
+
+    this.subcategoriaService
+      .editar(this.subcategoria)
+      .pipe(
+        catchError((erro: any) => {
+          return throwError(() => this.errorHandler.erroHandler(erro));
+        })
+      )
+      .subscribe((response: Subcategoria) => {
+
+     {
+          this.messageService.add({
+            severity: 'info',
+            detail: 'subcategoria editado com sucesso!',
+          });
+         // form.reset();
+        this.selecionarSubcatecoria()
+        }
+      });
+    }else
     this.subcategoriaService.salvar(this.subcategoria)
     .pipe(
       catchError((erro: any) => {
@@ -63,9 +96,10 @@ export class SubcategoriadialogComponent implements OnInit {
           severity: 'success',
           detail: 'Subcategoria salva com sucesso!',
         });
-        form.reset();
-        this.ref.close();
+
       }
     });;
+   // form.reset();
+    this.ref.close();
   }
 }
