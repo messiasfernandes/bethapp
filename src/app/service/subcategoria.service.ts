@@ -94,7 +94,7 @@ export class SubcategoriaService  implements Servicemodel{
 
       this.ref = this.dialogService.open(SubcategoriadialogComponent, {
           header: ' Adicionar SubCategorias',
-          width: '70%', modal:true,
+          width: '80%', modal:true,
        //   maximizable: true,
 
        //  styleClass: "{'960px': '70vw'}",

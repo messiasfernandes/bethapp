@@ -22,6 +22,7 @@ export class SubcategoriadialogComponent implements OnInit {
   subcategoria = new Subcategoria();
   categoriaFiltro = new Filtro();
   totalRegistros = 0;
+  intputCat: boolean=false;
   constructor(
     private categoriaService: CategoriaService,
     private messageService: MessageService,
@@ -42,7 +43,9 @@ if (this.config.data && this.config.data.objetoOriginal != null) {
 }
   }
   ngOnInit(): void {}
-
+  cadastrarCategoria(){
+    this.intputCat=true;
+  }
   carregarCategorias(evento: any) {
     this.categoriaFiltro.pagina = 0;
     this.categoriaFiltro.parametro = evento.query;

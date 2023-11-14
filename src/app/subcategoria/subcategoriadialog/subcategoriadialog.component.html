@@ -8,7 +8,7 @@
       <p></p>
 
 
-    <div class="col-12 md:col-6 lg:col-6 p-fluid">
+    <div class="col-12 md:col-6 lg:col-4 p-fluid">
       <span class="p-float-label">
       <p-autoComplete [(ngModel)]="subcategoria.categoria" appendTo="body" [showEmptyMessage]="true"
       field="nomecategoria" [suggestions]="categorias"
@@ -18,7 +18,8 @@
     <app-message [control]="nomecategoria" error="required" text="Informe  Nome da Categoria"></app-message>
     </span>
     </div>
-   <div class="col-12 md:col-6 lg:col-6 p-fluid">
+
+   <div class="col-12 md:col-6 lg:col-4 p-fluid">
     <span class="p-float-label">
       <input type="text" id="subcat" pInputText name="nomeSubCategoria" required="true" ngModel #nomeSubCategoria="ngModel"
         [(ngModel)]="subcategoria.nomeSubCategoria" />
@@ -28,6 +29,17 @@
       <app-message [control]="nomeSubCategoria" error="required" text="Informe  Nome da Subacategoria"></app-message>
     </span>
    </div>
+   <div class="col-12 md:col-6 lg:col-2  ">
+    <button pButton pRipple type="button" label="Categoria"  class="p-button-lg p-button-success"
+    icon="pi pi-plus" (click)="cadastrarCategoria()" pTooltip="Adicionar Categoria">
+  </button>
+  </div>
+  <div class="col-12 md:col-6 lg:col-2">
+    <button pButton pRipple type="button" label="Editar" class="p-button-lg p-button-primary"
+    (click)="cadastrarCategoria()" icon="pi pi-pencil" pTooltip="Editar Categoria">
+    </button>
+  </div>
+
    <div class="col-6 md:col-6 lg:col-2 p-fluid">
 
     <button pButton pRipple type="button" icon="pi pi-sign-in" label="Voltar" (click)="selecionarSubcatecoria()"
